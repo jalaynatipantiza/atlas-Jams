@@ -35,3 +35,16 @@ Allows performers , hosts and spectators to connect. Performers  will have the a
 - React
 - Rails
 - PSQL
+
+## routes
+/signup
+/signup/performer (get)
+/signup/performer/:id (post)
+/signup/host (get)
+/signup/host/:id (post)
+
+/ (homepage)
+/profile/:id (get)
+
+/create/event (get, post)
+/edit/event (get, post)
