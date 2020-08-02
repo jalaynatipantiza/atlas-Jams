@@ -6,4 +6,20 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-user1 = User.create(  name: "Landon",  email: "example@gmail.com", number: 3064703625, profile_pic: "https://www.mercurynews.com/wp-content/uploads/2020/07/CCT-SKETCHPICKS-0112-01.jpg", description:"Lively band", username: "folks123", city: "saskatoon", is_performer: true, size: 3 )
+performer1 = User.findbyname
+
+performer1 = User.create( 
+  name: "Lando",  
+  email: "example@gmail.com", 
+  number: 3064703625, 
+  profile_pic: "https://images.unsplash.com/photo-1549834125-82d3c48159a3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60", 
+  description:"Lively band", 
+  username: "lando123", 
+  location: "saskatoon", 
+  is_performer: true, 
+  size: 4 
+)
+
+
+
+
