@@ -4,7 +4,7 @@ import './App.css';
 import axios from 'axios'
 
 function App() {
-  axios.get("http://localhost:3000/")
+  axios.get("http://localhost:3000/users")
     .then(res => console.log(res.data))
   return (
     <div className="App">
