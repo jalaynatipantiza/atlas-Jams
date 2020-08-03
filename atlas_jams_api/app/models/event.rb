@@ -1,4 +1,4 @@
 class Event < ApplicationRecord
   belongs_to :space
-  has_may :events_performers
+  has_many :events_performers
 end
