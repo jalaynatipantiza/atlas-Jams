@@ -90,12 +90,25 @@ cultural = GenreCategory.create({
 
 performer1.genres.create()
 
-#genres
+#genre
+genre1_performer1 = Genre.create!({
+  user_id: performer1.id,
+  genre_category_id: jazz.id
+})
+genre2_performer1 = Genre.create!({
+  user_id: performer1.id,
+  genre_category_id: classical.id
+})
+genre1_performer2 = Genre.create!({
+  user_id: performer2.id,
+  genre_category_id: jazz.id
+})
+genre2_performer2 = Genre.create!({
+  user_id: performer2.id,
+  genre_category_id: pop.id
+})
 
-# genre1 = Genre.create({
-#   user_id: 1 ,
-#   genre_categories_id: 1
-# })
+
 
 
 #recordings
@@ -198,7 +211,7 @@ host2_space3.space_pictures.create({
 
 #events
 #host 1 space 1
-host1_space1.events.create({
+jazz_fest = host1_space1.events.create({
   date: "2020-10-02",
   time: "12:00",
   am: false,
@@ -208,7 +221,7 @@ host1_space1.events.create({
   duration: "180",
   attendants: 15
 })
-host1_space1.events.create({
+garden_tea = host1_space1.events.create({
   date: "2020-4-23" ,
   time: "11:00",
   am: true,
@@ -219,7 +232,7 @@ host1_space1.events.create({
   attendants: 50
 })
 #host 1 space 2
-host1_space2.events.create({
+dinner_party = host1_space2.events.create({
   date: "2020-12-21",
   time: "6:00",
   am: false,
@@ -229,7 +242,7 @@ host1_space2.events.create({
   duration: "180",
   attendants: 30
 })
-host1_space2.events.create({
+wine_and_cheese = host1_space2.events.create({
   date: "2020-11-01",
   time: "9:00",
   am: false,
@@ -241,7 +254,7 @@ host1_space2.events.create({
 })
 #host 2 space 1
 
-host2_space1.events.create({
+classical_evening = host2_space1.events.create({
   date: "2020-09-15",
   time: "8:00",
   am: false,
@@ -253,7 +266,7 @@ host2_space1.events.create({
 })
 #host 2 space 2
 
-host2_space2.events.create({
+kick_it = host2_space2.events.create({
   date: "2020-11-09",
   time: "3:00",
   am: false,
@@ -264,7 +277,7 @@ host2_space2.events.create({
   attendants: 100
 })
 
-host2_space2.events.create({
+sunset = host2_space2.events.create({
   date: "2020-08-25",
   time:"7:00",
   am: false,
@@ -275,7 +288,7 @@ host2_space2.events.create({
   attendants: 200
 })
 #host 2 space 3
-host2_space3.events.create({
+jazzy_bop = host2_space3.events.create({
   date: "2020-10-21",
   time: "11:00",
   am: true,
@@ -285,3 +298,57 @@ host2_space3.events.create({
   duration: "180",
   attendants: 120
 })
+
+#Events_performers
+jazzy_bop_performer1 = EventsPerformer.create!({
+  user_id: performer1.id,
+  event_id: jazzy_bop.id
+})
+jazzy_bop_performer2 = EventsPerformer.create!({
+  user_id: performer2.id,
+  event_id: jazzy_bop.id
+})
+sunset_performer1 = EventsPerformer.create!({
+  user_id: performer1.id,
+  event_id: sunset.id
+})
+sunset_performer2 = EventsPerformer.create!({
+  user_id: performer2.id,
+  event_id: sunset.id
+})
+kick_it_performer1= EventsPerformer.create!({
+  user_id: performer1.id,
+  event_id: kick_it.id
+})
+classical_evening_performer2 = EventsPerformer.create!({
+  user_id: performer2.id,
+  event_id: classical_evening.id
+})
+wine_and_cheese_night_performer1 = EventsPerformer.create!({
+  user_id: performer1.id,
+  event_id: wine_and_cheese.id
+})
+dinner_party_performer1 = EventsPerformer.create!({
+  user_id: performer1.id,
+  event_id: dinner_party.id
+})
+dinner_party_performer2 = EventsPerformer.create!({
+  user_id: performer2.id,
+  event_id: dinner_party.id
+})
+garden_tea_performer2 = EventsPerformer.create!({
+  user_id: performer2.id,
+  event_id: garden_tea.id
+})
+jazz_fest_performer1 = EventsPerformer.create!({
+  user_id: performer1.id,
+  event_id: jazz_fest.id
+})
+jazz_fest_performer2 = EventsPerformer.create!({
+  user_id: performer2.id,
+  event_id: jazz_fest.id
+})
+
+
+
+
