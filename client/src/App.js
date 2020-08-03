@@ -8,7 +8,12 @@ function App() {
     .then(res => console.log(res.data))
   return (
     <main>
-      <Navbar />
+      <section>
+        <Navbar />
+      </section>
+      <section>
+        
+      </section>
     </main>
   );
 }
