@@ -33,7 +33,8 @@ const Navbar = (props) => {
 
 
   return(
-    <React.Fragment>
+    // <React.Fragment>
+      <nav className={classes.nav}>
       <AppBar position="fixed" style={{backgroundColor: "transparent"}}>
         <Toolbar style={{display: "flex", justifyContent: "space-between"}}>
           <IconButton style={{font: "initial"}} color="inherit">
@@ -55,8 +56,9 @@ const Navbar = (props) => {
           </Menu>
         </Toolbar>
       </AppBar>
-      <div className={classes.offset} />
-    </React.Fragment>
+      </nav>
+      // <div className={classes.offset} />
+    // </React.Fragment>
   )
 };
 
