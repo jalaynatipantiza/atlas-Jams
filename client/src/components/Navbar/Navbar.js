@@ -8,11 +8,11 @@ const useStyles = makeStyles({
   nav: {
     zIndex: "1",
     position: "fixed",
-    width: "100vw"
+    width: "100vw",
   }
   ,
   AppBar: {
-    backgroundColor: "none"
+    backgroundColor: "none",
   }
 });
 const Navbar = (props) => {
@@ -31,21 +31,11 @@ const Navbar = (props) => {
   return(
     <nav className={classes.nav}>
       <AppBar position="static" style={{backgroundColor: "transparent"}}>
-        <Toolbar >
-          <IconButton>
+        <Toolbar style={{display: "flex", justifyContent: "space-between"}}>
+          <IconButton color="inherit">
             <SearchIcon />
           </IconButton>
-          <a href="#">
-            <Typography variant="h6">
-              Performer
-            </Typography>
-          </a>
-          <a href="#">
-            <Typography variant="h6">
-              Host
-            </Typography>
-          </a>
-          <IconButton onClick={handleClick}>
+          <IconButton color="inherit" onClick={handleClick}>
             <AccountCircleIcon />
           </IconButton>
           <Menu
@@ -55,7 +45,7 @@ const Navbar = (props) => {
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
-            <MenuItem onClick={handleClose}>Edit Profile</MenuItem>
+            <MenuItem onClick={handleClose}>Profile</MenuItem>
             <MenuItem onClick={handleClose}>Sign In</MenuItem>
             <MenuItem onClick={handleClose}>Sign Out</MenuItem>
           </Menu>
