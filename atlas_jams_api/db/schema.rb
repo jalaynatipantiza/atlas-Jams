@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_04_232147) do
+ActiveRecord::Schema.define(version: 2020_08_04_230657) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,12 +89,12 @@ ActiveRecord::Schema.define(version: 2020_08_04_232147) do
     t.string "profile_pic"
     t.text "description"
     t.string "location"
+    t.boolean "is_performer", default: false
     t.integer "size"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "password"
-    t.boolean "is_performer", default: true
-    t.boolean "is_host", default: true
+    t.boolean "is_host", default: false
   end
 
   add_foreign_key "events", "spaces"
