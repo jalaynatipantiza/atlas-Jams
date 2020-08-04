@@ -18,13 +18,7 @@ const useStyles = makeStyles({
     height: "100vh",
     width: "100vw"
   },
-  search: {
-    position: 'relative',
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
-    '&:hover': {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
-    },
+
 });
 const SearchBox = (props) => {
   const classes = useStyles();
