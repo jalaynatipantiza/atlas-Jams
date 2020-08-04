@@ -10,6 +10,11 @@ const useStyles = makeStyles({
     height: "30vh",
     width: "45vw",
     overflow: "auto"
+  },
+  videobox: {
+     height: "30vh",
+    width: "45vw",
+    overflow: "auto"
   }
 });
 

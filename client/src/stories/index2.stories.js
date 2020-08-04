@@ -1,6 +1,7 @@
 import React from 'react';
 import { storiesOf } from "@storybook/react";
 import Profile from "../components/PerformerProfile/PerformerProfile"
+import Recording from "../components/PerformerProfile/recording"
 
 
 const profile = {
@@ -12,8 +13,27 @@ const profile = {
   username: "massimo78", 
   location: "Calgary", 
   is_performer: true, 
-  size: 1 
+  size: 1,
+  recordings: [
+    {
+      name: "Float",
+      url: "https://www.youtube.com/watch?v=Nl9LrqV_HG8&list=RDNl9LrqV_HG8&start_radio=1",
+      description: "Chill instrumental"
+    },
+    {
+      name: "Float",
+      url: "https://www.youtube.com/watch?v=Nl9LrqV_HG8&list=RDNl9LrqV_HG8&start_radio=1",
+      description: "Chill instrumental"
+    }
+  ]
+}
+
+const recording = {
+  name: "Float",
+  url: "https://www.youtube.com/watch?v=Nl9LrqV_HG8&list=RDNl9LrqV_HG8&start_radio=1",
+  description: "Chill instrumental"
 }
 
 storiesOf("profile", module)
-.add("profile", () => <Profile name={profile.name}  email={profile.email}  number={profile.number} profile_pic={profile.profile_pic} description={profile.description} username={profile.username} location={profile.location} is_performer={profile.is_performer} size={profile.size}/>)
+.add("profile", () => <Profile recordings={profile.recordings} name={profile.name}  email={profile.email}  number={profile.number} profile_pic={profile.profile_pic} description={profile.description} username={profile.username} location={profile.location} is_performer={profile.is_performer} size={profile.size}/>)
+.add("recording", () => <Recording name={recording.name} url={recording.url} description={recording.description}/>)
