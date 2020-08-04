@@ -6,8 +6,14 @@ import { makeStyles } from '@material-ui/core/styles';
 import zIndex from '@material-ui/core/styles/zIndex';
 
 const useStyles = makeStyles(theme => ({
+  nav: {
+    zIndex: "1",
+    position: "fixed",
+    width: "100vw",
+  }
+  ,
   AppBar: {
-    backgroundColor: "none"
+    backgroundColor: "none",
   }
   ,
   offset: theme.mixins.toolbar
@@ -29,21 +35,11 @@ const Navbar = (props) => {
   return(
     <React.Fragment>
       <AppBar position="fixed" style={{backgroundColor: "transparent"}}>
-        <Toolbar >
-          <IconButton>
-            <SearchIcon />
+        <Toolbar style={{display: "flex", justifyContent: "space-between"}}>
+          <IconButton style={{font: "initial"}} color="inherit">
+            <p>Atlas Jams</p>
           </IconButton>
-          <a href="#">
-            <Typography variant="h6">
-              Performer
-            </Typography>
-          </a>
-          <a href="#">
-            <Typography variant="h6">
-              Host
-            </Typography>
-          </a>
-          <IconButton onClick={handleClick}>
+          <IconButton color="inherit" onClick={handleClick}>
             <AccountCircleIcon />
           </IconButton>
           <Menu
@@ -53,7 +49,7 @@ const Navbar = (props) => {
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
-            <MenuItem onClick={handleClose}>Edit Profile</MenuItem>
+            <MenuItem onClick={handleClose}>Profile</MenuItem>
             <MenuItem onClick={handleClose}>Sign In</MenuItem>
             <MenuItem onClick={handleClose}>Sign Out</MenuItem>
           </Menu>
