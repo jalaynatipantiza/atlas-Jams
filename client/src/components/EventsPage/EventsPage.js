@@ -33,19 +33,18 @@ export default function EventsPage() {
       >
         <Grid item className={classes.main}>
           <Paper className={classes.paper}>
-          Host Section
             <Grid item>
               <Grid item>
                 <ButtonBase className={classes.image}>
                   <img className={classes.img} alt="complex" src="https://images.unsplash.com/photo-1549834125-82d3c48159a3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" />
+                  <Typography gutterBottom variant="subtitle1" className={classes.name}>
+                      Host Name
+                    </Typography>
                 </ButtonBase>
               </Grid>
               <Grid item xs={12} sm container>
                 <Grid item xs container direction="column" spacing={2}>
                   <Grid item xs>
-                    <Typography gutterBottom variant="subtitle1">
-                      Host Name
-                    </Typography>
                     <Typography variant="body2" gutterBottom>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lacinia massa erat, quis placerat erat cursus non. Nulla a pulvinar mi. Vestibulum mollis semper blandit. Nulla volutpat luctus lectus in placerat. Quisque pulvinar id lacus eget dictum. Integer ultrices volutpat orci at placerat. Maecenas porta non felis vitae pharetra. Suspendisse.
                     </Typography>
@@ -58,19 +57,18 @@ export default function EventsPage() {
 
         <Grid item className={classes.main}>
           <Paper className={classes.paper}>
-          Performer Section
             <Grid item>
               <Grid item>
                 <ButtonBase className={classes.image}>
                   <img className={classes.img} alt="complex" src="https://images.unsplash.com/photo-1549834125-82d3c48159a3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" />
+                  <Typography gutterBottom variant="subtitle1" className={classes.name}>
+                      Performer Name | Genre
+                    </Typography>
                 </ButtonBase>
               </Grid>
               <Grid item xs={12} sm container>
                 <Grid item xs container direction="column" spacing={2}>
                   <Grid item xs>
-                    <Typography gutterBottom variant="subtitle1">
-                      Performer Name | Genre
-                    </Typography>
                     <Typography variant="body2" gutterBottom>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lacinia massa erat, quis placerat erat cursus non. Nulla a pulvinar mi. Vestibulum mollis semper blandit. Nulla volutpat luctus lectus in placerat. Quisque pulvinar id lacus eget dictum. Integer ultrices volutpat orci at placerat. Maecenas porta non felis vitae pharetra. Suspendisse.
                     </Typography>
