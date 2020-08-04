@@ -1,5 +1,8 @@
 import React from 'react';
 import { Grid, Box, Paper, Typography, ButtonBase, Button } from '@material-ui/core';
+import TodayIcon from '@material-ui/icons/Today';
+import LocationOnIcon from '@material-ui/icons/LocationOn';
+import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import useStyles from './styles/styles';
 
 export default function EventsPage() {
@@ -7,13 +10,19 @@ export default function EventsPage() {
 
   return (
     <React.Fragment>
+      <Grid 
+        container
+        className={classes.banner}
+      >
+
+      </Grid>
       <Grid
         container
         className={classes.header}
       >
         <Grid item xs={6}>
           <Grid item className={classes.headerLeft}>
-            Date/Time/Location
+            <TodayIcon />Date/<AccessTimeIcon />Time/<LocationOnIcon />Location
           </Grid>
         </Grid>
         <Grid item xs={6} className={classes.headerRight}>
@@ -32,6 +41,9 @@ export default function EventsPage() {
         alignItems="center"
       >
         <Grid item className={classes.main}>
+          <Typography variant="h4" className={classes.title}>
+            Host
+          </Typography>
           <Paper className={classes.paper}>
             <Grid item>
               <Grid item>
@@ -56,6 +68,9 @@ export default function EventsPage() {
         </Grid>
 
         <Grid item className={classes.main}>
+          <Typography variant="h4" className={classes.title}>
+            Performer(s)
+          </Typography>
           <Paper className={classes.paper}>
             <Grid item>
               <Grid item>
