@@ -1,33 +1,17 @@
 import React from 'react'
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
 import { Box } from '@material-ui/core';
+import useStyles from "./styles/styles";
 
 
-const useStyles = makeStyles({
-
-  media: {
-    height: "60vh",
-    width:"45vw"
-  },
-  box: {
-    height: "30vh",
-    width: "45vw",
-    overflow: "auto"
-  }
-});
-
-
-export default function Profile(props) {
-  const {name, email, number, profile_pic, description, username, location, is_performer, size} = props
+const Profile = (props) => {
   const classes = useStyles();
+  const {name, email, number, profile_pic, description, username, location, is_performer, size} = props
+
   return(
     <Card>
       <CardActionArea >
@@ -60,3 +44,5 @@ export default function Profile(props) {
   </Card>
   )
 };
+
+export default Profile;
