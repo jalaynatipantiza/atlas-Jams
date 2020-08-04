@@ -4,22 +4,42 @@ import SearchIcon from '@material-ui/icons/Search';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { makeStyles } from '@material-ui/core/styles';
 import zIndex from '@material-ui/core/styles/zIndex';
+import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 
 const useStyles = makeStyles(theme => ({
   nav: {
     zIndex: "1",
     position: "fixed",
     width: "100vw",
-  }
-  ,
-  AppBar: {
+
+  },
+  toolbar: {
+    display: "flex", 
+    justifyContent: "space-between", 
+    color: "white", 
     backgroundColor: "none",
+  },
+  toolbar2: {
+    display: "flex", 
+    justifyContent: "space-between", 
+    color: "black", 
+    backgroundColor: "white"
+  },
+  appBar: {
+    position: "fixed",
+    backgroundColor: "transparent",
+    boxShadow: "none"
+  },
+  appBar2: {
+    position: "fixed",
+    backgroundColor: "transparent"
   }
-  ,
-  offset: theme.mixins.toolbar
+  // offset: theme.mixins.toolbar
 }));
 
 const Navbar = (props) => {
+  const trigger = useScrollTrigger();
+
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleClick = (event) => {
@@ -35,8 +55,8 @@ const Navbar = (props) => {
   return(
     // <React.Fragment>
       <nav className={classes.nav}>
-      <AppBar position="fixed" style={{backgroundColor: "transparent"}}>
-        <Toolbar style={{display: "flex", justifyContent: "space-between"}}>
+      <AppBar className={trigger ? classes.appBar2 : classes.appBar}>
+        <Toolbar className={trigger ? classes.toolbar2 : classes.toolbar}>
           <IconButton style={{font: "initial"}} color="inherit">
             <p>Atlas Jams</p>
           </IconButton>
