@@ -15,5 +15,5 @@ storiesOf("Cards", module)
 .addParameters({
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
   })
-  .add("Event", () => <EventsCard event={event}/>)
+  .add("Event", () => <EventsCard description={event.description} name={event.name} time={event.time} date={event.date} url={event.url} />)
   

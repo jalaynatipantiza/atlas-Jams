@@ -50,7 +50,7 @@ const SearchBox = (props) => {
       </div>
     </div>
     {/*this will be removed, just for visual purposes right now*/}
-    <div className={classes.div}></div>
+  
     </section>
   )
 };

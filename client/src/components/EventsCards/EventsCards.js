@@ -19,23 +19,25 @@ const useStyles = makeStyles({
 
 
 export default function EventsCard(props) {
-  const classes = useStyles();
-  const partialDescription = props.event.description.slice(0, 100);
+  const {description, name, date, url, time} = props
 
+  const classes = useStyles();
+  // const partialDescription = description.slice(0, 100);
+  const partialDescription ="sjdfsdfsd"
   return (
     <Card className={classes.root}>
       <CardActionArea >
         <CardMedia
           className={classes.media}
-          image={props.event.url}
+          image={url}
 
         />
         <CardContent >
           <Typography gutterBottom variant="h5" component="h1">
-            {props.event.name}
+            {name}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-          {`${props.event.date} ${props.event.time}`}
+          {`${date} ${time}`}
 
           </Typography>
           <Typography variant="body2" component="p">
