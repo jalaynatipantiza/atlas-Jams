@@ -22,7 +22,7 @@ export default function SignupForm() {
       <TextField id="standard-basic" label="Time" />
       <TextField id="standard-basic" label="Duration" />
       <TextField id="standard-basic" label="Price" />
-      <TextField id="standard-basic" label="Description" />
+      <TextField id="standard-basic" label="Description" multiline />
       <TextField id="standard-basic" label="Performer(s)" />
       <Button variant="contained" color="primary" href="#">Add Performer</Button>
       <Button variant="contained" color="primary" href="#">Submit</Button>

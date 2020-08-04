@@ -24,7 +24,7 @@ export default function SignupForm() {
       <TextField id="standard-basic" label="Address" />
       <TextField id="standard-basic" label="Space Pictures" />
       <TextField id="standard-basic" label="Capacity" />
-      <TextField id="standard-basic" label="Description" />
+      <TextField id="standard-basic" label="Description" multiline />
       <Button variant="contained" color="primary" href="#">Submit</Button>
     </form>
   );

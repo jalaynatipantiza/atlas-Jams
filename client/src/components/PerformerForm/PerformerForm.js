@@ -23,7 +23,7 @@ export default function SignupForm() {
       <TextField id="standard-basic" label="City" />
       <TextField id="standard-basic" label="Genre" />
       <TextField id="standard-basic" label="Video Links" />
-      <TextField id="standard-basic" label="Description" />
+      <TextField id="standard-basic" label="Description" multiline />
       <Button variant="contained" color="primary" href="#">Submit</Button>
     </form>
   );
