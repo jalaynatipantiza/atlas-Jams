@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_03_174943) do
+ActiveRecord::Schema.define(version: 2020_08_04_190814) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2020_08_03_174943) do
     t.string "time"
     t.boolean "am"
     t.integer "attendants"
+    t.string "event_picture"
     t.index ["space_id"], name: "index_events_on_space_id"
   end
 

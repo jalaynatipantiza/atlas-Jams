@@ -219,7 +219,8 @@ jazz_fest = host1_space1.events.create({
   price: 15.00,
   description: "Join us at our annual jazz festival and show case your jazzy tunes",
   duration: "180",
-  attendants: 15
+  attendants: 15,
+  event_picture: "https://images.unsplash.com/photo-1483842293911-b0f670601cdc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2024&q=80"
 })
 garden_tea = host1_space1.events.create({
   date: "2020-4-23" ,
@@ -229,7 +230,8 @@ garden_tea = host1_space1.events.create({
   price: 12.50,
   description: "Looking for calm and upbeat melodies!",
   duration: "250",
-  attendants: 50
+  attendants: 50,
+  event_picture: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
 })
 #host 1 space 2
 dinner_party = host1_space2.events.create({
@@ -240,7 +242,8 @@ dinner_party = host1_space2.events.create({
   price: 12.50,
   description: "Groovy feel good tunes over dinner! ",
   duration: "180",
-  attendants: 30
+  attendants: 30,
+  event_picture: 'https://images.unsplash.com/photo-1596334861142-48f19282fcba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
 })
 wine_and_cheese = host1_space2.events.create({
   date: "2020-11-01",
@@ -250,7 +253,8 @@ wine_and_cheese = host1_space2.events.create({
   price: 25.00,
   description: "Wine and cheese night with mellow music",
   duration: "230",
-  attendants: 50
+  attendants: 50,
+  event_picture: 'https://images.unsplash.com/photo-1470019693664-1d202d2c0907?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
 })
 #host 2 space 1
 
@@ -262,7 +266,8 @@ classical_evening = host2_space1.events.create({
   price: 20.00,
   description: "Black tie event! Spend an evening with top notch classical performances. ",
   duration: "180",
-  attendants: 70
+  attendants: 70,
+  event_picture: "https://images.unsplash.com/photo-1576060974974-933acee13b58?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
 })
 #host 2 space 2
 
@@ -274,7 +279,8 @@ kick_it = host2_space2.events.create({
   price: 12.50,
   description: "Grab your pals and enjoy a night out with some upbeat pop beats",
   duration: "200",
-  attendants: 100
+  attendants: 100,
+  event_picture: 'https://images.unsplash.com/photo-1476287803067-f714aa78eaa7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
 })
 
 sunset = host2_space2.events.create({
@@ -285,7 +291,8 @@ sunset = host2_space2.events.create({
   price: 12.50,
   description: "Sunset dine to some folk music",
   duration: "180",
-  attendants: 200
+  attendants: 200,
+  event_picture:"https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
 })
 #host 2 space 3
 jazzy_bop = host2_space3.events.create({
@@ -296,7 +303,8 @@ jazzy_bop = host2_space3.events.create({
   price: 5.00,
   description: "Check out the jazziest bopalapolous peeps in town",
   duration: "180",
-  attendants: 120
+  attendants: 120,
+  event_picture: 'https://images.unsplash.com/photo-1466232373731-46205f0b668e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
 })
 
 #Events_performers

@@ -19,7 +19,8 @@ const useStyles = makeStyles({
 
 
 export default function EventsCard(props) {
-  const {description, name, date, url, time} = props
+  console.log(props);
+  const {description, name, date, event_picture, time, am} = props
 
   const classes = useStyles();
   const partialDescription = description.slice(0, 100);
@@ -29,7 +30,7 @@ export default function EventsCard(props) {
       <CardActionArea >
         <CardMedia
           className={classes.media}
-          image={url}
+          image={event_picture}
 
         />
         <CardContent >
@@ -38,6 +39,7 @@ export default function EventsCard(props) {
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
           {`${date} ${time}`}
+          { am ? "am" : "pm"}
 
           </Typography>
           <Typography variant="body2" component="p">
