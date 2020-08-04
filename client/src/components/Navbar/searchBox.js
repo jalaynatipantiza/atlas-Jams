@@ -4,7 +4,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 
 const useStyles = makeStyles({
-  hero: {
+  mainPic: {
     backgroundImage:  "url('https://images.unsplash.com/photo-1562763563-49cabb8f45ce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80')",
     height: "100vh",
     width: "100vw",
@@ -28,20 +28,13 @@ const useStyles = makeStyles({
     width: '45vw',
     height: "5vh"
   },
-  // inputRoot: {
-  //   color: 'inherit'
-    
-  // },
-  // inputInput: {
-  //   width: '50vw',
-  // },
 
 });
 const SearchBox = (props) => {
   const classes = useStyles();
   return(
     <section>
-    <div className={classes.hero}>
+    <div className={classes.mainPic}>
     <div className={classes.search}>
       <div className={classes.searchIcon}>
       
