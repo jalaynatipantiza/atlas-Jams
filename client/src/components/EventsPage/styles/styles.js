@@ -17,14 +17,16 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
   },
   image: {
-    width: 126,
+    // width: 126,
     height: 126,
+    marginBottom: 20,
   },
   img: {
     margin: 'auto',
-    display: 'block',
+    display: 'flex',
     maxWidth: '100%',
     maxHeight: '100%',
+    borderRadius: 7,
   },
   paper: {
     padding: theme.spacing(2),
@@ -40,7 +42,10 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     paddingLeft: 40,
   },
-
+  name: {
+    paddingLeft: 20,
+    paddingBottom: 15,
+  }
 }));
 
 export default useStyles;
