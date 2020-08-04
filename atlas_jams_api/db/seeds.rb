@@ -19,7 +19,7 @@ performer1 = User.create({
   number: 3064703625, 
   profile_pic: "https://images.unsplash.com/photo-1549834125-82d3c48159a3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60", 
   description:"Lively band", 
-  username: "lando123", 
+  password: "lando123", 
   location: "saskatoon", 
   is_performer: true, 
   size: 4 
@@ -30,7 +30,7 @@ performer2 = User.create({
   number: 3062437814, 
   profile_pic: "https://images.unsplash.com/photo-1573470167254-315246dd477d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60", 
   description:"I'm a classical piano musician.", 
-  username: "massimo78", 
+  password: "massimo78", 
   location: "Calgary", 
   is_performer: true, 
   size: 1 
@@ -44,7 +44,7 @@ host1 = User.create({
   number: 3064703625, 
   profile_pic: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60", 
   description:"i love to host bands at my grape vineyard and help local artists get exposure", 
-  username: "rheemat", 
+  password: "rheemat", 
   location: "calary", 
   is_performer: false
 })
@@ -56,7 +56,7 @@ host2 = User.create({
   number: 3064703612, 
   profile_pic: "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60", 
   description:"Backyard garden space", 
-  username: "milanagarden", 
+  password: "milanagarden", 
   location: "saskatoon", 
   is_performer: false, 
 })
