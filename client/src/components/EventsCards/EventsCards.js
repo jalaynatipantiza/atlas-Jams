@@ -22,10 +22,10 @@ export default function EventsCard(props) {
   const {description, name, date, url, time} = props
 
   const classes = useStyles();
-  // const partialDescription = description.slice(0, 100);
-  const partialDescription ="sjdfsdfsd"
+  const partialDescription = description.slice(0, 100);
+
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} style={{margin:"10px"}}>
       <CardActionArea >
         <CardMedia
           className={classes.media}

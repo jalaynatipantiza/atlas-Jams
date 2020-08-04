@@ -10,7 +10,8 @@ import EventsPage from './components/EventsPage/EventsPage';
 import './App.css';
 import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
-
+import EventsCardList from './components/EventsCards/EventCardList'
+import HomePage from './components/HomePage/HomePage';
 
 
 
@@ -20,8 +21,8 @@ function App() {
       <section>
         <Navbar />
       </section>
-      <SearchBox />
       <section>
+        <HomePage/>
         {/* <SignupForm /> */}
         {/* <PerformerForm /> */}
         {/* <HostForm /> */}
