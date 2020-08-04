@@ -6,8 +6,9 @@ import PerformerForm from './components/PerformerForm/PerformerForm';
 import HostForm from './components/HostForm/HostForm';
 import EventsForm from './components/EventsForm/EventsForm';
 import LoginForm from './components/LoginForm/LoginForm';
+import EventsPage from './components/EventsPage/EventsPage';
 import './App.css';
-import axios from 'axios'
+import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 
 
@@ -19,13 +20,14 @@ function App() {
       <section>
         <Navbar />
       </section>
-      <SearchBox />
+      {/* <SearchBox /> */}
       <section>
         {/* <SignupForm /> */}
         {/* <PerformerForm /> */}
         {/* <HostForm /> */}
         {/* <EventsForm /> */}
         {/* <LoginForm /> */}
+        {/* <EventsPage /> */}
       </section>
     </main>
   );
