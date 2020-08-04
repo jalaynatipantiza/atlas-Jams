@@ -32,8 +32,8 @@ const Navbar = (props) => {
     <nav className={classes.nav}>
       <AppBar position="static" style={{backgroundColor: "transparent"}}>
         <Toolbar style={{display: "flex", justifyContent: "space-between"}}>
-          <IconButton color="inherit">
-            <SearchIcon />
+          <IconButton style={{font: "initial"}} color="inherit">
+            <p>Atlas Jams</p>
           </IconButton>
           <IconButton color="inherit" onClick={handleClick}>
             <AccountCircleIcon />
