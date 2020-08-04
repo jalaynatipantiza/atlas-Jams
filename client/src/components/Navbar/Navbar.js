@@ -7,6 +7,8 @@ import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import useStyles from "./styles/styles"
 
 const Navbar = (props) => {
+
+  const {logoClick, profileClick} = props
   const trigger = useScrollTrigger({
     disableHysteresis: true
   });
@@ -28,7 +30,7 @@ const Navbar = (props) => {
       <nav className={classes.nav}>
       <AppBar className={trigger ? classes.appBar2 : classes.appBar}>
         <Toolbar className={trigger ? classes.toolbar2 : classes.toolbar}>
-          <IconButton style={{font: "initial"}} color="inherit">
+          <IconButton onClick={logoClick} style={{font: "initial"}} color="inherit">
             <p>Atlas Jams</p>
           </IconButton>
           <IconButton color="inherit" onClick={handleClick}>
@@ -41,7 +43,7 @@ const Navbar = (props) => {
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
-            <MenuItem onClick={handleClose}>Profile</MenuItem>
+            <MenuItem onClick={handleClose} onClick={profileClick}>Profile</MenuItem>
             <MenuItem onClick={handleClose}>Sign In</MenuItem>
             <MenuItem onClick={handleClose}>Sign Out</MenuItem>
           </Menu>

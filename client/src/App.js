@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from './components/Navbar/Navbar';
 import SearchBox from './components/Navbar/searchBox';
 import SignupForm from './components/SignupForm/SignupForm';
@@ -13,16 +13,29 @@ import { makeStyles } from '@material-ui/core/styles';
 import EventsCardList from './components/EventsCards/EventCardList'
 import HomePage from './components/HomePage/HomePage';
 
-
+const HOMEPAGE = "HOMEPAGE"
+const PROFILE = "PROFILE"
 
 function App() {
+
+  const [page, setPage] = useState(HOMEPAGE)
+
+  const logoClick = () => {
+    setPage(HOMEPAGE)
+  }
+  const profileClick = () => {
+    setPage(PROFILE)
+  }
+  
   return (
     <main>
       <section>
-        <Navbar />
+        <Navbar logoClick={()=> logoClick()} profileClick={()=> profileClick()}/>
       </section>
       <section>
-        <HomePage/>
+        {page === HOMEPAGE && <HomePage/>}
+        {page === PROFILE && <EventsPage/>}
+        {/* <HomePage/> */}
         {/* <SignupForm /> */}
         {/* <PerformerForm /> */}
         {/* <HostForm /> */}
