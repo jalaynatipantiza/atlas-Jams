@@ -3,18 +3,16 @@ import { AppBar, Toolbar, Typography, IconButton, Button, Menu, MenuItem } from 
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { makeStyles } from '@material-ui/core/styles';
+import zIndex from '@material-ui/core/styles/zIndex';
 
-const useStyles = makeStyles({
-  nav: {
-    zIndex: "1",
-    position: "fixed",
-    width: "100vw"
-  }
-  ,
+const useStyles = makeStyles(theme => ({
   AppBar: {
     backgroundColor: "none"
   }
-});
+  ,
+  offset: theme.mixins.toolbar
+}));
+
 const Navbar = (props) => {
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -29,8 +27,8 @@ const Navbar = (props) => {
 
 
   return(
-    <nav className={classes.nav}>
-      <AppBar position="static" style={{backgroundColor: "transparent"}}>
+    <React.Fragment>
+      <AppBar position="fixed" style={{backgroundColor: "transparent"}}>
         <Toolbar >
           <IconButton>
             <SearchIcon />
@@ -61,7 +59,8 @@ const Navbar = (props) => {
           </Menu>
         </Toolbar>
       </AppBar>
-    </nav>
+      <div className={classes.offset} />
+    </React.Fragment>
   )
 };
 
