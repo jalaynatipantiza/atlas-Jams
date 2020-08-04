@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from './components/Navbar/Navbar';
+import SearchBox from './components/Navbar/searchBox';
 import SignupForm from './components/SignupForm/SignupForm';
 import PerformerForm from './components/PerformerForm/PerformerForm';
 import HostForm from './components/HostForm/HostForm';
@@ -7,15 +8,18 @@ import EventsForm from './components/EventsForm/EventsForm';
 import LoginForm from './components/LoginForm/LoginForm';
 import './App.css';
 import axios from 'axios'
+import { makeStyles } from '@material-ui/core/styles';
+
+
+
 
 function App() {
-  axios.get("/users")
-    .then(res => console.log(res.data))
   return (
     <main>
       <section>
         <Navbar />
       </section>
+      <SearchBox />
       <section>
         {/* <SignupForm /> */}
         {/* <PerformerForm /> */}

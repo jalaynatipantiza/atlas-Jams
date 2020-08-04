@@ -2,7 +2,19 @@ import React, { useState } from 'react'
 import { AppBar, Toolbar, Typography, IconButton, Button, Menu, MenuItem } from '@material-ui/core'
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import { makeStyles } from '@material-ui/core/styles';
 
+const useStyles = makeStyles({
+  nav: {
+    zIndex: "1",
+    position: "fixed",
+    width: "100vw"
+  }
+  ,
+  AppBar: {
+    backgroundColor: "none"
+  }
+});
 const Navbar = (props) => {
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -13,12 +25,13 @@ const Navbar = (props) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const classes = useStyles();
 
 
   return(
-    <nav>
-      <AppBar position="static">
-        <Toolbar className="navbar">
+    <nav className={classes.nav}>
+      <AppBar position="static" style={{backgroundColor: "transparent"}}>
+        <Toolbar >
           <IconButton>
             <SearchIcon />
           </IconButton>
