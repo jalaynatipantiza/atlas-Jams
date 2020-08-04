@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :genre_categories, only: [:index, :show]
   get '/user/:user_id/recordings/' => "recordings#index"
   delete '/recordings/:recording_id' => "recordings#destroy"
-  post '/recordings/:recording_id' => "recordings#create"
+  post '/recordings/:user_id/:name/:url/:description' => "recordings#create"
   
 end
 
