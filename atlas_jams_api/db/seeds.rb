@@ -46,7 +46,8 @@ host1 = User.create({
   description:"i love to host bands at my grape vineyard and help local artists get exposure", 
   password: "rheemat", 
   location: "calary", 
-  is_performer: false
+  is_performer: false,
+  is_host: true
 })
 
 
@@ -59,6 +60,7 @@ host2 = User.create({
   password: "milanagarden", 
   location: "saskatoon", 
   is_performer: false, 
+  is_host: true
 })
 
 
