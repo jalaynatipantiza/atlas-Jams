@@ -80,6 +80,7 @@ function App() {
         {/* <EventsForm /> */}
         {page === LOGIN && <LoginForm />}
         {/* <EventsPage /> */}
+         {/* <ProfilePage/> */}
       </section>
     </main>
   );
