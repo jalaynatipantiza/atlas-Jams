@@ -13,28 +13,34 @@ import { makeStyles } from '@material-ui/core/styles';
 import EventsCardList from './components/EventsCards/EventCardList'
 import HomePage from './components/HomePage/HomePage';
 
-const HOMEPAGE = "HOMEPAGE"
-const PROFILE = "PROFILE"
+const HOMEPAGE = "HOMEPAGE";
+const PROFILE = "PROFILE";
+const SIGNUP = "SIGNUP";
 
 function App() {
 
   const [page, setPage] = useState(HOMEPAGE)
 
-  const logoClick = () => {
+  const goToHome = () => {
     setPage(HOMEPAGE)
   }
-  const profileClick = () => {
+  const goToProfile = () => {
     setPage(PROFILE)
+  }
+
+  const goToSignUpPage = () => {
+    setPage(SIGNUP)
   }
   
   return (
     <main>
       <section>
-        <Navbar logoClick={()=> logoClick()} profileClick={()=> profileClick()}/>
+        <Navbar goToHome={()=> goToHome()} goToProfile={()=> goToProfile()} goToSignUpPage={() => goToSignUpPage()}/>
       </section>
       <section>
         {page === HOMEPAGE && <HomePage/>}
         {page === PROFILE && <EventsPage/>}
+        {page === SIGNUP && <SignupForm/>}
         {/* <HomePage/> */}
         {/* <SignupForm /> */}
         {/* <PerformerForm /> */}
