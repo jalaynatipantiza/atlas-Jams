@@ -66,8 +66,8 @@ export default function SignupForm() {
         </div>
         <TextField id="standard-basic" label="Name" onChange={event => setName(event.target.value)} className={classes.field} />
         <TextField id="standard-basic" label="Email" onChange={event => setEmail(event.target.value)} className={classes.field} />
-        <TextField id="standard-basic" label="Password" onChange={event => setPassword(event.target.value)} className={classes.field} />
-        <TextField id="standard-basic" label="Password Confirmation" onChange={event => setPasswordConfirmation(event.target.value)} className={classes.field} />
+        <TextField id="standard-basic" label="Password" type="password" onChange={event => setPassword(event.target.value)} className={classes.field} />
+        <TextField id="standard-basic" label="Password Confirmation" type="password" onChange={event => setPasswordConfirmation(event.target.value)} className={classes.field} />
         <div className={classes.nonField}>
           <Button variant="contained" onClick={() => signUp()} color="primary" href="#">Submit</Button>
         </div>

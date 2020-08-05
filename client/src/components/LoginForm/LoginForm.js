@@ -60,7 +60,7 @@ export default function SignupForm() {
           <h2>Login</h2>
         </div>
         <TextField id="standard-basic" label="Email" onChange={event => setEmail(event.target.value)} className={classes.field} />
-        <TextField id="standard-basic" label="Password" onChange={event => setPassword(event.target.value)} className={classes.field} />
+        <TextField id="standard-basic" label="Password" type="password" onChange={event => setPassword(event.target.value)} className={classes.field} />
         <div className={classes.nonField}>
           <Button onClick={() => logIn()} variant="contained" color="primary" href="#">Submit</Button>
         </div>
