@@ -13,6 +13,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import EventsCardList from './components/EventsCards/EventCardList'
 import HomePage from './components/HomePage/HomePage';
 import { light } from '@material-ui/core/styles/createPalette';
+import ProfilePage from './components/PerformerProfile/performerProfilePage'
 
 const HOMEPAGE = "HOMEPAGE";
 const PROFILE = "PROFILE";

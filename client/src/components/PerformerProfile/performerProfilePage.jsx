@@ -45,7 +45,7 @@ const ProfilePage = (props) => {
       left: "50%",
       transform: "translate(-50%, -50%)",
       zIndex: "2",
-      width: "50%",
+      width: "30%",
       padding:" 20px",
       textAlign: "center",
 
