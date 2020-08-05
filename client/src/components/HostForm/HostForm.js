@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { TextField, Button } from '@material-ui/core';
+import { TextField, Button, Grid } from '@material-ui/core';
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -8,6 +9,21 @@ const useStyles = makeStyles((theme) => ({
       margin: theme.spacing(1),
       width: '25ch',
     },
+  },
+  container: {
+    width: '40%',
+    margin: '100px auto 0 auto',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  field: {
+    width: '100%',
+    margin: 10,
+  },
+  nonField: {
+    width: '100%',
+    margin: 20,
   },
 }));
 
@@ -32,16 +48,25 @@ export default function SignupForm() {
 
   return (
     <form style={{marginTop: "100px"}} className={classes.root} noValidate autoComplete="off" onSubmit={event => event.preventDefault()}>
-      <h2>Host Info</h2>
-      <TextField id="standard-basic" label="Name" onChange={event => setName(event.target.value)} />
-      <TextField id="standard-basic" label="Email" onChange={event => setEmail(event.target.value)} />
-      <TextField id="standard-basic" label="Number" onChange={event => setNumber(event.target.value)} />
-      <TextField id="standard-basic" label="City" onChange={event => setCity(event.target.value)} />
-      <TextField id="standard-basic" label="Address" onChange={event => setAddress(event.target.value)} />
-      <TextField id="standard-basic" label="Space Pictures" onChange={event => setSpacePictures(event.target.value)} />
-      <TextField id="standard-basic" label="Capacity" onChange={event => setCapacity(event.target.value)} />
-      <TextField id="standard-basic" label="Description" multiline onChange={event => setDescription(event.target.value)} />
-      <Button onClick={event => signUp()} variant="contained" color="primary" href="#">Submit</Button>
+      <Grid 
+        container
+        className={classes.container}
+      >
+        <div className={classes.nonField}>
+          <h2>Host Info</h2>
+        </div>
+        <TextField id="standard-basic" label="Name" onChange={event => setName(event.target.value)} className={classes.field} />
+        <TextField id="standard-basic" label="Email" onChange={event => setEmail(event.target.value)} className={classes.field} />
+        <TextField id="standard-basic" label="Number" onChange={event => setNumber(event.target.value)} className={classes.field} />
+        <TextField id="standard-basic" label="City" onChange={event => setCity(event.target.value)} className={classes.field} />
+        <TextField id="standard-basic" label="Address" onChange={event => setAddress(event.target.value)} className={classes.field} />
+        <TextField id="standard-basic" label="Space Pictures" onChange={event => setSpacePictures(event.target.value)} className={classes.field} />
+        <TextField id="standard-basic" label="Capacity" onChange={event => setCapacity(event.target.value)} className={classes.field} />
+        <TextField id="standard-basic" label="Description" multiline onChange={event => setDescription(event.target.value)} className={classes.field} />
+        <div className={classes.nonField}>
+          <Button onClick={event => signUp()} variant="contained" color="primary" href="#">Submit</Button>
+        </div>
+      </Grid>
     </form>
   );
 }
