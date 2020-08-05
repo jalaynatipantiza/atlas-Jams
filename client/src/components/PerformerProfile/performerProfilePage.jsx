@@ -1,10 +1,11 @@
 import React from 'react'
 import useStyles from "./styles/styles";
 import Profile from './PerformerProfile';
-import Recording from './recording';
 import { makeStyles } from '@material-ui/core/styles';
 import EventsCard from '../EventsCards/EventsCards';
 import { Box, Typography } from '@material-ui/core';
+import RecordingList from './recordingList';
+import EventsCardList from '../EventsCards/EventCardList';
 
 const ProfilePage = (props) => {
 
@@ -48,11 +49,79 @@ const ProfilePage = (props) => {
       width: "30%",
       padding:" 20px",
       textAlign: "center",
-
+    },
+    videoHolder: {
+    margin: "10px",
+    overflow: "auto",
+    flexDirection: "column",
+    display: "flex",
+    alignItems: "center",
+    font: "initial"
     }
-
   });
   const classes = useStyles();
+
+  const events = [
+    {
+      id:1,
+      date: "2020-10-02",
+      time: "12:00",
+      am: false,
+      name: "Jazz Fest",
+      price: 15.00,
+      description: "Join us at our annual jazz festival and show case your jazzy tunes",
+      duration: "180",
+      attendants: 15,
+      event_picture: "https://images.unsplash.com/photo-1483842293911-b0f670601cdc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2024&q=80"
+    },
+    {
+      id:3,
+      date: "2020-10-02",
+      time: "12:00",
+      am: false,
+      name: "Jazz Fest",
+      price: 15.00,
+      description: "Join us at our annual jazz festival and show case your jazzy tunes",
+      duration: "180",
+      attendants: 15,
+      event_picture: "https://images.unsplash.com/photo-1483842293911-b0f670601cdc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2024&q=80"
+    },
+    {
+      id:2,
+      date: "2020-10-02",
+      time: "12:00",
+      am: false,
+      name: "Jazz Fest",
+      price: 15.00,
+      description: "Join us at our annual jazz festival and show case your jazzy tunes",
+      duration: "180",
+      attendants: 15,
+      event_picture: "https://images.unsplash.com/photo-1483842293911-b0f670601cdc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2024&q=80"
+    }
+
+  ]
+  
+  const recordings = [
+    {
+      url: "https://www.youtube.com/watch?v=Nl9LrqV_HG8&list=RDNl9LrqV_HG8&start_radio=1"
+    },
+    {
+      url: "https://www.youtube.com/watch?v=Nl9LrqV_HG8&list=RDNl9LrqV_HG8&start_radio=1"
+    }, 
+    {
+      url: "https://www.youtube.com/watch?v=Nl9LrqV_HG8&list=RDNl9LrqV_HG8&start_radio=1"
+    },
+    {
+      url: "https://www.youtube.com/watch?v=Nl9LrqV_HG8&list=RDNl9LrqV_HG8&start_radio=1"
+    },
+    {
+      url: "https://www.youtube.com/watch?v=Nl9LrqV_HG8&list=RDNl9LrqV_HG8&start_radio=1"
+    },
+    {
+      url: "https://www.youtube.com/watch?v=Nl9LrqV_HG8&list=RDNl9LrqV_HG8&start_radio=1"
+    }
+
+  ]
   
   return(
 
@@ -69,19 +138,14 @@ const ProfilePage = (props) => {
         <Box className={classes.eventPro}>
           <Typography>
           <h1 style={{display: "flex", justifyContent: "center"}}>Upcoming Events</h1>
-          <EventsCard description={"the funkiest most jazziest event youll ever go to. once a year saskatoon hosts the best of the best jazz festival. The jazz community in saskatoon is very enthusiastic. But we welcome more then just jazz performers. last year we even had many different genres perform at this fun event."} name={"Jazz fest"} time={"4:00"} date={"2020-10-23"} event_picture={"https://images.unsplash.com/photo-1483842293911-b0f670601cdc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2024&q=80"}  />
-          <EventsCard description={"the funkiest most jazziest event youll ever go to. once a year saskatoon hosts the best of the best jazz festival. The jazz community in saskatoon is very enthusiastic. But we welcome more then just jazz performers. last year we even had many different genres perform at this fun event."} name={"Jazz fest"} time={"4:00"} date={"2020-10-23"} event_picture={"https://images.unsplash.com/photo-1511192336575-5a79af67a629?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"}  />
-          <EventsCard description={"the funkiest most jazziest event youll ever go to. once a year saskatoon hosts the best of the best jazz festival. The jazz community in saskatoon is very enthusiastic. But we welcome more then just jazz performers. last year we even had many different genres perform at this fun event."} name={"Jazz fest"} time={"4:00"} date={"2020-10-23"} event_picture={'https://images.unsplash.com/photo-1596334861142-48f19282fcba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'}  />
-          <EventsCard description={"the funkiest most jazziest event youll ever go to. once a year saskatoon hosts the best of the best jazz festival. The jazz community in saskatoon is very enthusiastic. But we welcome more then just jazz performers. last year we even had many different genres perform at this fun event."} name={"Jazz fest"} time={"4:00"} date={"2020-10-23"} event_picture={'https://images.unsplash.com/photo-1470019693664-1d202d2c0907?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'}  />
-          <EventsCard description={"the funkiest most jazziest event youll ever go to. once a year saskatoon hosts the best of the best jazz festival. The jazz community in saskatoon is very enthusiastic. But we welcome more then just jazz performers. last year we even had many different genres perform at this fun event."} name={"Jazz fest"} time={"4:00"} date={"2020-10-23"} event_picture={"https://images.unsplash.com/photo-1576060974974-933acee13b58?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"}  />
-          <EventsCard description={"the funkiest most jazziest event youll ever go to. once a year saskatoon hosts the best of the best jazz festival. The jazz community in saskatoon is very enthusiastic. But we welcome more then just jazz performers. last year we even had many different genres perform at this fun event."} name={"Jazz fest"} time={"4:00"} date={"2020-10-23"} event_picture={'https://images.unsplash.com/photo-1476287803067-f714aa78eaa7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'}  />
+          <EventsCardList events={events}/>
           </Typography>
         </Box>
         
       </div>
       
-      <div>
-        <Recording url={"https://www.youtube.com/watch?v=Nl9LrqV_HG8&list=RDNl9LrqV_HG8&start_radio=1"}/>
+      <div className={classes.videoHolder}>
+        <RecordingList recordings={recordings}/>
       </div>
     </div>
   )
