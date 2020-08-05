@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Grid, Box, Paper, Typography, ButtonBase, Button } from '@material-ui/core';
 import TodayIcon from '@material-ui/icons/Today';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
@@ -7,6 +7,9 @@ import useStyles from './styles/styles';
 
 export default function EventsPage() {
   const classes = useStyles();
+  useEffect(()=> {
+    window.scrollTo(0, 0)
+  }, [])
 
   return (
     <React.Fragment>

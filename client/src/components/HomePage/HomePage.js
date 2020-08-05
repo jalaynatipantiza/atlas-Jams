@@ -8,6 +8,7 @@ function HomePage() {
 
   const [events, setEvents] = useState([])
   useEffect(()=>{
+    window.scrollTo(0, 0)
     Axios.get("/all/events")
     .then(res => {
       setEvents(res.data)
