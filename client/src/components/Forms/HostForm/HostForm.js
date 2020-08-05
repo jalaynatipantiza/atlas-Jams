@@ -1,30 +1,8 @@
 import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import useStyles from '../styles/styles';
 import { TextField, Button, Grid } from '@material-ui/core';
+import axios from 'axios';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    '& > *': {
-      margin: theme.spacing(1),
-      width: '25ch',
-    },
-  },
-  container: {
-    width: '40%',
-    margin: '100px auto 0 auto',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  field: {
-    width: '100%',
-    margin: 10,
-  },
-  nonField: {
-    width: '100%',
-    margin: 20,
-  },
-}));
 
 export default function SignupForm() {
   const classes = useStyles();
@@ -33,15 +11,16 @@ export default function SignupForm() {
   const [email, setEmail] = useState('');
   const [number, setNumber] = useState('');
   const [city, setCity] = useState('');
-  const [genre, setGenre] = useState('');
-  const [video, setVideo] = useState('');
+  const [address, setAddress] = useState('');
+  const [spacePictures, setSpacePictures] = useState('');
+  const [capacity, setCapacity] = useState('');
   const [description, setDescription] = useState('');
 
   const signUp = () => {
-    // make post request here
+    //make post request
     // Axios.post("/users")
     // .then()
-    console.log(name, email, number, city, genre, video, description);
+    console.log(name, email, number, city, address, spacePictures, capacity, description);
   };
 
   return (
@@ -51,17 +30,18 @@ export default function SignupForm() {
         className={classes.container}
       >
         <div className={classes.nonField}>
-          <h2>Performer Info</h2>
+          <h2>Host Info</h2>
         </div>
         <TextField id="standard-basic" label="Name" onChange={event => setName(event.target.value)} className={classes.field} />
         <TextField id="standard-basic" label="Email" onChange={event => setEmail(event.target.value)} className={classes.field} />
         <TextField id="standard-basic" label="Number" onChange={event => setNumber(event.target.value)} className={classes.field} />
         <TextField id="standard-basic" label="City" onChange={event => setCity(event.target.value)} className={classes.field} />
-        <TextField id="standard-basic" label="Genre" onChange={event => setGenre(event.target.value)} className={classes.field} />
-        <TextField id="standard-basic" label="Video Links" onChange={event => setVideo(event.target.value)} className={classes.field} />
+        <TextField id="standard-basic" label="Address" onChange={event => setAddress(event.target.value)} className={classes.field} />
+        <TextField id="standard-basic" label="Space Pictures" onChange={event => setSpacePictures(event.target.value)} className={classes.field} />
+        <TextField id="standard-basic" label="Capacity" onChange={event => setCapacity(event.target.value)} className={classes.field} />
         <TextField id="standard-basic" label="Description" multiline onChange={event => setDescription(event.target.value)} className={classes.field} />
         <div className={classes.nonField}>
-          <Button variant="contained" onClick={event => signUp()} color="primary" href="#">Submit</Button>
+          <Button onClick={event => signUp()} variant="contained" color="primary" href="#">Submit</Button>
         </div>
       </Grid>
     </form>
