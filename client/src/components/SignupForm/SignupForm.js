@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { TextField, Button } from '@material-ui/core';
-import Axios from 'axios';
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,8 +23,21 @@ export default function SignupForm() {
 
   const signUp = () => {
     // make the post request here with name, email, password, passwordConfirmation
-    // Axios.post("/users")
-    // .then()
+
+    axios({
+      method: 'post',
+      url: '/users',
+      data: {
+        name: name,
+        email: email,
+        password: password,
+        password_confrimation: passwordConfirmation
+      }
+    })
+      .then((res) => {
+        console.log(res)
+      });
+
     console.log(name, email, password, passwordConfirmation);
   }
 

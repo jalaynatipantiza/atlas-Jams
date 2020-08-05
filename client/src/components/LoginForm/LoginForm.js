@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { TextField, Button } from '@material-ui/core';
+import axios from "axios"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,6 +20,17 @@ export default function SignupForm() {
 
   const logIn = () => {
     // axios request to authenticate user
+    axios({
+      method: 'post',
+      url: '/sessions',
+      data: {
+        email: email,
+        password: password
+      }
+    })
+      .then(res => {
+        console.log(res);
+      });
 
     console.log(email, password);
   };

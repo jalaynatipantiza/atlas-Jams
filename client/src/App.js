@@ -31,21 +31,21 @@ function App() {
   const [navTheme, setNavTheme] = useState(LIGHT)
 
   const goToHome = () => {  
-    setPage(HOMEPAGE)
-    setNavTheme(light)
+    setPage(HOMEPAGE);
+    setNavTheme(LIGHT);
   }
   const goToProfile = () => {
     setPage(PROFILE)
-    setNavTheme(light)
+    setNavTheme(LIGHT);
   }
 
   const goToSignUpPage = () => {
-    setPage(SIGNUP)
-    setNavTheme(DARK)
+    setPage(SIGNUP);
+    setNavTheme(DARK);
   }
   const goToPerformerForm = () => {
     setPage(PERFORMERFORM);
-    setNavTheme(DARK)
+    setNavTheme(DARK);
   };
 
   const goToHostForm = () => {
@@ -55,7 +55,7 @@ function App() {
 
   const goToLogIn = () => {
     setPage(LOGIN);
-    setNavTheme(DARK)
+    setNavTheme(DARK);
   }
   
   return (
@@ -75,8 +75,6 @@ function App() {
         {page === HOMEPAGE && <HomePage/>}
         {page === PROFILE && <EventsPage/>}
         {page === SIGNUP && <SignupForm/>}
-        {/* <HomePage/> */}
-        {/* <SignupForm /> */}
         {page === PERFORMERFORM && <PerformerForm />}
         {page === HOSTFORM && <HostForm />}
         {/* <EventsForm /> */}

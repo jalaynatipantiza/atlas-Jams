@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  # root to: '/'
+
   resources :users
   resources :genre_categories, only: [:index, :show]
   get '/user/:user_id/recordings/' => "recordings#index"
@@ -6,5 +9,10 @@ Rails.application.routes.draw do
   post '/recordings/:user_id/:name/:url/:description' => "recordings#create"
   get '/all/events' => "events#index"
   
-end
 
+  get '/signup' => 'users#new'
+  
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
+
+end
