@@ -5,6 +5,7 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import zIndex from '@material-ui/core/styles/zIndex';
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import useStyles from "./styles/styles"
+import Axios from 'axios';
 
 const Navbar = (props) => {
 
@@ -51,7 +52,12 @@ const Navbar = (props) => {
       toolBarTwo: classes.toolbar
     }
   }
-
+  const signOut = () => {
+    Axios.get("/logout")
+    .then(() => {
+      window.localStorage.clear();
+    })
+  }
 
 //    <AppBar className={trigger ? pickStyle().appOne : pickStyle().appTwo}>
 // <Toolbar className={trigger ? pickStyle().toolBarOne : pickStyle().toolBarTwo}>
@@ -75,7 +81,7 @@ const Navbar = (props) => {
           >
             <MenuItem onClick={handleClose} onClick={goToProfile}>Profile</MenuItem>
             <MenuItem onClick={handleClose} onClick={goToLogIn}>Sign In</MenuItem>
-            <MenuItem onClick={handleClose}>Sign Out</MenuItem>
+            <MenuItem onClick={handleClose} onClick={()=>signOut()}>Sign Out</MenuItem>
             <MenuItem onClick={handleClose} onClick={goToSignUpPage}>Signup</MenuItem>
             <MenuItem onClick={handleClose} onClick={goToPerformerForm}>Become Performer</MenuItem>
             <MenuItem onClick={handleClose} onClick={goToHostForm}>Become Host</MenuItem>

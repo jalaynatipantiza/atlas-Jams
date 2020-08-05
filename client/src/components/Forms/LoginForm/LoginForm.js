@@ -21,10 +21,12 @@ export default function SignupForm() {
       }
     })
       .then(res => {
-        console.log(res);
+        window.localStorage.setItem("isHost", res.data.is_host);
+        window.localStorage.setItem("isPerformer", res.data.is_performer);
+        console.log(res.data);
       });
 
-    console.log(email, password);
+
   };
 
   return (
