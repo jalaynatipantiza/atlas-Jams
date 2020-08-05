@@ -12,6 +12,7 @@ import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import EventsCardList from './components/EventsCards/EventCardList'
 import HomePage from './components/HomePage/HomePage';
+import ProfilePage from './components/PerformerProfile/performerProfilePage';
 
 const HOMEPAGE = "HOMEPAGE";
 const PROFILE = "PROFILE";
@@ -48,6 +49,7 @@ function App() {
         {/* <EventsForm /> */}
         {/* <LoginForm /> */}
         {/* <EventsPage /> */}
+         {/* <ProfilePage/> */}
       </section>
     </main>
   );
