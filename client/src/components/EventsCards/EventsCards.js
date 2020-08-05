@@ -20,7 +20,7 @@ const useStyles = makeStyles({
 
 
 export default function EventsCard(props) {
-  console.log(props);
+
   const {description, name, date, event_picture, time, am} = props
 
   const classes = useStyles();

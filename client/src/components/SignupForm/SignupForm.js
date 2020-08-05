@@ -28,17 +28,20 @@ export default function SignupForm() {
       method: 'post',
       url: '/users',
       data: {
-        name: name,
-        email: email,
-        password: password,
-        password_confrimation: passwordConfirmation
+        user:{
+          name: name,
+          email: email,
+          password: password,
+          password_confirmation: passwordConfirmation
+
+        }
       }
     })
       .then((res) => {
         console.log(res)
       });
 
-    console.log(name, email, password, passwordConfirmation);
+
   }
 
   return (
