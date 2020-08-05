@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/all/events' => "events#index"
   
 
+
   get '/signup' => 'users#new'
   
   post '/login' => 'sessions#create'

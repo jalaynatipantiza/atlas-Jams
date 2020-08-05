@@ -37,7 +37,7 @@ export default function SignupForm() {
     // axios request to authenticate user
     axios({
       method: 'post',
-      url: '/sessions',
+      url: '/login',
       data: {
         email: email,
         password: password

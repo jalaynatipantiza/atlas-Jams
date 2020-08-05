@@ -16,9 +16,10 @@ class UsersController < ApplicationController
     user = User.new(user_params)
     if user.save
       session[:user_id] = user.id
-      redirect_to '/'
+      render json: user, status: 200
+
     else
-      redirect_to '/signup'
+      render json: { error: "No such user; check the submitted email address"}, status: 400
     end
   end
 
