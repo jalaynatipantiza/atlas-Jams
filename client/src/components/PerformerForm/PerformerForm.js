@@ -30,7 +30,7 @@ export default function SignupForm() {
   };
 
   return (
-    <form className={classes.root} noValidate autoComplete="off" onSubmit={event => event.preventDefault()}>
+    <form style={{marginTop: "100px"}} className={classes.root} noValidate autoComplete="off" onSubmit={event => event.preventDefault()}>
       <h2>Performer Info</h2>
       <TextField id="standard-basic" label="Name" onChange={event => setName(event.target.value)} />
       <TextField id="standard-basic" label="Email" onChange={event => setEmail(event.target.value)} />
