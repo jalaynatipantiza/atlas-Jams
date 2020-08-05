@@ -29,7 +29,7 @@ export default function SignupForm() {
   }
 
   return (
-    <form style={{marginTop: "74px"}} onSubmit={event => event.preventDefault()} className={classes.root} noValidate autoComplete="off">
+    <form style={{marginTop: "100px"}} onSubmit={event => event.preventDefault()} className={classes.root} noValidate autoComplete="off">
       <h2>Signup</h2>
       <TextField id="standard-basic" label="Name" onChange={event => setName(event.target.value)} />
       <TextField id="standard-basic" label="Email" onChange={event => setEmail(event.target.value)} />

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { AppBar, Toolbar, Typography, IconButton, Button, Menu, MenuItem } from '@material-ui/core'
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
@@ -8,7 +8,7 @@ import useStyles from "./styles/styles"
 
 const Navbar = (props) => {
 
-  const { goToHome, goToProfile, goToSignUpPage } = props
+  const { goToHome, goToProfile, goToSignUpPage, navTheme} = props
   
   const trigger = useScrollTrigger({
     disableHysteresis: true
@@ -23,14 +23,35 @@ const Navbar = (props) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const [style, setStyle] = useState()
+
   const classes = useStyles();
+  const pickStyle = () => {
+    if (navTheme === "DARK"){
+      return {
+        appOne: classes.appBar, 
+        appTwo: classes.appBar2, 
+        toolbarOne: classes.toolbar, 
+        toolBarTwo: classes.toolbar2
+      }
+    }
+    return {
+      appOne: classes.appBar2, 
+      appTwo: classes.appBar, 
+      toolBarOne: classes.toolbar2, 
+      toolBarTwo: classes.toolbar
+    }
+  }
 
 
+//    <AppBar className={trigger ? pickStyle().appOne : pickStyle().appTwo}>
+// <Toolbar className={trigger ? pickStyle().toolBarOne : pickStyle().toolBarTwo}>
   return(
     <React.Fragment>
       <nav className={classes.nav}>
-      <AppBar className={trigger ? classes.appBar2 : classes.appBar}>
-        <Toolbar className={trigger ? classes.toolbar2 : classes.toolbar}>
+      <AppBar className={trigger ? pickStyle().appOne : pickStyle().appTwo}>
+        <Toolbar className={trigger ? pickStyle().toolBarOne : pickStyle().toolBarTwo}>
           <IconButton onClick={goToHome} style={{font: "initial"}} color="inherit">
             <p>Atlas Jams</p>
           </IconButton>
