@@ -15,6 +15,7 @@ const useStyles = makeStyles({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+    flexDirection: "column"
   },
   div: {
     height: "100vh",
@@ -35,7 +36,10 @@ const SearchBox = (props) => {
   return(
     <section>
     <div className={classes.mainPic}>
-    <div className={classes.search}>
+      <h1 style={{fontSize:"5vw", fontFamily:"initial", color:"white"}}>
+      Atlas Jams
+      </h1>
+    {/* <div className={classes.search}>
       <div className={classes.searchIcon}>
       
       </div>
@@ -45,9 +49,10 @@ const SearchBox = (props) => {
         root: classes.inputRoot,
         input: classes.inputInput,
         }}
+        style={{fontSize:"3vh", width:"100%"}}
         inputProps={{ 'aria-label': 'search' }}
       />
-      </div>
+      </div> */}
     </div>
     {/*this will be removed, just for visual purposes right now*/}
     </section>

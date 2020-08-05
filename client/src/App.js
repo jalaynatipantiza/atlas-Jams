@@ -24,6 +24,7 @@ const LOGIN = "LOGIN";
 //nav state
 const LIGHT = 'LIGHT'
 const DARK = 'DARK'
+const BLACK = 'BLACK'
 
 function App() {
 
@@ -41,21 +42,21 @@ function App() {
 
   const goToSignUpPage = () => {
     setPage(SIGNUP);
-    setNavTheme(DARK);
+    setNavTheme(BLACK);
   }
   const goToPerformerForm = () => {
     setPage(PERFORMERFORM);
-    setNavTheme(DARK);
+    setNavTheme(BLACK);
   };
 
   const goToHostForm = () => {
     setPage(HOSTFORM);
-    setNavTheme(DARK)
+    setNavTheme(BLACK)
   };
 
   const goToLogIn = () => {
     setPage(LOGIN);
-    setNavTheme(DARK);
+    setNavTheme(BLACK);
   }
   
   return (
