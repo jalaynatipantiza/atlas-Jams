@@ -12,31 +12,64 @@ import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import EventsCardList from './components/EventsCards/EventCardList'
 import HomePage from './components/HomePage/HomePage';
-import ProfilePage from './components/PerformerProfile/performerProfilePage';
+import { light } from '@material-ui/core/styles/createPalette';
 
 const HOMEPAGE = "HOMEPAGE";
 const PROFILE = "PROFILE";
 const SIGNUP = "SIGNUP";
+const PERFORMERFORM = "PERFORMERFORM";
+const HOSTFORM = "HOSTFORM";
+const LOGIN = "LOGIN";
+
+//nav state
+const LIGHT = 'LIGHT'
+const DARK = 'DARK'
 
 function App() {
 
   const [page, setPage] = useState(HOMEPAGE)
+  const [navTheme, setNavTheme] = useState(LIGHT)
 
-  const goToHome = () => {
+  const goToHome = () => {  
     setPage(HOMEPAGE)
+    setNavTheme(light)
   }
   const goToProfile = () => {
     setPage(PROFILE)
+    setNavTheme(light)
   }
 
   const goToSignUpPage = () => {
     setPage(SIGNUP)
+    setNavTheme(DARK)
+  }
+  const goToPerformerForm = () => {
+    setPage(PERFORMERFORM);
+    setNavTheme(DARK)
+  };
+
+  const goToHostForm = () => {
+    setPage(HOSTFORM);
+    setNavTheme(DARK)
+  };
+
+  const goToLogIn = () => {
+    setPage(LOGIN);
+    setNavTheme(DARK)
   }
   
   return (
     <main>
       <section>
-        <Navbar goToHome={()=> goToHome()} goToProfile={()=> goToProfile()} goToSignUpPage={() => goToSignUpPage()}/>
+        <Navbar 
+          goToHome={()=> goToHome()} 
+          goToProfile={()=> goToProfile()} 
+          goToSignUpPage={() => goToSignUpPage()} 
+          goToPerformerForm={() => goToPerformerForm()} 
+          goToHostForm={() => goToHostForm()} 
+          goToLogIn={() => goToLogIn()}
+          navTheme={navTheme}
+        />
       </section>
       <section>
         {page === HOMEPAGE && <HomePage/>}
@@ -44,15 +77,16 @@ function App() {
         {page === SIGNUP && <SignupForm/>}
         {/* <HomePage/> */}
         {/* <SignupForm /> */}
-        {/* <PerformerForm /> */}
-        {/* <HostForm /> */}
+        {page === PERFORMERFORM && <PerformerForm />}
+        {page === HOSTFORM && <HostForm />}
         {/* <EventsForm /> */}
-        {/* <LoginForm /> */}
+        {page === LOGIN && <LoginForm />}
         {/* <EventsPage /> */}
          {/* <ProfilePage/> */}
       </section>
     </main>
   );
 }
+
 
 export default App;
