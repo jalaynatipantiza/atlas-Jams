@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { TextField, Button } from '@material-ui/core';
+import Axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     '& > *': {
       margin: theme.spacing(1),
       width: '25ch',
+      
     },
   },
 }));
@@ -14,14 +16,26 @@ const useStyles = makeStyles((theme) => ({
 export default function SignupForm() {
   const classes = useStyles();
 
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [passwordConfirmation, setPasswordConfirmation] = useState('');
+
+  const signUp = () => {
+    // make the post request here with name, email, password, passwordConfirmation
+    // Axios.post("/users")
+    // .then()
+    console.log(name, email, password, passwordConfirmation);
+  }
+
   return (
-    <form className={classes.root} noValidate autoComplete="off">
+    <form style={{marginTop: "74px"}} onSubmit={event => event.preventDefault()} className={classes.root} noValidate autoComplete="off">
       <h2>Signup</h2>
-      <TextField id="standard-basic" label="Name" />
-      <TextField id="standard-basic" label="Email" />
-      <TextField id="standard-basic" label="Password" />
-      <TextField id="standard-basic" label="Password Confirmation" />
-      <Button variant="contained" color="primary" href="#">Submit</Button>
+      <TextField id="standard-basic" label="Name" onChange={event => setName(event.target.value)} />
+      <TextField id="standard-basic" label="Email" onChange={event => setEmail(event.target.value)} />
+      <TextField id="standard-basic" label="Password" onChange={event => setPassword(event.target.value)} />
+      <TextField id="standard-basic" label="Password Confirmation" onChange={event => setPasswordConfirmation(event.target.value)} />
+      <Button variant="contained" onClick={event => signUp()} color="primary" href="#">Submit</Button>
     </form>
   );
 }
