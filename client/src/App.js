@@ -42,17 +42,20 @@ function App() {
   const goToSignUpPage = () => {
     setPage(SIGNUP)
     setNavTheme(DARK)
-  
+  }
   const goToPerformerForm = () => {
     setPage(PERFORMERFORM);
+    setNavTheme(DARK)
   };
 
   const goToHostForm = () => {
     setPage(HOSTFORM);
+    setNavTheme(DARK)
   };
 
   const goToLogIn = () => {
     setPage(LOGIN);
+    setNavTheme(DARK)
   }
   
   return (
@@ -83,5 +86,6 @@ function App() {
     </main>
   );
 }
+
 
 export default App;
