@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import Navbar from './components/Navbar/Navbar';
 import SearchBox from './components/Navbar/searchBox';
-import SignupForm from './components/SignupForm/SignupForm';
-import PerformerForm from './components/PerformerForm/PerformerForm';
-import HostForm from './components/HostForm/HostForm';
-import EventsForm from './components/EventsForm/EventsForm';
-import LoginForm from './components/LoginForm/LoginForm';
+import SignupForm from './components/Forms/SignupForm/SignupForm';
+import PerformerForm from './components/Forms/PerformerForm/PerformerForm';
+import HostForm from './components/Forms/HostForm/HostForm';
+import EventsForm from './components/Forms/EventsForm/EventsForm';
+import LoginForm from './components/Forms/LoginForm/LoginForm';
 import EventsPage from './components/EventsPage/EventsPage';
 import './App.css';
 import axios from 'axios';
