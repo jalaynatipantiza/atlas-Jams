@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { TextField, Button } from '@material-ui/core';
 
@@ -14,12 +14,21 @@ const useStyles = makeStyles((theme) => ({
 export default function SignupForm() {
   const classes = useStyles();
 
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const logIn = () => {
+    // axios request to authenticate user
+
+    console.log(email, password);
+  };
+
   return (
-    <form className={classes.root} noValidate autoComplete="off">
+    <form onSubmit={event => event.preventDefault()} className={classes.root} noValidate autoComplete="off">
       <h2>Login</h2>
-      <TextField id="standard-basic" label="Email" />
-      <TextField id="standard-basic" label="Password" />
-      <Button variant="contained" color="primary" href="#">Submit</Button>
+      <TextField id="standard-basic" label="Email" onChange={event => setEmail(event.target.value)} />
+      <TextField id="standard-basic" label="Password" onChange={event => setPassword(event.target.value)} />
+      <Button onClick={() => logIn()} variant="contained" color="primary" href="#">Submit</Button>
     </form>
   );
-}
+};

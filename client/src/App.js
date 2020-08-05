@@ -17,6 +17,9 @@ import { light } from '@material-ui/core/styles/createPalette';
 const HOMEPAGE = "HOMEPAGE";
 const PROFILE = "PROFILE";
 const SIGNUP = "SIGNUP";
+const PERFORMERFORM = "PERFORMERFORM";
+const HOSTFORM = "HOSTFORM";
+const LOGIN = "LOGIN";
 
 //nav state
 const LIGHT = 'LIGHT'
@@ -39,12 +42,31 @@ function App() {
   const goToSignUpPage = () => {
     setPage(SIGNUP)
     setNavTheme(DARK)
+  
+  const goToPerformerForm = () => {
+    setPage(PERFORMERFORM);
+  };
+
+  const goToHostForm = () => {
+    setPage(HOSTFORM);
+  };
+
+  const goToLogIn = () => {
+    setPage(LOGIN);
   }
   
   return (
     <main>
       <section>
-        <Navbar goToHome={()=> goToHome()} navTheme={navTheme} goToProfile={()=> goToProfile()} goToSignUpPage={() => goToSignUpPage()}/>
+        <Navbar 
+          goToHome={()=> goToHome()} 
+          goToProfile={()=> goToProfile()} 
+          goToSignUpPage={() => goToSignUpPage()} 
+          goToPerformerForm={() => goToPerformerForm()} 
+          goToHostForm={() => goToHostForm()} 
+          goToLogIn={() => goToLogIn()}
+          navTheme={navTheme}
+        />
       </section>
       <section>
         {page === HOMEPAGE && <HomePage/>}
@@ -52,10 +74,10 @@ function App() {
         {page === SIGNUP && <SignupForm/>}
         {/* <HomePage/> */}
         {/* <SignupForm /> */}
-        {/* <PerformerForm /> */}
-        {/* <HostForm /> */}
+        {page === PERFORMERFORM && <PerformerForm />}
+        {page === HOSTFORM && <HostForm />}
         {/* <EventsForm /> */}
-        {/* <LoginForm /> */}
+        {page === LOGIN && <LoginForm />}
         {/* <EventsPage /> */}
       </section>
     </main>

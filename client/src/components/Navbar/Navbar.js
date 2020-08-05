@@ -8,7 +8,7 @@ import useStyles from "./styles/styles"
 
 const Navbar = (props) => {
 
-  const { goToHome, goToProfile, goToSignUpPage, navTheme} = props
+  const { goToHome, goToProfile, goToSignUpPage, goToPerformerForm, goToHostForm, goToLogIn, navTheme } = props
   
   const trigger = useScrollTrigger({
     disableHysteresis: true
@@ -66,9 +66,11 @@ const Navbar = (props) => {
             onClose={handleClose}
           >
             <MenuItem onClick={handleClose} onClick={goToProfile}>Profile</MenuItem>
-            <MenuItem onClick={handleClose}>Sign In</MenuItem>
+            <MenuItem onClick={handleClose} onClick={goToLogIn}>Sign In</MenuItem>
             <MenuItem onClick={handleClose}>Sign Out</MenuItem>
             <MenuItem onClick={handleClose} onClick={goToSignUpPage}>Signup</MenuItem>
+            <MenuItem onClick={handleClose} onClick={goToPerformerForm}>Become Performer</MenuItem>
+            <MenuItem onClick={handleClose} onClick={goToHostForm}>Become Host</MenuItem>
           </Menu>
         </Toolbar>
       </AppBar>
@@ -78,4 +80,4 @@ const Navbar = (props) => {
   )
 };
 
-export default Navbar
+export default Navbar;
