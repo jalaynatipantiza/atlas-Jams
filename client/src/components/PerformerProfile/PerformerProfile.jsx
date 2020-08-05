@@ -11,7 +11,7 @@ import Link from '@material-ui/core/Link';
 
 const Profile = (props) => {
   const classes = useStyles();
-  const {name, email, number, profile_pic, description, username, location, is_performer, size, recordings} = props
+  const {name, email, number, description, username, location, size} = props
 
 
   const preventDefault = (event) => event.preventDefault();
@@ -23,7 +23,6 @@ const Profile = (props) => {
             {name}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            {username}
           {<br></br>}
           <Link href="gmail.com" onClick={preventDefault} color="inherit">
           {email}

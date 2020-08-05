@@ -2,10 +2,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
 
-  media: {
-    height: "60vh",
-    width:"45vw"
-  },
+
   box: {
     height: "40vh",
     width: "45vw",
@@ -18,7 +15,7 @@ const useStyles = makeStyles({
   },
   profileCard: {
     padding: "50px",
-    height: "70vh"
+    height: "70vh",
   }
 });
 
