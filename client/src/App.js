@@ -16,26 +16,49 @@ import HomePage from './components/HomePage/HomePage';
 const HOMEPAGE = "HOMEPAGE";
 const PROFILE = "PROFILE";
 const SIGNUP = "SIGNUP";
+const PERFORMERFORM = "PERFORMERFORM";
+const HOSTFORM = "HOSTFORM";
+const LOGIN = "LOGIN";
 
 function App() {
 
   const [page, setPage] = useState(HOMEPAGE)
 
   const goToHome = () => {
-    setPage(HOMEPAGE)
-  }
+    setPage(HOMEPAGE);
+  };
+
   const goToProfile = () => {
-    setPage(PROFILE)
-  }
+    setPage(PROFILE);
+  };
 
   const goToSignUpPage = () => {
-    setPage(SIGNUP)
+    setPage(SIGNUP);
+  };
+  
+  const goToPerformerForm = () => {
+    setPage(PERFORMERFORM);
+  };
+
+  const goToHostForm = () => {
+    setPage(HOSTFORM);
+  };
+
+  const goToLogIn = () => {
+    setPage(LOGIN);
   }
   
   return (
     <main>
       <section>
-        <Navbar goToHome={()=> goToHome()} goToProfile={()=> goToProfile()} goToSignUpPage={() => goToSignUpPage()}/>
+        <Navbar 
+          goToHome={()=> goToHome()} 
+          goToProfile={()=> goToProfile()} 
+          goToSignUpPage={() => goToSignUpPage()} 
+          goToPerformerForm={() => goToPerformerForm()} 
+          goToHostForm={() => goToHostForm()} 
+          goToLogIn={() => goToLogIn()}
+        />
       </section>
       <section>
         {page === HOMEPAGE && <HomePage/>}
@@ -43,10 +66,10 @@ function App() {
         {page === SIGNUP && <SignupForm/>}
         {/* <HomePage/> */}
         {/* <SignupForm /> */}
-        {/* <PerformerForm /> */}
-        {/* <HostForm /> */}
+        {page === PERFORMERFORM && <PerformerForm />}
+        {page === HOSTFORM && <HostForm />}
         {/* <EventsForm /> */}
-        {/* <LoginForm /> */}
+        {page === LOGIN && <LoginForm />}
         {/* <EventsPage /> */}
       </section>
     </main>
