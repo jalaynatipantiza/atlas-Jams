@@ -33,9 +33,15 @@ export default function SignupForm(props) {
       }
     })
       .then((res) => {
-        console.log(res)
-        window.localStorage.setItem("is_host", res.data.is_host);
-        window.localStorage.setItem("is_performer", res.data.is_performer);
+        let userType = "none"
+        if(res.data.is_performer){
+          userType = "performer"
+        } else if(res.data.is_host){
+          userType = "host"
+        }
+        window.localStorage.setItem("user_type", userType);
+        window.localStorage.setItem("id", res.data.id);
+
         history.push("/host/profile")
 
       });
