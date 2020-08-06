@@ -83,7 +83,7 @@ const HostProfile = (props) => {
       </div>
       <Box className={classes.eventBox}>
         <Typography className={classes.events}>
-          <EventsCardList style={{height: "10px"}} events={events}/>
+          <EventsCardList classes={{ root: "eventForHost" }}  events={events}/>
         </Typography>
        </Box>
       </div>

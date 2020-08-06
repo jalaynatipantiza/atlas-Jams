@@ -32,13 +32,13 @@ const spaces = [
     url: "https://images.unsplash.com/photo-1563341591-ad0a750911cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
   },
   {  
-    url: "https://images.unsplash.com/photo-1566197147239-58a2590553b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
-  },
-  {  
-    url: "https://images.unsplash.com/photo-1563341591-ad0a750911cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
+    url: "https://images.unsplash.com/photo-1551806235-fa3578e4ec2c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
   },
   {  
     url: "https://images.unsplash.com/photo-1566197147239-58a2590553b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
+  },
+  {  
+    url: "https://images.unsplash.com/photo-1587702068694-a909ef4aa346?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
   } 
 ];
 
@@ -48,7 +48,7 @@ export default function Spaces () {
 
   return (
     <div className={classes.root}>
-      <GridList cellHeight={200} spacing={1} className={classes.gridList}>
+      <GridList style={{width: "500vw"}} cellHeight={400}  spacing={1} className={classes.gridList}>
 
         {spaces.map((tile) => (
           <GridListTile key={tile.url} >
