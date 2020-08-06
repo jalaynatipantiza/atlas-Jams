@@ -4,7 +4,9 @@ import { TextField, Button, Grid } from '@material-ui/core';
 import axios from 'axios';
 
 
-export default function SignupForm() {
+export default function SignupForm(props) {
+
+  const {goToPerformerForm, goToHostForm} = props
   const classes = useStyles();
 
   const [name, setName] = useState('');
@@ -30,7 +32,7 @@ export default function SignupForm() {
     })
       .then((res) => {
         console.log(res)
-        window.localStorage.setItem("id", res.data.id);
+        // window.localStorage.setItem("id", res.data.id);
         window.localStorage.setItem("is_host", res.data.is_host);
         window.localStorage.setItem("is_performer", res.data.is_performer);
       });
@@ -44,6 +46,10 @@ export default function SignupForm() {
         container
         className={classes.container}
       >
+        <div style={{}}>
+         <Button variant="contained" onClick={goToPerformerForm} color="primary" href="#">Become a performer</Button> <Button variant="contained" onClick={goToHostForm} color="primary" href="#">Become a host</Button>
+
+        </div>
         <div className={classes.nonField}>
           <h2>Signup</h2>
         </div>

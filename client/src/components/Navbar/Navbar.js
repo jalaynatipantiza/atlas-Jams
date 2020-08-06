@@ -58,7 +58,9 @@ const Navbar = (props) => {
       window.localStorage.clear();
     })
   }
+  const localStorage = window.localStorage
 
+ 
   return(
     <React.Fragment>
       <nav className={classes.nav}>

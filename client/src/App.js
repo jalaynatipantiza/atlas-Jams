@@ -76,9 +76,9 @@ function App() {
       <section>
         {page === HOMEPAGE && <HomePage/>}
         {page === PROFILE && <EventsPage/>}
-        {page === SIGNUP && <SignupForm/>}
-        {page === PERFORMERFORM && <PerformerForm />}
-        {page === HOSTFORM && <HostForm />}
+        {page === SIGNUP && <SignupForm goToPerformerForm={()=>goToPerformerForm()} goToHostForm={()=>goToHostForm() }/>}
+        {page === PERFORMERFORM && <PerformerForm goToSignUpPage={()=>goToSignUpPage()}/>}
+        {page === HOSTFORM && <HostForm goToSignUpPage={()=>goToSignUpPage()}/>}
         {/* <EventsForm /> */}
         {page === LOGIN && <LoginForm />}
         {/* <EventsPage /> */}

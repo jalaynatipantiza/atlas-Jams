@@ -3,8 +3,9 @@ import useStyles from '../styles/styles';
 import { TextField, Button, Grid } from '@material-ui/core';
 import axios from 'axios'
 
-export default function SignupForm() {
+export default function SignupForm(props) {
   const classes = useStyles();
+  const {goToSignUpPage} = props
 
   const [user, setUser] = useState({
     name: null,
@@ -27,7 +28,7 @@ export default function SignupForm() {
     })
       .then((res) => {
         console.log(res)
-        window.localStorage.setItem("id", res.data.id);
+        // window.localStorage.setItem("id", res.data.id);
         window.localStorage.setItem("is_host", res.data.is_host);
         window.localStorage.setItem("is_performer", res.data.is_performer);
       });
@@ -55,6 +56,7 @@ export default function SignupForm() {
         <TextField id="standard-basic" label="Password Confirmation" onChange={event => setUser({...user, password_confirmation: event.target.value })} type="password"  className={classes.field} />
         <div className={classes.nonField}>
           <Button variant="contained" onClick={event => signUp()} color="primary" href="#">Submit</Button>
+          <Button variant="contained" onClick={goToSignUpPage} color="primary" href="#">Back</Button>
         </div>
       </Grid>
     </form>
