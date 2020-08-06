@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import useStyles from '../styles/styles';
 import { TextField, Button, Grid } from '@material-ui/core';
 import axios from 'axios';
+import {Link} from "react-router-dom"
 
 
 export default function SignupForm(props) {
@@ -41,15 +42,25 @@ export default function SignupForm(props) {
   }
 
   return (
-    <form style={{marginTop: "100px"}} onSubmit={event => event.preventDefault()} className={classes.root} noValidate autoComplete="off">
+    <form style={{marginTop: "100px", display: "flex", flexDirection: 'column'}} onSubmit={event => event.preventDefault()} className={classes.root} noValidate autoComplete="off">
+        <div style={{marginLeft:"auto", marginRight:'auto', width:'50%', justifyContent:"space-between", display:'flex'}}>
+        <Link to={"/signup/performer"} style={{textDecoration:"none"}}>
+            <Button  variant="contained" color="primary" href="#" >
+                Become a performer
+            </Button>
+      </Link>
+      <Link to={"/signup/host"} style={{textDecoration:"none"}}>
+            <Button  variant="contained" color="primary" href="#" >
+                Become a host
+            </Button>
+      </Link>
+
+
+        </div>
       <Grid 
         container
         className={classes.container}
       >
-        <div style={{}}>
-         <Button variant="contained" onClick={goToPerformerForm} color="primary" href="#">Become a performer</Button> <Button variant="contained" onClick={goToHostForm} color="primary" href="#">Become a host</Button>
-
-        </div>
         <div className={classes.nonField}>
           <h2>Signup</h2>
         </div>
