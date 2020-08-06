@@ -15,6 +15,8 @@ import EventsCardList from './components/EventsCards/EventCardList'
 import HomePage from './components/HomePage/HomePage';
 import { light } from '@material-ui/core/styles/createPalette';
 import ProfilePage from './components/PerformerProfile/performerProfilePage'
+import HostProfile from './components/HostProfile/HostProfile';
+
 
 const HOMEPAGE = "HOMEPAGE";
 const PROFILE = "PROFILE";

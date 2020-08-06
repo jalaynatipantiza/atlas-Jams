@@ -1,8 +1,6 @@
 import React from 'react'
-import useStyles from "./styles/styles";
 import Profile from './PerformerProfile';
 import { makeStyles } from '@material-ui/core/styles';
-import EventsCard from '../EventsCards/EventsCards';
 import { Box, Typography } from '@material-ui/core';
 import RecordingList from './recordingList';
 import EventsCardList from '../EventsCards/EventCardList';
