@@ -5,8 +5,10 @@ import HostInfoBox from './hostInfoBox';
 import Spaces from './hostSpaces';
 import EventsCardList from '../EventsCards/EventCardList';
 import { Box, Typography} from '@material-ui/core';
-
-
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import PhotoCamera from '@material-ui/icons/PhotoCamera';
+import Icon from '@material-ui/core/Icon';
 
 const spaces = [
   {  
@@ -71,9 +73,8 @@ const events = [
 
   ]
 const HostProfile = (props) => {
-
   const classes = useStyles();
-
+  
   return(
     <div >
       <div style={{display:"flex", margin: "75px"}}>
@@ -81,12 +82,18 @@ const HostProfile = (props) => {
         <div className={classes.mainPic}></div>
         <HostInfoBox name={info.name} email={info.email} number={info.number} description={info.description} location={info.location}/>
       </div>
-      <Box className={classes.eventBox}>
-        <Typography className={classes.events}>
-          <EventsCardList classes={{ root: "eventForHost" }}  events={events}/>
-        </Typography>
-       </Box>
-      </div>
+        <div className={classes.buttonEvent}>
+          <Box className={classes.eventBox}>
+            <Typography className={classes.events}>
+              <EventsCardList events={events}/>
+            </Typography>
+          </Box>
+
+          <Button className={classes.addButton} variant="contained" >
+            Add Event!
+          </Button>
+        </div>
+    </div>
       
         <div>
           <Spaces spaces={spaces}/>
