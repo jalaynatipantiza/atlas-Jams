@@ -26,13 +26,12 @@ const useStyles = makeStyles({
     fontSize: "xxx-large"
   },
   events: {
-    display: "flex",
     justifyContent: "center",
     flexFlow: "row wrap",
     
   },
   eventBox:{
-    width: "79vw",
+    width: "60vw",
     overflow: "auto",
     display: "flex",
     alignItems: "center",
