@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import useStyles from '../styles/styles';
 import { TextField, Button, Grid } from '@material-ui/core';
 import axios from 'axios';
-import {Link} from "react-router-dom"
+import {Link, useHistory} from "react-router-dom"
 
 
 export default function SignupForm(props) {
 
+  const history = useHistory()
   const {goToPerformerForm, goToHostForm} = props
   const classes = useStyles();
 
@@ -42,6 +43,7 @@ export default function SignupForm(props) {
         }
         window.localStorage.setItem("user_type", userType);
         window.localStorage.setItem("id", res.data.id);
+        history.push('/')
 
       });
 
