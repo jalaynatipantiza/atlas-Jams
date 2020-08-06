@@ -67,9 +67,11 @@ function App() {
     <Router>
       <main>
         <section>
-          <Navbar 
+          <Route path={['/', '/events']} render={() => <Navbar navTheme={'LIGHT'} />} />
+          <Route path={['/signup', '/signup/performer', '/signup/host', '/login']} render={() => <Navbar navTheme={'BLACK'} />} />
+          {/* <Navbar 
             navTheme={navTheme}
-          />
+          /> */}
         </section>
         <section>
           <Route exact={true} path='/' component={HomePage} />

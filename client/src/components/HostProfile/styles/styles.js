@@ -36,7 +36,6 @@ const useStyles = makeStyles({
     alignItems: "center",
     font: "initial"
   }
-  
 });
 
 export default useStyles;
