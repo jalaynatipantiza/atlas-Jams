@@ -48,8 +48,8 @@ export default function Spaces () {
 
   return (
     <div className={classes.root}>
-      <GridList style={{width: "500vw"}} cellHeight={400}  spacing={1} className={classes.gridList}>
-
+      <p style={{font:"initial", fontSize: "xx-large", margin: "2px"}}>Locations</p>
+      <GridList style={{width: "500vw", height: "80vh"}} cellHeight={400}  spacing={1} className={classes.gridList}>
         {spaces.map((tile) => (
           <GridListTile key={tile.url} >
             <img src={tile.url} />

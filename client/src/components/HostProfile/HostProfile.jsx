@@ -77,18 +77,19 @@ const HostProfile = (props) => {
   
   return(
     <div >
-      <div style={{display:"flex", margin: "75px"}}>
-      <div>
+      <div style={{display:"flex", margin: "75px",  justifyContent: "space-between"}}>
+      <div style={{height: "77vh"}}>
         <div className={classes.mainPic}></div>
         <HostInfoBox name={info.name} email={info.email} number={info.number} description={info.description} location={info.location}/>
       </div>
         <div className={classes.buttonEvent}>
+          <p style={{font:"initial", fontSize: "xx-large", margin: "2px"}}>Events</p>
           <Box className={classes.eventBox}>
             <Typography className={classes.events}>
-              <EventsCardList events={events}/>
+              <EventsCardList events={events}  sideScroll={true}/>
             </Typography>
           </Box>
-
+          
           <Button className={classes.addButton} variant="contained" >
             Add Event!
           </Button>
