@@ -10,6 +10,7 @@ export default function EventsPage() {
   useEffect(()=> {
     window.scrollTo(0, 0)
   }, [])
+  window.localStorage.navTheme = 'LIGHT'
 
   return (
     <React.Fragment>

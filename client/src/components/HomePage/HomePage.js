@@ -15,7 +15,7 @@ function HomePage() {
     })
   }, [])
 
-
+  window.localStorage.navTheme = 'LIGHT'
   return (
     <React.Fragment>
       <SearchBox />

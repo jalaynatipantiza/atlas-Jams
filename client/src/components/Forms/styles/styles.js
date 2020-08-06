@@ -10,6 +10,7 @@ const useStyles = makeStyles((theme) => ({
   container: {
     width: '40%',
     margin: '100px auto 0 auto',
+    marginTop:"0",
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -21,6 +22,8 @@ const useStyles = makeStyles((theme) => ({
   nonField: {
     width: '100%',
     margin: 20,
+    display:"flex",
+    justifyContent:"space-between"
   },
 }));
 

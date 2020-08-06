@@ -28,9 +28,7 @@ const Navbar = (props) => {
     setAnchorEl(null);
   };
 
-  const [style, setStyle] = useState()
-
-
+  const navTheme = window.localStorage.navTheme
   const classes = useStyles();
   const pickStyle = () => {
     if (navTheme === "DARK"){
@@ -59,18 +57,19 @@ const Navbar = (props) => {
   const signOut = () => {
     Axios.get("/logout")
     .then(() => {
-      window.localStorage.clear();
+      window.localStorage.removeItem("is_host");
+      window.localStorage.removeItem("is_performer");
     })
   }
+  const localStorage = window.localStorage
 
-//    <AppBar className={trigger ? pickStyle().appOne : pickStyle().appTwo}>
-// <Toolbar className={trigger ? pickStyle().toolBarOne : pickStyle().toolBarTwo}>
+ 
   return(
     <React.Fragment>
       <nav className={classes.nav}>
       <AppBar className={trigger ? pickStyle().appOne : pickStyle().appTwo}>
         <Toolbar className={trigger ? pickStyle().toolBarOne : pickStyle().toolBarTwo}>
-          <Link to={'/'} style={{ textDecoration: 'none' }}>
+          <Link to={'/'} style={{ textDecoration: 'none', color: "inherit" }}>
             <IconButton style={{font: "initial"}} color="inherit">
               <p>Atlas Jams</p>
             </IconButton>
@@ -88,18 +87,12 @@ const Navbar = (props) => {
             <Link to={`/events`} style={{ textDecoration: 'none' }}>
               <MenuItem onClick={handleClose}>Profile</MenuItem>
             </Link>
-            <Link to={`/login`} style={{ textDecoration: 'none' }}>
+            <Link to={`/login`} style={{ textDecoration: 'none', color:"black" }}>
               <MenuItem onClick={handleClose}>Sign In</MenuItem>
             </Link>
               <MenuItem onClick={handleClose} onClick={() => signOut()}>Sign Out</MenuItem>
-            <Link to={'/signup'} style={{ textDecoration: 'none' }}>
+            <Link to={'/signup'} style={{ textDecoration: 'none', color:"black" }}>
               <MenuItem onClick={handleClose}>Signup</MenuItem>
-            </Link>
-            <Link to={'/signup/performer'} style={{ textDecoration: 'none' }}>
-              <MenuItem onClick={handleClose}>Become Performer</MenuItem>
-            </Link>
-            <Link to={'/signup/host'} style={{ textDecoration: 'none' }}>
-              <MenuItem onClick={handleClose}>Become Host</MenuItem>
             </Link>
           </Menu>
         </Toolbar>

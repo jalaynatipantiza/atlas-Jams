@@ -2,15 +2,20 @@ import React, { useState } from 'react';
 import useStyles from '../styles/styles';
 import { TextField, Button, Grid } from '@material-ui/core';
 import axios from 'axios';
+import {Link} from "react-router-dom"
 
 
-export default function SignupForm() {
+export default function SignupForm(props) {
+
+  const {goToPerformerForm, goToHostForm} = props
   const classes = useStyles();
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
+
+  window.localStorage.navTheme = 'BLACK'
 
   const signUp = () => {
     // make the post request here with name, email, password, passwordConfirmation
@@ -30,13 +35,30 @@ export default function SignupForm() {
     })
       .then((res) => {
         console.log(res)
+        // window.localStorage.setItem("id", res.data.id);
+        window.localStorage.setItem("is_host", res.data.is_host);
+        window.localStorage.setItem("is_performer", res.data.is_performer);
       });
 
 
   }
 
   return (
-    <form style={{marginTop: "100px"}} onSubmit={event => event.preventDefault()} className={classes.root} noValidate autoComplete="off">
+    <form style={{marginTop: "100px", display: "flex", flexDirection: 'column'}} onSubmit={event => event.preventDefault()} className={classes.root} noValidate autoComplete="off">
+        <div style={{marginLeft:"auto", marginRight:'auto', width:'50%', justifyContent:"space-between", display:'flex'}}>
+        <Link to={"/signup/performer"} style={{textDecoration:"none"}}>
+            <Button  variant="contained" color="primary" href="#" >
+                Become a performer
+            </Button>
+      </Link>
+      <Link to={"/signup/host"} style={{textDecoration:"none"}}>
+            <Button  variant="contained" color="primary" href="#" >
+                Become a host
+            </Button>
+      </Link>
+
+
+        </div>
       <Grid 
         container
         className={classes.container}

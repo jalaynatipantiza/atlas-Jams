@@ -7,6 +7,8 @@ import axios from "axios";
 export default function SignupForm() {
   const classes = useStyles();
 
+  window.localStorage.navTheme = 'BLACK'
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 

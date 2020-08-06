@@ -19,7 +19,7 @@ class UsersController < ApplicationController
       render json: user, status: 200
 
     else
-      render json: { error: "No such user; check the submitted email address"}, status: 400
+      render json: { error: user.errors.full_messages}, status: 400
     end
   end
 
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :number, :location, :genre, :is_performer, :is_host)
   end
 
 end
