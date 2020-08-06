@@ -4,6 +4,7 @@ import useStyles from './styles/styles';
 import HostInfoBox from './hostInfoBox';
 import Spaces from './hostSpaces';
 import EventsCardList from '../EventsCards/EventCardList';
+import { Box, Typography} from '@material-ui/core';
 
 
 
@@ -27,7 +28,7 @@ const info =
   name: "Milana Rivera",  
   email: "milana@gmail.com", 
   number: 3064703612, 
-  description:"Backyard garden space", 
+  description:"", 
   location: "saskatoon"
   }
 const events = [
@@ -74,16 +75,19 @@ const HostProfile = (props) => {
   const classes = useStyles();
 
   return(
-    <div>
+    <div >
+      <div style={{display:"flex", margin: "75px"}}>
       <div>
         <div className={classes.mainPic}></div>
-      </div>
-      <div>
-      <EventsCardList events={events}/>
-      </div>
-        <div>
         <HostInfoBox name={info.name} email={info.email} number={info.number} description={info.description} location={info.location}/>
-        </div>
+      </div>
+      <Box className={classes.eventBox}>
+        <Typography className={classes.events}>
+          <EventsCardList style={{height: "10px"}} events={events}/>
+        </Typography>
+       </Box>
+      </div>
+      
         <div>
           <Spaces spaces={spaces}/>
         </div>
