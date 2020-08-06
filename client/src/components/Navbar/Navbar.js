@@ -28,6 +28,7 @@ const Navbar = (props) => {
 
   const [style, setStyle] = useState()
 
+
   const classes = useStyles();
   const pickStyle = () => {
     if (navTheme === "DARK"){
