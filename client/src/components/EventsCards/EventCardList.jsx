@@ -1,12 +1,13 @@
 import React from 'react';
-import EventsCard from './EventsCards';
+import EventsCards from './EventsCards';
 
 
-export default function EventsCardList(props) {
-  const events = props.events
+export default function EventsCardList({ events, setEvent }) {
 
   const list = events.map((event)=>{
-    return <EventsCard key={event.id} description={event.description} name={event.name} time={event.time} date={event.date} event_picture={event.event_picture} am={event.am}/>
+    return <EventsCards id={event.id} key={event.id} description={event.description} name={event.name} time={event.time} date={event.date} event_picture={event.event_picture} am={event.am} 
+    setEvent={setEvent}
+    />
   })
   return (
     <div style={{width:"80%",display: "flex", justifyContent:"center", flexDirection:"row", flexWrap:"wrap"}}>
