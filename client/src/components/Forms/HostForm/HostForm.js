@@ -8,6 +8,9 @@ import {Link} from "react-router-dom"
 
 export default function SignupForm(props) {
   const classes = useStyles();
+
+  window.localStorage.navTheme = 'BLACK'
+
   const {goToSignUpPage} = props
   const [user, setUser] = useState({
     name: null,

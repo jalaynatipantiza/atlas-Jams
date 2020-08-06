@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 
 const Navbar = (props) => {
 
-  const { goToHome, goToProfile, goToSignUpPage, goToPerformerForm, goToHostForm, goToLogIn, navTheme } = props
+  const { goToHome, goToProfile, goToSignUpPage, goToPerformerForm, goToHostForm, goToLogIn } = props
   
   const trigger = useScrollTrigger({
     disableHysteresis: true
@@ -26,9 +26,7 @@ const Navbar = (props) => {
     setAnchorEl(null);
   };
 
-  const [style, setStyle] = useState()
-
-
+  const navTheme = window.localStorage.navTheme
   const classes = useStyles();
   const pickStyle = () => {
     if (navTheme === "DARK"){
@@ -57,7 +55,8 @@ const Navbar = (props) => {
   const signOut = () => {
     Axios.get("/logout")
     .then(() => {
-      window.localStorage.clear();
+      window.localStorage.removeItem("is_host");
+      window.localStorage.removeItem("is_performer");
     })
   }
   const localStorage = window.localStorage

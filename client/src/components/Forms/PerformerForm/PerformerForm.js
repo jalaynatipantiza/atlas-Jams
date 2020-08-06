@@ -8,6 +8,8 @@ export default function SignupForm(props) {
   const classes = useStyles();
   const {goToSignUpPage} = props
 
+  window.localStorage.navTheme = 'BLACK'
+
   const [user, setUser] = useState({
     name: null,
     email: null ,

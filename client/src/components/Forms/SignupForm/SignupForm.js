@@ -15,6 +15,8 @@ export default function SignupForm(props) {
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
 
+  window.localStorage.navTheme = 'BLACK'
+
   const signUp = () => {
     // make the post request here with name, email, password, passwordConfirmation
 
