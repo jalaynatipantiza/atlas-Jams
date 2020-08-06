@@ -11,7 +11,7 @@ import { Link, useHistory } from 'react-router-dom';
 const Navbar = (props) => {
 
   // const navTheme = window.localStorage.getItem("navTheme");
-
+  const history = useHistory()
   const { navTheme } = props;
   
   const trigger = useScrollTrigger({
@@ -28,7 +28,7 @@ const Navbar = (props) => {
     setAnchorEl(null);
   };
 
-  const navTheme = window.localStorage.navTheme
+  // const navTheme = window.localStorage.navTheme
   const classes = useStyles();
   const pickStyle = () => {
     if (navTheme === "DARK"){
@@ -85,7 +85,7 @@ const Navbar = (props) => {
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
-            <Link to={`/events`} style={{ textDecoration: 'none' }}>
+            <Link to={`/events`} style={{ textDecoration: 'none', color:"black" }}>
               <MenuItem onClick={handleClose}>Profile</MenuItem>
             </Link>
             <Link to={`/login`} style={{ textDecoration: 'none', color:"black" }}>
