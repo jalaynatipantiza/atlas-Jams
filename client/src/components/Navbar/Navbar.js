@@ -10,7 +10,9 @@ import { Link } from 'react-router-dom';
 
 const Navbar = (props) => {
 
-  const { goToHome, goToProfile, goToSignUpPage, goToPerformerForm, goToHostForm, goToLogIn, navTheme } = props
+  // const navTheme = window.localStorage.getItem("navTheme");
+
+  const { navTheme } = props;
   
   const trigger = useScrollTrigger({
     disableHysteresis: true
@@ -84,7 +86,7 @@ const Navbar = (props) => {
             onClose={handleClose}
           >
             <Link to={`/events`} style={{ textDecoration: 'none' }}>
-              <MenuItem onClick={handleClose} onClick={goToProfile}>Profile</MenuItem>
+              <MenuItem onClick={handleClose}>Profile</MenuItem>
             </Link>
             <Link to={`/login`} style={{ textDecoration: 'none' }}>
               <MenuItem onClick={handleClose}>Sign In</MenuItem>

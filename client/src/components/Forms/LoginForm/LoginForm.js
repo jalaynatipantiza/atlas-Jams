@@ -10,6 +10,8 @@ export default function SignupForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  window.localStorage.setItem('navTheme', 'BLACK');
+
   const logIn = () => {
     // axios request to authenticate user
     axios({
@@ -25,8 +27,6 @@ export default function SignupForm() {
         window.localStorage.setItem("isPerformer", res.data.is_performer);
         console.log(res.data);
       });
-
-
   };
 
   return (
