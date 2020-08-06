@@ -16,17 +16,18 @@ const ProfilePage = (props) => {
     events: [],
   })
   
+  const userID = window.localStorage.id
   
   useEffect(()=>{
-    axios.get('/users/1')
+    axios.get(`/users/${userID}`)
       .then(res=>{
         setUser((prev)=>{ return {...prev, info: {...res.data}}})
 
-        axios.get('/user/1/recordings/')
+        axios.get(`/user/${userID}/recordings/`)
           .then(res =>{
             setUser((prev)=>{ return {...prev, recordings: [...res.data]}})
 
-            axios.get('/user/1/events')
+            axios.get(`/user/${userID}/events`)
               .then(res => {
                  setUser((prev)=>{ return {...prev, events: [...res.data]}})
     

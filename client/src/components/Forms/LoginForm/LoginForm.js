@@ -15,7 +15,8 @@ export default function SignupForm() {
   const [password, setPassword] = useState('');
 
   window.localStorage.setItem('navTheme', 'BLACK');
-
+  window.localStorage.removeItem('user_type')
+  window.localStorage.removeItem('id')
   const logIn = () => {
     // axios request to authenticate user
     axios({
@@ -27,8 +28,15 @@ export default function SignupForm() {
       }
     })
       .then(res => {
-        window.localStorage.setItem("is_host", res.data.is_host);
-        window.localStorage.setItem("is_performer", res.data.is_performer);
+        let userType = "none"
+        if(res.data.is_performer){
+          userType = "performer"
+        } else if(res.data.is_host){
+          userType = "host"
+        }
+        window.localStorage.setItem("user_type", userType);
+        window.localStorage.setItem("id", res.data.id);
+
         if(res.data.is_host){
           history.push("/host/profile")
         }

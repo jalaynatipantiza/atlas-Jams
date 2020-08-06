@@ -57,13 +57,13 @@ const Navbar = (props) => {
   const signOut = () => {
     Axios.get("/logout")
     .then(() => {
-      window.localStorage.removeItem("is_host");
-      window.localStorage.removeItem("is_performer");
+      window.localStorage.removeItem("user_type");
+      window.localStorage.removeItem("id");
       history.push("/")
     })
   }
   const localStorage = window.localStorage
-
+  const userType = localStorage.user_type
  
   return(
     <React.Fragment>
@@ -85,7 +85,7 @@ const Navbar = (props) => {
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
-            <Link to={`/events`} style={{ textDecoration: 'none', color:"black" }}>
+            <Link to={`${userType}/profile`} style={{ textDecoration: 'none', color:"black" }}>
               <MenuItem onClick={handleClose}>Profile</MenuItem>
             </Link>
             <Link to={`/login`} style={{ textDecoration: 'none', color:"black" }}>
