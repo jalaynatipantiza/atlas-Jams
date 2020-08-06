@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { AppBar, Toolbar, Typography, IconButton, Button, Menu, MenuItem } from '@material-ui/core'
+import { AppBar, Toolbar, Typography, IconButton, Button, Menu, MenuItem } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import zIndex from '@material-ui/core/styles/zIndex';
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
-import useStyles from "./styles/styles"
+import useStyles from "./styles/styles";
 import Axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const Navbar = (props) => {
 
@@ -66,9 +67,11 @@ const Navbar = (props) => {
       <nav className={classes.nav}>
       <AppBar className={trigger ? pickStyle().appOne : pickStyle().appTwo}>
         <Toolbar className={trigger ? pickStyle().toolBarOne : pickStyle().toolBarTwo}>
-          <IconButton onClick={goToHome} style={{font: "initial"}} color="inherit">
-            <p>Atlas Jams</p>
-          </IconButton>
+          <Link to={'/'} style={{ textDecoration: 'none' }}>
+            <IconButton style={{font: "initial"}} color="inherit">
+              <p>Atlas Jams</p>
+            </IconButton>
+          </Link>
           <IconButton color="inherit" onClick={handleClick}>
             <AccountCircleIcon />
           </IconButton>
@@ -79,12 +82,22 @@ const Navbar = (props) => {
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
-            <MenuItem onClick={handleClose} onClick={goToProfile}>Profile</MenuItem>
-            <MenuItem onClick={handleClose} onClick={goToLogIn}>Sign In</MenuItem>
-            <MenuItem onClick={handleClose} onClick={()=>signOut()}>Sign Out</MenuItem>
-            <MenuItem onClick={handleClose} onClick={goToSignUpPage}>Signup</MenuItem>
-            <MenuItem onClick={handleClose} onClick={goToPerformerForm}>Become Performer</MenuItem>
-            <MenuItem onClick={handleClose} onClick={goToHostForm}>Become Host</MenuItem>
+            <Link to={`/events`} style={{ textDecoration: 'none' }}>
+              <MenuItem onClick={handleClose} onClick={goToProfile}>Profile</MenuItem>
+            </Link>
+            <Link to={`/login`} style={{ textDecoration: 'none' }}>
+              <MenuItem onClick={handleClose}>Sign In</MenuItem>
+            </Link>
+              <MenuItem onClick={handleClose} onClick={() => signOut()}>Sign Out</MenuItem>
+            <Link to={'/signup'} style={{ textDecoration: 'none' }}>
+              <MenuItem onClick={handleClose}>Signup</MenuItem>
+            </Link>
+            <Link to={'/signup/performer'} style={{ textDecoration: 'none' }}>
+              <MenuItem onClick={handleClose}>Become Performer</MenuItem>
+            </Link>
+            <Link to={'/signup/host'} style={{ textDecoration: 'none' }}>
+              <MenuItem onClick={handleClose}>Become Host</MenuItem>
+            </Link>
           </Menu>
         </Toolbar>
       </AppBar>

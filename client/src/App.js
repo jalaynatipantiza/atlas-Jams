@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import SearchBox from './components/Navbar/searchBox';
 import SignupForm from './components/Forms/SignupForm/SignupForm';
@@ -61,32 +62,34 @@ function App() {
   }
   
   return (
-    <main>
-      <section>
-        <Navbar 
-          goToHome={()=> goToHome()} 
-          goToProfile={()=> goToProfile()} 
-          goToSignUpPage={() => goToSignUpPage()} 
-          goToPerformerForm={() => goToPerformerForm()} 
-          goToHostForm={() => goToHostForm()} 
-          goToLogIn={() => goToLogIn()}
-          navTheme={navTheme}
-        />
-      </section>
-      <section>
-        {page === HOMEPAGE && <HomePage/>}
-        {page === PROFILE && <EventsPage/>}
-        {page === SIGNUP && <SignupForm/>}
-        {page === PERFORMERFORM && <PerformerForm />}
-        {page === HOSTFORM && <HostForm />}
-        {/* <EventsForm /> */}
-        {page === LOGIN && <LoginForm />}
-        {/* <EventsPage /> */}
-         {/* <ProfilePage/> */}
-      </section>
-    </main>
+    <Router>
+      <main>
+        <section>
+          <Navbar 
+            navTheme={navTheme}
+          />
+        </section>
+        <section>
+          <Route exact={true} path='/' component={HomePage} />
+            {/* <HomePage/> */}
+          {/* </Route> */}
+          <Route path='/events' component={EventsPage} />
+          {/* {page === PROFILE && <EventsPage/>} */}
+          <Route exact={true} path='/signup' component={SignupForm} />
+          {/* {page === SIGNUP && <SignupForm/>} */}
+          <Route path='/signup/performer' component={PerformerForm} />
+          {/* {page === PERFORMERFORM && <PerformerForm />} */}
+          <Route path='/signup/host' component={HostForm} />
+          {/* {page === HOSTFORM && <HostForm />} */}
+          {/* <EventsForm /> */}
+          <Route exact={true} path='/login' component={LoginForm} />
+          {/* {page === LOGIN && <LoginForm />} */}
+          {/* <EventsPage /> */}
+          {/* <ProfilePage/> */}
+        </section>
+      </main>
+    </Router>
   );
 }
-
 
 export default App;

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { TextField, Button, Grid } from '@material-ui/core';
 import useStyles from '../styles/styles';
-import axios from "axios"
+import axios from "axios";
 
 
 export default function SignupForm() {
