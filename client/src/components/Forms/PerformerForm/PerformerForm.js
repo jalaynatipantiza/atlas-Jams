@@ -35,6 +35,7 @@ export default function SignupForm(props) {
         // window.localStorage.setItem("id", res.data.id);
         window.localStorage.setItem("is_host", res.data.is_host);
         window.localStorage.setItem("is_performer", res.data.is_performer);
+        window.localStorage.setItem("id", res.data.id);
         // <Route to={'/performer/profile'}/>
         history.push("/performer/profile")
       });

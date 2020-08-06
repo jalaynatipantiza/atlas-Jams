@@ -4,13 +4,41 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Box, Typography } from '@material-ui/core';
 import RecordingList from './recordingList';
 import EventsCardList from '../EventsCards/EventCardList';
+import { useEffect } from 'react';
+import axios from 'axios'
+import { useState } from 'react';
 
 const ProfilePage = (props) => {
+  
+  const [user, setUser] = useState({
+    info: {},
+    recordings: [],
+    events: [],
+  })
+  
+  
+  useEffect(()=>{
+    axios.get('/users/1')
+      .then(res=>{
+        setUser((prev)=>{ return {...prev, info: {...res.data}}})
+
+        axios.get('/user/1/recordings/')
+          .then(res =>{
+            setUser((prev)=>{ return {...prev, recordings: [...res.data]}})
+
+            axios.get('/user/1/events')
+              .then(res => {
+                 setUser((prev)=>{ return {...prev, events: [...res.data]}})
+    
+              })
+          })
+      })
+  },[])
 
   const useStyles = makeStyles({
     mainPic: {
       filter: "blur(3px)",
-      backgroundImage:  "url('https://images.unsplash.com/photo-1573470167254-315246dd477d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60')",
+      backgroundImage:  `url(${user.info.profile_pic})`,
       height: "50vh",
       backgroundPosition: "center",
       backgroundRepeat: "no-repeat",
@@ -57,93 +85,32 @@ const ProfilePage = (props) => {
     font: "initial"
     }
   });
+
   const classes = useStyles();
 
-  const events = [
-    {
-      id:1,
-      date: "2020-10-02",
-      time: "12:00",
-      am: false,
-      name: "Jazz Fest",
-      price: 15.00,
-      description: "Join us at our annual jazz festival and show case your jazzy tunes",
-      duration: "180",
-      attendants: 15,
-      event_picture: "https://images.unsplash.com/photo-1483842293911-b0f670601cdc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2024&q=80"
-    },
-    {
-      id:3,
-      date: "2020-10-02",
-      time: "12:00",
-      am: false,
-      name: "Jazz Fest",
-      price: 15.00,
-      description: "Join us at our annual jazz festival and show case your jazzy tunes",
-      duration: "180",
-      attendants: 15,
-      event_picture: "https://images.unsplash.com/photo-1483842293911-b0f670601cdc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2024&q=80"
-    },
-    {
-      id:2,
-      date: "2020-10-02",
-      time: "12:00",
-      am: false,
-      name: "Jazz Fest",
-      price: 15.00,
-      description: "Join us at our annual jazz festival and show case your jazzy tunes",
-      duration: "180",
-      attendants: 15,
-      event_picture: "https://images.unsplash.com/photo-1483842293911-b0f670601cdc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2024&q=80"
-    }
-
-  ]
-  
-  const recordings = [
-    {
-      url: "https://www.youtube.com/watch?v=Nl9LrqV_HG8&list=RDNl9LrqV_HG8&start_radio=1"
-    },
-    {
-      url: "https://www.youtube.com/watch?v=Nl9LrqV_HG8&list=RDNl9LrqV_HG8&start_radio=1"
-    }, 
-    {
-      url: "https://www.youtube.com/watch?v=Nl9LrqV_HG8&list=RDNl9LrqV_HG8&start_radio=1"
-    },
-    {
-      url: "https://www.youtube.com/watch?v=Nl9LrqV_HG8&list=RDNl9LrqV_HG8&start_radio=1"
-    },
-    {
-      url: "https://www.youtube.com/watch?v=Nl9LrqV_HG8&list=RDNl9LrqV_HG8&start_radio=1"
-    },
-    {
-      url: "https://www.youtube.com/watch?v=Nl9LrqV_HG8&list=RDNl9LrqV_HG8&start_radio=1"
-    }
-
-  ]
-  
   return(
 
     <div>
       <div>
-      <h1 className={classes.bgText}>Massimo</h1>
+  <h1 className={classes.bgText}>{user.info.name}</h1>
       <div className={classes.mainPic}></div>
       </div>
    
       <div className={classes.eventProfile}>
         <div style={{width:"60%"}}>
-          <Profile email={"massimo123@gmail.com"} number={"3608908769"} location={"Calagry"} size={"1"} />
+          <Profile user={user.info}/>
         </div>
         <Box className={classes.eventPro}>
           <Typography>
           <h1 style={{display: "flex", justifyContent: "center"}}>Upcoming Events</h1>
-          <EventsCardList events={events}/>
+          <EventsCardList events={user.events}/>
           </Typography>
         </Box>
         
       </div>
       
       <div className={classes.videoHolder}>
-        <RecordingList recordings={recordings}/>
+        <RecordingList recordings={user.recordings}/>
       </div>
     </div>
   )
