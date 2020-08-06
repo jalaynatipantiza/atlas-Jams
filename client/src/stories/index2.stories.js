@@ -2,6 +2,9 @@ import React from 'react';
 import { storiesOf } from "@storybook/react";
 import Profile from "../components/PerformerProfile/PerformerProfile"
 import Recording from "../components/PerformerProfile/recording"
+import HostProfile from '../components/HostProfile/HostProfile';
+import HostInfoBox from '../components/HostProfile/hostInfoBox';
+import Spaces from '../components/HostProfile/hostSpaces';
 
 
 const profile = {
@@ -33,6 +36,21 @@ const recording = {
   description: "Chill instrumental"
 }
 
+ const info = 
+    {
+    name: "Milana Rivera",  
+    email: "milana@gmail.com", 
+    number: 3064703612, 
+    description:"Backyard garden space", 
+    location: "saskatoon"
+    }
+  
+
 storiesOf("profile", module)
 .add("profile", () => <Profile recordings={profile.recordings} name={profile.name}  email={profile.email}  number={profile.number} profile_pic={profile.profile_pic} description={profile.description} location={profile.location} is_performer={profile.is_performer} size={profile.size}/>)
 .add("recording", () => <Recording name={recording.name} url={recording.url} description={recording.description}/>)
+
+storiesOf("HostProfile", module)
+.add("HostProfile", () => <HostProfile/>)
+.add("HostInfoBox", () => <HostInfoBox name={info.name} email={info.email} number={info.number} description={info.description} location={info.location}/>)
+.add("Spaces", () => <Spaces/>)
