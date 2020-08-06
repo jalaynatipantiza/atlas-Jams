@@ -6,10 +6,11 @@ import zIndex from '@material-ui/core/styles/zIndex';
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import useStyles from "./styles/styles";
 import Axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 const Navbar = (props) => {
 
+  let history = useHistory()
   const { goToHome, goToProfile, goToSignUpPage, goToPerformerForm, goToHostForm, goToLogIn } = props
   
   const trigger = useScrollTrigger({
@@ -57,6 +58,7 @@ const Navbar = (props) => {
     .then(() => {
       window.localStorage.removeItem("is_host");
       window.localStorage.removeItem("is_performer");
+      history.push("/")
     })
   }
   const localStorage = window.localStorage

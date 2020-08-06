@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { TextField, Button, Grid } from '@material-ui/core';
 import useStyles from '../styles/styles';
 import axios from "axios";
+import {useHistory} from "react-router-dom"
 
 
 export default function SignupForm() {
   const classes = useStyles();
+  const history = useHistory();
 
   window.localStorage.navTheme = 'BLACK'
 
@@ -23,9 +25,17 @@ export default function SignupForm() {
       }
     })
       .then(res => {
-        window.localStorage.setItem("isHost", res.data.is_host);
-        window.localStorage.setItem("isPerformer", res.data.is_performer);
-        console.log(res.data);
+        window.localStorage.setItem("is_host", res.data.is_host);
+        window.localStorage.setItem("is_performer", res.data.is_performer);
+        if(res.data.is_host){
+          history.push("/host/profile")
+        }
+        else if (res.data.is_performer){
+          history.push("/performer/profile")
+        }
+        else {
+          history.push('/')
+        }
       });
 
 

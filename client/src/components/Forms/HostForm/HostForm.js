@@ -3,13 +3,15 @@ import React, { useState } from 'react';
 import useStyles from '../styles/styles';
 import { TextField, Button, Grid } from '@material-ui/core';
 import axios from 'axios';
-import {Link} from "react-router-dom"
+import {Link, useHistory} from "react-router-dom"
 
 
 export default function SignupForm(props) {
   const classes = useStyles();
 
   window.localStorage.navTheme = 'BLACK'
+  let history = useHistory();
+
 
   const {goToSignUpPage} = props
   const [user, setUser] = useState({
@@ -32,9 +34,10 @@ export default function SignupForm(props) {
     })
       .then((res) => {
         console.log(res)
-        window.localStorage.setItem("id", res.data.id);
         window.localStorage.setItem("is_host", res.data.is_host);
         window.localStorage.setItem("is_performer", res.data.is_performer);
+        history.push("/host/profile")
+
       });
   };
 
