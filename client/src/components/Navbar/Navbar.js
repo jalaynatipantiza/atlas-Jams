@@ -68,7 +68,7 @@ const Navbar = (props) => {
       <nav className={classes.nav}>
       <AppBar className={trigger ? pickStyle().appOne : pickStyle().appTwo}>
         <Toolbar className={trigger ? pickStyle().toolBarOne : pickStyle().toolBarTwo}>
-          <Link to={'/'} style={{ textDecoration: 'none', color: "white" }}>
+          <Link to={'/'} style={{ textDecoration: 'none', color: "inherit" }}>
             <IconButton style={{font: "initial"}} color="inherit">
               <p>Atlas Jams</p>
             </IconButton>
@@ -92,12 +92,6 @@ const Navbar = (props) => {
               <MenuItem onClick={handleClose} onClick={() => signOut()}>Sign Out</MenuItem>
             <Link to={'/signup'} style={{ textDecoration: 'none', color:"black" }}>
               <MenuItem onClick={handleClose}>Signup</MenuItem>
-            </Link>
-            <Link to={'/signup/performer'} style={{ textDecoration: 'none', color:"black" }}>
-              <MenuItem onClick={handleClose}>Become Performer</MenuItem>
-            </Link>
-            <Link to={'/signup/host'} style={{ textDecoration: 'none', color:"black" }}>
-              <MenuItem onClick={handleClose}>Become Host</MenuItem>
             </Link>
           </Menu>
         </Toolbar>
