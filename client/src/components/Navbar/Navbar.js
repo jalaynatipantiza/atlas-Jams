@@ -10,8 +10,6 @@ import { Link } from 'react-router-dom';
 
 const Navbar = (props) => {
 
-  // const navTheme = window.localStorage.getItem("navTheme");
-
   const { navTheme } = props;
   
   const trigger = useScrollTrigger({
@@ -28,8 +26,8 @@ const Navbar = (props) => {
     setAnchorEl(null);
   };
 
-  const navTheme = window.localStorage.navTheme
   const classes = useStyles();
+
   const pickStyle = () => {
     if (navTheme === "DARK"){
       return {
@@ -54,6 +52,7 @@ const Navbar = (props) => {
       toolBarTwo: classes.toolbar
     }
   }
+
   const signOut = () => {
     Axios.get("/logout")
     .then(() => {
@@ -61,6 +60,7 @@ const Navbar = (props) => {
       window.localStorage.removeItem("is_performer");
     })
   }
+  
   const localStorage = window.localStorage
 
  

@@ -18,50 +18,7 @@ import ProfilePage from './components/PerformerProfile/performerProfilePage'
 import HostProfile from './components/HostProfile/HostProfile';
 
 
-const HOMEPAGE = "HOMEPAGE";
-const PROFILE = "PROFILE";
-const SIGNUP = "SIGNUP";
-const PERFORMERFORM = "PERFORMERFORM";
-const HOSTFORM = "HOSTFORM";
-const LOGIN = "LOGIN";
-
-//nav state
-const LIGHT = 'LIGHT'
-const DARK = 'DARK'
-const BLACK = 'BLACK'
-
 function App() {
-
-  const [page, setPage] = useState(HOMEPAGE)
-  const [navTheme, setNavTheme] = useState(LIGHT)
-
-  const goToHome = () => {  
-    setPage(HOMEPAGE);
-    setNavTheme(LIGHT);
-  }
-  const goToProfile = () => {
-    setPage(PROFILE)
-    setNavTheme(LIGHT);
-  }
-
-  const goToSignUpPage = () => {
-    setPage(SIGNUP);
-    setNavTheme(BLACK);
-  }
-  const goToPerformerForm = () => {
-    setPage(PERFORMERFORM);
-    setNavTheme(BLACK);
-  };
-
-  const goToHostForm = () => {
-    setPage(HOSTFORM);
-    setNavTheme(BLACK)
-  };
-
-  const goToLogIn = () => {
-    setPage(LOGIN);
-    setNavTheme(BLACK);
-  }
   
   return (
     <Router>
@@ -69,26 +26,15 @@ function App() {
         <section>
           <Route path={['/', '/events']} render={() => <Navbar navTheme={'LIGHT'} />} />
           <Route path={['/signup', '/signup/performer', '/signup/host', '/login']} render={() => <Navbar navTheme={'BLACK'} />} />
-          {/* <Navbar 
-            navTheme={navTheme}
-          /> */}
         </section>
         <section>
           <Route exact={true} path='/' component={HomePage} />
-            {/* <HomePage/> */}
-          {/* </Route> */}
           <Route path='/events' component={EventsPage} />
-          {/* {page === PROFILE && <EventsPage/>} */}
           <Route exact={true} path='/signup' component={SignupForm} />
-          {/* {page === SIGNUP && <SignupForm/>} */}
           <Route path='/signup/performer' component={PerformerForm} />
-          {/* {page === PERFORMERFORM && <PerformerForm />} */}
           <Route path='/signup/host' component={HostForm} />
-          {/* {page === HOSTFORM && <HostForm />} */}
           {/* <EventsForm /> */}
           <Route exact={true} path='/login' component={LoginForm} />
-          {/* {page === LOGIN && <LoginForm />} */}
-          {/* <EventsPage /> */}
           {/* <ProfilePage/> */}
         </section>
       </main>
