@@ -59,8 +59,6 @@ const Navbar = (props) => {
     })
   }
 
-//    <AppBar className={trigger ? pickStyle().appOne : pickStyle().appTwo}>
-// <Toolbar className={trigger ? pickStyle().toolBarOne : pickStyle().toolBarTwo}>
   return(
     <React.Fragment>
       <nav className={classes.nav}>

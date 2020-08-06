@@ -30,6 +30,9 @@ export default function SignupForm() {
     })
       .then((res) => {
         console.log(res)
+        window.localStorage.setItem("id", res.data.id);
+        window.localStorage.setItem("is_host", res.data.is_host);
+        window.localStorage.setItem("is_performer", res.data.is_performer);
       });
 
 

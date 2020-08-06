@@ -13,24 +13,26 @@
 #users
 
 #perfermers
-performer1 = User.create({ 
+performer1 = User.create!({ 
   name: "Lando",  
   email: "example@gmail.com", 
   number: 3064703625, 
   profile_pic: "https://images.unsplash.com/photo-1549834125-82d3c48159a3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60", 
   description:"Lively band", 
   password: "lando123", 
+  password_confirmation: "lando123", 
   location: "saskatoon", 
   is_performer: true, 
   size: 4 
 })
-performer2 = User.create({ 
+performer2 = User.create!({ 
   name: "Massimo",  
   email: "massimo123@gmail.com", 
   number: 3062437814, 
   profile_pic: "https://images.unsplash.com/photo-1573470167254-315246dd477d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60", 
   description:"I'm a classical piano musician.", 
   password: "massimo78", 
+  password_confirmation:  "massimo78",
   location: "Calgary", 
   is_performer: true, 
   size: 1 
@@ -38,26 +40,28 @@ performer2 = User.create({
 
 
 #hosts
-host1 = User.create({ 
+host1 = User.create!({ 
   name: "Rheema Timmer",  
   email: "rheemaexample@gmail.com", 
   number: 3064703625, 
   profile_pic: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60", 
   description:"i love to host bands at my grape vineyard and help local artists get exposure", 
   password: "rheemat", 
+  password_confirmation: "rheemat", 
   location: "calary", 
   is_performer: false,
   is_host: true
 })
 
 
-host2 = User.create({ 
+host2 = User.create!({ 
   name: "Milana Rivera",  
   email: "milana@gmail.com", 
   number: 3064703612, 
   profile_pic: "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60", 
   description:"Backyard garden space", 
   password: "milanagarden", 
+  password_confirmation: "milanagarden", 
   location: "saskatoon", 
   is_performer: false, 
   is_host: true
@@ -66,31 +70,30 @@ host2 = User.create({
 
 #genre_category
 
-jazz = GenreCategory.create({
+jazz = GenreCategory.create!({
   name: "Jazz"
 })
 
-folk = GenreCategory.create({
+folk = GenreCategory.create!({
   name: "Folk"
 })
 
-classical = GenreCategory.create({
+classical = GenreCategory.create!({
   name: "Classical"
 })
 
-rock = GenreCategory.create({
+rock = GenreCategory.create!({
   name: "Rock"
 })
 
-pop = GenreCategory.create({
+pop = GenreCategory.create!({
   name: "Pop"
 })
 
-cultural = GenreCategory.create({
+cultural = GenreCategory.create!({
   name: "Cultural"
 })
 
-performer1.genres.create()
 
 #genre
 genre1_performer1 = Genre.create!({
@@ -114,33 +117,33 @@ genre2_performer2 = Genre.create!({
 
 
 #recordings
-performer1.recordings.create({
+performer1.recordings.create!({
   name: "cotton eyed joe",
   url: "https://www.youtube.com/watch?v=mOYZaiDZ7BM",
   description: "Put your cowboy boots on. This song is perfect for tearing down the barn"
 })
-performer1.recordings.create({
+performer1.recordings.create!({
   name: "Moonlight",
   url: "https://www.youtube.com/watch?v=ntHvbR2c4E0",
   description: "Chill feel good song for all your chill events"
 })
-performer1.recordings.create({
+performer1.recordings.create!({
   name: "Float",
   url: "https://www.youtube.com/watch?v=Nl9LrqV_HG8&list=RDNl9LrqV_HG8&start_radio=1",
   description: "Chill instrumental"
 })
 
-performer2.recordings.create({
+performer2.recordings.create!({
   name: "Honey",
   url: "https://www.youtube.com/watch?v=1w2JV01fTPs",
   description: "Smooth hiphop"
 })
-performer2.recordings.create({
+performer2.recordings.create!({
   name: "321Jazz",
   url: "https://www.youtube.com/watch?v=HepnHvykQGA",
   description: "Snazzy Jazz"
 })
-performer2.recordings.create({
+performer2.recordings.create!({
   name: "Lemonade",
   url: "https://www.youtube.com/watch?v=xN2TVpsIo34",
   description: "Chill summer beats"
@@ -151,69 +154,69 @@ performer2.recordings.create({
 
 #host spaces
 #host 1
-host1_space1 = host1.spaces.create({
+host1_space1 = host1.spaces.create!({
   capacity: 100,
   address: "4037  Orenda Rd"
 })
 
-host1_space2 = host1.spaces.create({
+host1_space2 = host1.spaces.create!({
   capacity: 50,
   address: "2223  rue des Champs"
 })
 #host 2
-host2_space1 = host2.spaces.create({
+host2_space1 = host2.spaces.create!({
   capacity: 50,
   address: "315 Ave A South"
 })
 
-host2_space2 = host2.spaces.create({
+host2_space2 = host2.spaces.create!({
   capacity: 50,
   address: "4365  Scarth Street"
 })
 
-host2_space3 = host2.spaces.create({
+host2_space3 = host2.spaces.create!({
   capacity: 50,
   address: "22 Spadina Cres"
 })
 
 #space pics
 #host 1 space 1
-host1_space1.space_pictures.create({
+host1_space1.space_pictures.create!({
   url: "https://images.unsplash.com/photo-1563341591-ad0a750911cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
 })
 #host 1 space 2
-host1_space2.space_pictures.create({
+host1_space2.space_pictures.create!({
   url: "https://images.unsplash.com/photo-1566197147239-58a2590553b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
 })
 
-host1_space2.space_pictures.create({
+host1_space2.space_pictures.create!({
   url: "https://images.unsplash.com/photo-1551806235-fa3578e4ec2c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
 })
 #host 2 space 1
-host2_space1.space_pictures.create({
+host2_space1.space_pictures.create!({
   url: "https://images.unsplash.com/photo-1592008432356-8ef189954b5a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
 })
-host2_space1.space_pictures.create({
+host2_space1.space_pictures.create!({
   url: "https://images.unsplash.com/photo-1592008432356-8ef189954b5a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
 })
-host2_space1.space_pictures.create({
+host2_space1.space_pictures.create!({
   url: "https://images.unsplash.com/photo-1587702068694-a909ef4aa346?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
 })
 #host 2 space 2
-host2_space2.space_pictures.create({
+host2_space2.space_pictures.create!({
   url: "https://images.unsplash.com/photo-1499955085172-a104c9463ece?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
 })
-host2_space2.space_pictures.create({
+host2_space2.space_pictures.create!({
   url: "https://images.unsplash.com/photo-1551806136-68d2868db7b5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
 })
 #host 2 space 3
-host2_space3.space_pictures.create({
+host2_space3.space_pictures.create!({
   url: "https://images.unsplash.com/photo-1551806235-a05dd14a54c7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
 })
 
 #events
 #host 1 space 1
-jazz_fest = host1_space1.events.create({
+jazz_fest = host1_space1.events.create!({
   date: "2020-10-02",
   time: "12:00",
   am: false,
@@ -224,7 +227,7 @@ jazz_fest = host1_space1.events.create({
   attendants: 15,
   event_picture: "https://images.unsplash.com/photo-1483842293911-b0f670601cdc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2024&q=80"
 })
-garden_tea = host1_space1.events.create({
+garden_tea = host1_space1.events.create!({
   date: "2020-4-23" ,
   time: "11:00",
   am: true,
@@ -236,7 +239,7 @@ garden_tea = host1_space1.events.create({
   event_picture: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
 })
 #host 1 space 2
-dinner_party = host1_space2.events.create({
+dinner_party = host1_space2.events.create!({
   date: "2020-12-21",
   time: "6:00",
   am: false,
@@ -247,7 +250,7 @@ dinner_party = host1_space2.events.create({
   attendants: 30,
   event_picture: 'https://images.unsplash.com/photo-1596334861142-48f19282fcba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
 })
-wine_and_cheese = host1_space2.events.create({
+wine_and_cheese = host1_space2.events.create!({
   date: "2020-11-01",
   time: "9:00",
   am: false,
@@ -260,7 +263,7 @@ wine_and_cheese = host1_space2.events.create({
 })
 #host 2 space 1
 
-classical_evening = host2_space1.events.create({
+classical_evening = host2_space1.events.create!({
   date: "2020-09-15",
   time: "8:00",
   am: false,
@@ -273,7 +276,7 @@ classical_evening = host2_space1.events.create({
 })
 #host 2 space 2
 
-kick_it = host2_space2.events.create({
+kick_it = host2_space2.events.create!({
   date: "2020-11-09",
   time: "3:00",
   am: false,
@@ -285,7 +288,7 @@ kick_it = host2_space2.events.create({
   event_picture: 'https://images.unsplash.com/photo-1476287803067-f714aa78eaa7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
 })
 
-sunset = host2_space2.events.create({
+sunset = host2_space2.events.create!({
   date: "2020-08-25",
   time:"7:00",
   am: false,
@@ -297,7 +300,7 @@ sunset = host2_space2.events.create({
   event_picture:"https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
 })
 #host 2 space 3
-jazzy_bop = host2_space3.events.create({
+jazzy_bop = host2_space3.events.create!({
   date: "2020-10-21",
   time: "11:00",
   am: true,
