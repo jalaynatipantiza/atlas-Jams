@@ -6,10 +6,12 @@ import zIndex from '@material-ui/core/styles/zIndex';
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import useStyles from "./styles/styles";
 import Axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 const Navbar = (props) => {
 
+  // const navTheme = window.localStorage.getItem("navTheme");
+  const history = useHistory()
   const { navTheme } = props;
   
   const trigger = useScrollTrigger({
@@ -58,6 +60,7 @@ const Navbar = (props) => {
     .then(() => {
       window.localStorage.removeItem("is_host");
       window.localStorage.removeItem("is_performer");
+      history.push("/")
     })
   }
   
@@ -84,7 +87,7 @@ const Navbar = (props) => {
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
-            <Link to={`/events`} style={{ textDecoration: 'none' }}>
+            <Link to={`/events`} style={{ textDecoration: 'none', color:"black" }}>
               <MenuItem onClick={handleClose}>Profile</MenuItem>
             </Link>
             <Link to={`/login`} style={{ textDecoration: 'none', color:"black" }}>

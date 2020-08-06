@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import useStyles from '../styles/styles';
 import { TextField, Button, Grid } from '@material-ui/core';
 import axios from 'axios'
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 
 export default function SignupForm(props) {
   const classes = useStyles();
   const {goToSignUpPage} = props
+  let history = useHistory();
 
   window.localStorage.navTheme = 'BLACK'
 
@@ -34,6 +35,8 @@ export default function SignupForm(props) {
         // window.localStorage.setItem("id", res.data.id);
         window.localStorage.setItem("is_host", res.data.is_host);
         window.localStorage.setItem("is_performer", res.data.is_performer);
+        // <Route to={'/performer/profile'}/>
+        history.push("/performer/profile")
       });
 
 
@@ -58,7 +61,10 @@ export default function SignupForm(props) {
         <TextField id="standard-basic" label="Password" type="password" onChange={event => setUser({...user, password: event.target.value })} className={classes.field} />
         <TextField id="standard-basic" label="Password Confirmation" onChange={event => setUser({...user, password_confirmation: event.target.value })} type="password"  className={classes.field} />
         <div className={classes.nonField}>
-          <Button variant="contained" onClick={event => signUp()} color="primary" href="#">Submit</Button>
+        {/* <Link to={"/performer/profile"} style={{textDecoration:"none"}}> */}
+          <Button variant="contained"  onClick={event => signUp()} color="primary" href="#">Submit</Button>
+         {/* </Link> */}
+
           <Link to={"/signup"} style={{textDecoration:"none"}}>
             <Button  variant="contained" color="primary" href="#" >
                 back

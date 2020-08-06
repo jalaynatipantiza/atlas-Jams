@@ -35,7 +35,10 @@ function App() {
           <Route path='/signup/host' component={HostForm} />
           {/* <EventsForm /> */}
           <Route exact={true} path='/login' component={LoginForm} />
-          {/* <ProfilePage/> */}
+          {/* {page === LOGIN && <LoginForm />} */}
+          {/* <EventsPage /> */}
+          <Route exactl={true} path='/performer/profile' component={ProfilePage}/>
+          <Route exactl={true} path='/host/profile' component={HostProfile}/>
         </section>
       </main>
     </Router>
