@@ -28,6 +28,11 @@ class EventsController < ApplicationController
     # render json: @events
   end
 
+  def create
+    raise params.inspect
+
+  end
+
   def userEventsPerformer
     @events = EventsPerformer.joins(:event).where(user_id: params[:id]).select('*')
     render json: @events
@@ -41,4 +46,9 @@ class EventsController < ApplicationController
     
     render json: @events
   end
+
+  private
+  # def eventparams
+  #   params.require(:event).permit(:host, :space, :performers)
+  # end
 end
