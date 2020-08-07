@@ -106,7 +106,7 @@ export default function EventsPage() {
         <Grid item xs={6}>
           <Grid item className={classes.headerLeft}>
             {eventInfo && <div>
-            <TodayIcon />{eventInfo.event.date}/<AccessTimeIcon />{eventInfo.event.time}/<LocationOnIcon />{eventInfo.space.address} 
+            <TodayIcon />{eventInfo.event.date}/<AccessTimeIcon />{eventInfo.event.time} {eventInfo.event.am? 'am': 'pm'}/<LocationOnIcon />{eventInfo.space.address} 
             </div>
             }
           </Grid>
