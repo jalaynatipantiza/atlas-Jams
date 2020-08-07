@@ -19,7 +19,12 @@ class EventsController < ApplicationController
   end
 
   def create
-    raise params.inspect
+    @event  = Event.new(eventparams)
+    if @event.save!
+      render json: @event.id
+    else
+      render json:"didnt work"
+    end
 
   end
 
@@ -38,7 +43,7 @@ class EventsController < ApplicationController
   end
 
   private
-  # def eventparams
-  #   params.require(:event).permit(:host, :space, :performers)
-  # end
+  def eventparams
+    params.require(:event).permit(:space_id, :date, :duration, :name, :price, :description,:time, :am, :attendants, :event_picture)
+  end
 end
