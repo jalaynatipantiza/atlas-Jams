@@ -24,6 +24,7 @@ export default function EventsPage() {
     window.scrollTo(0, 0)
     axios.get(`/event/${event_id}`)
       .then(res => {
+        console.log(res.data);
         setEventInfo({...res.data});
         setPerformers(res.data.performers)
       })
@@ -55,11 +56,14 @@ export default function EventsPage() {
           </Grid>
         </Grid>
         <Grid item xs={6} className={classes.headerRight}>
+          {eventInfo &&
           <Grid item>
+            Spots remaining: {eventInfo.capacity - eventInfo.num_of_attendees}
             <Button variant="contained" color="primary">
               Attend
             </Button>
           </Grid>
+          }
         </Grid>
       </Grid>
 
