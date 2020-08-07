@@ -10,7 +10,7 @@ import useStyles from './styles/styles';
 import { Link } from 'react-router-dom';
 
 
-export default function EventsCard({ description, name, date, event_picture, time, am, id, key, setEvent }) {
+export default function EventsCard({ description, name, date, event_picture, time, am, id, key }) {
 
 
   const classes = useStyles();
@@ -18,7 +18,7 @@ export default function EventsCard({ description, name, date, event_picture, tim
   
 
   return (
-    <Link to={`/events/${id}`} style={{ textDecoration: 'none', color: "inherit" }} onClick={() => setEvent(id)}>
+    <Link to={`/events/${id}`} style={{ textDecoration: 'none', color: "inherit" }}>
       <Card className={classes.root} style={{margin:"10px"}}>
         <CardActionArea >
           <CardMedia

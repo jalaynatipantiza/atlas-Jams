@@ -5,16 +5,19 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import useStyles from './styles/styles';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
-export default function EventsPage({ event }) {
+export default function EventsPage() {
   const classes = useStyles();
+
+  const { event_id } = useParams();
 
   // event, performers, space, host
   const [eventInfo, setEventInfo ] = useState(null)
   
   useEffect(()=> {
     window.scrollTo(0, 0)
-    axios.get(`/event/${event}`)
+    axios.get(`/event/${event_id}`)
       .then(res => {
         console.log(res.data)
         setEventInfo({...res.data})
@@ -38,9 +41,10 @@ export default function EventsPage({ event }) {
       >
         <Grid item xs={6}>
           <Grid item className={classes.headerLeft}>
-  {/* {eventInfo &&  */}
-            <TodayIcon />Date/<AccessTimeIcon />Time/<LocationOnIcon />Location 
-  // }
+            {eventInfo && <div>
+            <TodayIcon />{eventInfo.event.date}/<AccessTimeIcon />Time/<LocationOnIcon />Location 
+            </div>
+            }
           </Grid>
         </Grid>
         <Grid item xs={6} className={classes.headerRight}>

@@ -4,11 +4,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Box, Typography } from '@material-ui/core';
 import RecordingList from './recordingList';
 import EventsCardList from '../EventsCards/EventCardList';
-import { useEffect } from 'react';
-import axios from 'axios'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
-const ProfilePage = (props) => {
+const ProfilePage = ({setEvent}) => {
   
   const [user, setUser] = useState({
     info: {},
@@ -16,18 +16,20 @@ const ProfilePage = (props) => {
     events: [],
   })
   
-  const userID = window.localStorage.id
+  // const userID = window.localStorage.id
+
+  const { id } = useParams();
   
   useEffect(()=>{
-    axios.get(`/users/${userID}`)
+    axios.get(`/users/${id}`)
       .then(res=>{
         setUser((prev)=>{ return {...prev, info: {...res.data}}})
 
-        axios.get(`/user/${userID}/recordings/`)
+        axios.get(`/user/${id}/recordings/`)
           .then(res =>{
             setUser((prev)=>{ return {...prev, recordings: [...res.data]}})
 
-            axios.get(`/user/${userID}/events`)
+            axios.get(`/user/${id}/events`)
               .then(res => {
                  setUser((prev)=>{ return {...prev, events: [...res.data]}})
     
@@ -104,7 +106,7 @@ const ProfilePage = (props) => {
         <Box className={classes.eventPro}>
           <Typography>
           <h1 style={{display: "flex", justifyContent: "center"}}>Upcoming Events</h1>
-          <EventsCardList events={user.events}/>
+          <EventsCardList events={user.events} setEvent={setEvent}/>
           </Typography>
         </Box>
         

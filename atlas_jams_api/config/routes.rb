@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   delete '/recordings/:recording_id' => "recordings#destroy"
   post '/recordings/:user_id/:name/:url/:description' => "recordings#create"
   get '/all/events' => "events#index"
-  
+
   # We'll need to change this
-  get '/user/:id/events' => "events#show"
+  get '/user/:id/events' => "events#userEvents"
   get '/event/:id' => "events#show"
   
   get '/spaces/user/:id' => "users#spacesByUser"

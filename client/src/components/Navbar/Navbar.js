@@ -66,6 +66,7 @@ const Navbar = (props) => {
   
   const localStorage = window.localStorage
   const userType = localStorage.user_type
+  const loggedIn = localStorage.id
  
   return(
     <React.Fragment>
@@ -87,16 +88,16 @@ const Navbar = (props) => {
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
-            <Link to={`${userType}/profile`} style={{ textDecoration: 'none', color:"black" }}>
-              <MenuItem onClick={handleClose}>Profile</MenuItem>
-            </Link>
-            <Link to={`/login`} style={{ textDecoration: 'none', color:"black" }}>
+      { loggedIn && <Link to={`${userType}/${loggedIn}`} style={{ textDecoration: 'none', color:"black" }}>
+            <MenuItem onClick={handleClose}>Profile</MenuItem>
+          </Link>}
+           { !loggedIn && <Link to={`/login`} style={{ textDecoration: 'none', color:"black" }}>
               <MenuItem onClick={handleClose}>Sign In</MenuItem>
-            </Link>
-              <MenuItem onClick={handleClose} onClick={() => signOut()}>Sign Out</MenuItem>
-            <Link to={'/signup'} style={{ textDecoration: 'none', color:"black" }}>
+            </Link>}
+             {loggedIn && <MenuItem onClick={handleClose} onClick={() => signOut()}>Sign Out</MenuItem>}
+           {!loggedIn && <Link to={'/signup'} style={{ textDecoration: 'none', color:"black" }}>
               <MenuItem onClick={handleClose}>Signup</MenuItem>
-            </Link>
+            </Link>}
           </Menu>
         </Toolbar>
       </AppBar>
