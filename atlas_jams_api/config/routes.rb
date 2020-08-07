@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   post '/recordings/:user_id/:name/:url/:description' => "recordings#create"
   get '/all/events' => "events#index"
 
+  get '/performers' => "users#performers"
   # We'll need to change this
   get '/user/:id/events' => "events#userEventsPerformer"
   get '/host/:id/events' => "events#userEventsHost"
