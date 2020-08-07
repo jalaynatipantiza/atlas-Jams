@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get '/user/:id/events' => "events#show"
   get '/event/:id' => "events#show"
   
-
+  get '/spaces/user/:id' => "users#spacesByUser"
 
   get '/signup' => 'users#new'
   

@@ -25,6 +25,6 @@ class EventsController < ApplicationController
     # render json: @performers
     render json: { 'event' => @event, 'performers' => @performers, 'space' => @space, 'host' => @host }
 
-    render json: @events
+
   end
 end
