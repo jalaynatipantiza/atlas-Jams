@@ -37,10 +37,11 @@ export default function EventsPage() {
         backgroundImage: `url("${backgroundImage}")`,
         minHeight: "350px",
         backgroundSize: 'cover',
+        backgroundPosition: "center",
+        
       },
       main: {
         padding: 20,
-        margin: 40,
         height: 300,
       }
       ,
@@ -54,7 +55,6 @@ export default function EventsPage() {
         flexGrow: 1,
       },
       image: {
-        // width: 126,
         height: 126,
         marginBottom: 20,
       },
@@ -85,7 +85,6 @@ export default function EventsPage() {
       },
       title: {
         margin: 20,
-        // paddingTop: 20,
         justify: 'center',
       }
     }));
@@ -97,7 +96,6 @@ export default function EventsPage() {
       <Grid 
         container
         className={classes.banner}
-        // style={backgroundImage={`url('${performers[0].profile_pic}')`}}
       >
 
       </Grid>
