@@ -3,9 +3,10 @@ import useStyles from '../styles/styles';
 import { TextField, Button, Grid, FormControl, NativeSelect, FormHelperText } from '@material-ui/core';
 import Checkbox from '@material-ui/core/Checkbox';
 import axios from 'axios';
-
+import {useHistory} from 'react-router-dom'
 
 export default function EventForm() {
+  const history = useHistory()
   const classes = useStyles();
   const [spaces, setSpaces] = useState()
   const [performers, setPerformers] = useState()
@@ -45,7 +46,6 @@ export default function EventForm() {
   const [performersOption , setPerformersOption] = useState([])
 
   const removePerformer = (key) => {
-    console.log('removing', key);
     setPerformersOption(prev => {
       prev.pop()
       setEvent((prev)=> {
@@ -94,6 +94,9 @@ export default function EventForm() {
       data: {
           ...event,
       }
+    })
+    .then((res) =>{
+      history.push(`/events/${res.data}`)
     })
   }
   //onChange={(event) => setSignUpInfo(prev => {return {...prev, host: event_name: event.target.value}})}

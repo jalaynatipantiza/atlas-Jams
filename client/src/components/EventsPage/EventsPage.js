@@ -92,6 +92,7 @@ export default function EventsPage() {
     const classes = useStyles();
   return (
     <React.Fragment>
+       <Link to={`/host/${eventInfo.host.id}`} style={{ textDecoration: 'none', color:"black" }}></Link>
       {performers.length > 0 &&
       <Grid 
         container
