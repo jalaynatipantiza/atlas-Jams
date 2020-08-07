@@ -105,7 +105,6 @@ const useStyles = makeStyles({
             <Typography className={classes.events}>
               <EventsCardList events={hostProfile.events}  sideScroll={true}/>
             </Typography>
-
           </Box>
           <div  className={classes.buttonEvent}>
           <Link to={`/create/event`} style={{ textDecoration: 'none', color:"black" }}>

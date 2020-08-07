@@ -1,24 +1,24 @@
 import React from 'react';
 import useStyles from './styles/styles';
 import { Grid, Box, Paper, Typography, ButtonBase, Button } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
-export default function PerformerCard({ profile_pic, name, description }) {
+export default function PerformerCard({ profile_pic, name, description, id }) {
   const classes = useStyles();
 
   return (
     <Grid item className={classes.main}>
-      <Typography variant="h4" className={classes.title}>
-        Performer(s)
-      </Typography>
-        <Paper className={classes.paper}>
+      <Paper className={classes.paper}>
         <Grid item>
           <Grid item>
+            <Link to={`/performer/${id}`} style={{ textDecoration: 'none', color:"black" }}>
             <ButtonBase className={classes.image}>
               <img className={classes.img} alt="complex" src={profile_pic} />
               <Typography gutterBottom variant="subtitle1" className={classes.name}>
                 {name} | Genre
               </Typography>
             </ButtonBase>
+            </Link>
           </Grid>
           <Grid item xs={12} sm container>
             <Grid item xs container direction="column" spacing={2}>

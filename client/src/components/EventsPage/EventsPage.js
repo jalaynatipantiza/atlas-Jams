@@ -5,7 +5,7 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import useStyles from './styles/styles';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import HostInfoBox from '../HostProfile/hostInfoBox';
 import PerformerCard from './PerformerCard';
 
@@ -30,7 +30,7 @@ export default function EventsPage() {
         const array = [];
 
         res.data.performers.forEach(performer => {
-          array.push(<PerformerCard profile_pic={performer.profile_pic} name={performer.name} description={performer.description} />)
+          array.push(<PerformerCard profile_pic={performer.profile_pic} name={performer.name} description={performer.description} id={performer.id} />)
         });
 
         setPerformers(array);
@@ -81,23 +81,23 @@ export default function EventsPage() {
         justify="center"
         alignItems="center"
       >
+        <Typography variant="h4" className={classes.title}>
+          Host
+        </Typography>
         <Grid item className={classes.main}>
-          <Typography variant="h4" className={classes.title}>
-            Host
-          </Typography>
           <Paper className={classes.paper}>
             <Grid item>
               <Grid item>
-                <ButtonBase className={classes.image}>
                   {eventInfo && 
+                <Link to={`/host/${eventInfo.host.id}`} style={{ textDecoration: 'none', color:"black" }}>
+                <ButtonBase className={classes.image}>
                   <img className={classes.img} alt="complex" src={`${eventInfo.host.profile_pic}`} />
-                  }
-                  {eventInfo &&
                   <Typography gutterBottom variant="subtitle1" className={classes.name}>
                       {eventInfo.host.name}
                     </Typography>
-                  }
                 </ButtonBase>
+                </Link>
+                  }
               </Grid>
               <Grid item xs={12} sm container>
                 <Grid item xs container direction="column" spacing={2}>
@@ -113,10 +113,14 @@ export default function EventsPage() {
             </Grid>
           </Paper>
         </Grid>
+        <Typography variant="h4" className={classes.title}>
+          Performer(s)
+        </Typography>
+        <Grid item className={classes.main}>
         {
           performers
         }
-
+        </Grid>
       </Grid>
     </React.Fragment>
   );
