@@ -16,6 +16,7 @@ import HomePage from './components/HomePage/HomePage';
 import { light } from '@material-ui/core/styles/createPalette';
 import ProfilePage from './components/PerformerProfile/performerProfilePage'
 import HostProfile from './components/HostProfile/HostProfile';
+import EventForm from './components/Forms/EventsForm/EventsForm';
 
 // const [state, setState] = useState({
 //   events: [],
@@ -40,7 +41,7 @@ function App() {
       <main>
         <section>
           <Route path={['/', '/events']} render={() => <Navbar navTheme={'LIGHT'} />} />
-          <Route path={['/signup', '/signup/performer', '/signup/host', '/login', '/performer/:id', '/host/:id' ]} render={() => <Navbar navTheme={'BLACK'} />} />
+          <Route path={['/signup', '/signup/performer', '/signup/host', '/login', '/performer/:id', '/host/:id', '/create/event' ]} render={() => <Navbar navTheme={'BLACK'} />} />
         </section>
         <section>
           <Route exact={true} path='/' render={() => <HomePage />} />
@@ -53,6 +54,8 @@ function App() {
           <Route exact={true} path='/login' component={LoginForm} />
           {/* {page === LOGIN && <LoginForm />} */}
           {/* <EventsPage /> */}
+          <Route exactl={true} path='/create/event' render={() => <EventForm />}/>
+
           <Route exactl={true} path='/performer/:id' render={() => <ProfilePage />}/>
           <Route exactl={true} path='/host/:id' render={() => <HostProfile />}/>
         </section>
