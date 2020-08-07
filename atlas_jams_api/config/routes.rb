@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   get '/all/events' => "events#index"
 
   # We'll need to change this
-  get '/user/:id/events' => "events#userEvents"
+  get '/user/:id/events' => "events#userEventsPerformer"
+  get '/host/:id/events' => "events#userEventsHost"
   get '/event/:id' => "events#show"
   
   get '/spaces/user/:id' => "users#spacesByUser"

@@ -7,34 +7,40 @@ import EventsCardList from '../EventsCards/EventCardList';
 import { Box, Typography} from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import axios from "axios";
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect} from 'react';
+import { useParams } from 'react-router-dom';
 
 
 
 const HostProfile = (props) => {
-
+  window.localStorage.navTheme = 'BLACK'
   const [hostProfile, setHostProfile] = useState({
     hostInfo: {},
     hostSpaces: [],
     events:[]
   });
-  const userID = window.localStorage.id
+  // const userID = window.localStorage.id
+  let { id } = useParams();
 
   useEffect(() => {
-    axios.get(`/users/${userID}`)
+    axios.get(`/users/${id}`)
       .then(res => {
         setHostProfile(prev => {return {...prev, hostInfo: {...res.data}}})
        
-        // axios.get(`/user/${userID}/events`)
-        // .then(res => {
-        //   console.log(res.data);
-        //   setHostProfile(prev=> { return {...prev, events: [...res.data]}})
-          
-        // })
-      })
-  }, [])
+        axios.get(`/host/${id}/events`)
+        .then(res => {
+          setHostProfile(prev=> { return {...prev, events: [...res.data]}})
 
+          axios.get(`/spaces/user/${id}`)
+          .then(res => {
+            setHostProfile(prev => {return {...prev, hostSpaces: [...res.data]}})
+            console.log("here!!!",res.data);
+          })
+        })
+      })
+    }, [])
+
+    
 const useStyles = makeStyles({
   mainPic: {
     backgroundImage:  `url("${hostProfile.hostInfo.profile_pic}")`,
@@ -87,7 +93,7 @@ const useStyles = makeStyles({
   
   return(
     <div >
-      <div style={{display:"flex",margin: "75px 75px 0 75px",  justifyContent: "space-between"}}>
+      <div style={{display:"flex",margin: "90px 75px 0 75px",  justifyContent: "space-between"}}>
       <div style={{height: "70vh"}}>
         <div className={classes.mainPic}></div>
         <HostInfoBox hostInfo={hostProfile.hostInfo}/>

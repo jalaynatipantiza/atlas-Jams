@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     render json: @user
   end
   def spacesByUser
-    @spaces = Space_pictures.all
+    @spaces = Space.joins(:space_pictures).where(user_id: params[:id]).select("*");
     render json: @spaces
   end
 

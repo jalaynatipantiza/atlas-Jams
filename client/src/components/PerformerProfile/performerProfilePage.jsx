@@ -15,7 +15,7 @@ const ProfilePage = ({setEvent}) => {
     recordings: [],
     events: [],
   })
-  
+  window.localStorage.navTheme = 'BLACK'
   // const userID = window.localStorage.id
 
   const { id } = useParams();
@@ -32,7 +32,7 @@ const ProfilePage = ({setEvent}) => {
             axios.get(`/user/${id}/events`)
               .then(res => {
                  setUser((prev)=>{ return {...prev, events: [...res.data]}})
-    
+                  
               })
           })
       })

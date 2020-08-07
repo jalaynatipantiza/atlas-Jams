@@ -40,7 +40,7 @@ function App() {
       <main>
         <section>
           <Route path={['/', '/events']} render={() => <Navbar navTheme={'LIGHT'} />} />
-          <Route path={['/signup', '/signup/performer', '/signup/host', '/login']} render={() => <Navbar navTheme={'BLACK'} />} />
+          <Route path={['/signup', '/signup/performer', '/signup/host', '/login', '/performer/:id', '/host/:id' ]} render={() => <Navbar navTheme={'BLACK'} />} />
         </section>
         <section>
           <Route exact={true} path='/' render={() => <HomePage />} />
@@ -54,7 +54,7 @@ function App() {
           {/* {page === LOGIN && <LoginForm />} */}
           {/* <EventsPage /> */}
           <Route exactl={true} path='/performer/:id' render={() => <ProfilePage />}/>
-          <Route exactl={true} path='/host/profile' render={() => <HostProfile />}/>
+          <Route exactl={true} path='/host/:id' render={() => <HostProfile />}/>
         </section>
       </main>
     </Router>
