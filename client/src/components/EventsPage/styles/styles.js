@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
   paper: {
     padding: theme.spacing(2),
     margin: 'auto',
-    maxWidth: 900,
+    width: 900,
   },
   headerRight: {
     display: 'flex',

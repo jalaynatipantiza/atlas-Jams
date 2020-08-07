@@ -6,6 +6,8 @@ import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import useStyles from './styles/styles';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import HostInfoBox from '../HostProfile/hostInfoBox';
+import PerformerCard from './PerformerCard';
 
 export default function EventsPage() {
   const classes = useStyles();
@@ -13,28 +15,45 @@ export default function EventsPage() {
   const { event_id } = useParams();
 
   // event, performers, space, host
-  const [eventInfo, setEventInfo ] = useState(null)
-  
+  const [eventInfo, setEventInfo ] = useState(null);
+
+  const [performers, setPerformers] = useState([]);
+
   useEffect(()=> {
     window.scrollTo(0, 0)
     axios.get(`/event/${event_id}`)
       .then(res => {
-        console.log(res.data)
         setEventInfo({...res.data})
-      })
-  }, [])
-  window.localStorage.navTheme = 'LIGHT'
-  
-  console.log('event info:', eventInfo);
 
+        console.log(res.data.performers)
+
+        const array = [];
+
+        res.data.performers.forEach(performer => {
+          array.push(<PerformerCard profile_pic={performer.profile_pic} name={performer.name} description={performer.description} />)
+        });
+
+        setPerformers(array);
+        
+      })
+    }, []);
+    
+
+    window.localStorage.navTheme = 'LIGHT'
+    
+    // console.log(eventInfo);
+      
   return (
     <React.Fragment>
+      {eventInfo &&
       <Grid 
         container
         className={classes.banner}
+        // style={backgroundImage={`url('${performers[0].profile_pic}')`}}
       >
 
       </Grid>
+      }
       <Grid
         container
         className={classes.header}
@@ -42,7 +61,7 @@ export default function EventsPage() {
         <Grid item xs={6}>
           <Grid item className={classes.headerLeft}>
             {eventInfo && <div>
-            <TodayIcon />{eventInfo.event.date}/<AccessTimeIcon />Time/<LocationOnIcon />Location 
+            <TodayIcon />{eventInfo.event.date}/<AccessTimeIcon />{eventInfo.event.time}/<LocationOnIcon />{eventInfo.host.location} 
             </div>
             }
           </Grid>
@@ -70,54 +89,33 @@ export default function EventsPage() {
             <Grid item>
               <Grid item>
                 <ButtonBase className={classes.image}>
-                  <img className={classes.img} alt="complex" src="https://images.unsplash.com/photo-1549834125-82d3c48159a3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" />
+                  {eventInfo && 
+                  <img className={classes.img} alt="complex" src={`${eventInfo.host.profile_pic}`} />
+                  }
+                  {eventInfo &&
                   <Typography gutterBottom variant="subtitle1" className={classes.name}>
-                      Host Name
+                      {eventInfo.host.name}
                     </Typography>
+                  }
                 </ButtonBase>
               </Grid>
               <Grid item xs={12} sm container>
                 <Grid item xs container direction="column" spacing={2}>
                   <Grid item xs>
+                    {eventInfo &&
                     <Typography variant="body2" gutterBottom>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lacinia massa erat, quis placerat erat cursus non. Nulla a pulvinar mi. Vestibulum mollis semper blandit. Nulla volutpat luctus lectus in placerat. Quisque pulvinar id lacus eget dictum. Integer ultrices volutpat orci at placerat. Maecenas porta non felis vitae pharetra. Suspendisse.
+                    {eventInfo.host.description}
                     </Typography>
+                    }
                   </Grid>
                 </Grid>
               </Grid>
             </Grid>
           </Paper>
         </Grid>
-
-        <Grid item className={classes.main}>
-          <Typography variant="h4" className={classes.title}>
-            Performer(s)
-          </Typography>
-          <Paper className={classes.paper}>
-            <Grid item>
-              <Grid item>
-                <ButtonBase className={classes.image}>
-                  <img className={classes.img} alt="complex" src="https://images.unsplash.com/photo-1549834125-82d3c48159a3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" />
-                  <Typography gutterBottom variant="subtitle1" className={classes.name}>
-                      Performer Name | Genre
-                    </Typography>
-                </ButtonBase>
-              </Grid>
-              <Grid item xs={12} sm container>
-                <Grid item xs container direction="column" spacing={2}>
-                  <Grid item xs>
-                    <Typography variant="body2" gutterBottom>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lacinia massa erat, quis placerat erat cursus non. Nulla a pulvinar mi. Vestibulum mollis semper blandit. Nulla volutpat luctus lectus in placerat. Quisque pulvinar id lacus eget dictum. Integer ultrices volutpat orci at placerat. Maecenas porta non felis vitae pharetra. Suspendisse.
-                    </Typography>
-                    <Typography variant="body2" color="textSecondary">
-                      
-                    </Typography>
-                  </Grid>
-                </Grid>
-              </Grid>
-            </Grid>
-          </Paper>
-        </Grid>
+        {
+          performers
+        }
 
       </Grid>
     </React.Fragment>
