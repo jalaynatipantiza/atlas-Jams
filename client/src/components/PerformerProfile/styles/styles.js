@@ -4,12 +4,13 @@ const useStyles = makeStyles({
 
 
   box: {
-    // height: "20vh",
-    // width: "45vw",
-    // overflow: "auto"
+    height: "20vh",
+    width: "45vw",
+    overflow: "auto"
   },
   singleVid:{
   display: "flex",
+  overflow: "auto"
   }
 });
 

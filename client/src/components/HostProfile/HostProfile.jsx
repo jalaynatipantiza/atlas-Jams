@@ -68,6 +68,8 @@ const useStyles = makeStyles({
   events: {
     justifyContent: "center",
     flexFlow: "row wrap",
+    display: "flex",
+    justifyContent: "center"
     
   },
   eventBox:{
@@ -91,6 +93,12 @@ const useStyles = makeStyles({
 });
 
   const classes = useStyles();
+
+
+  const userType = localStorage.user_type
+  const user_id = localStorage.id
+ 
+
   
   return(
     <div >
@@ -108,11 +116,11 @@ const useStyles = makeStyles({
 
           </Box>
           <div  className={classes.buttonEvent}>
-          <Link to={`/create/event`} style={{ textDecoration: 'none', color:"black" }}>
-          <Button className={classes.addButton} variant="contained" >
-            Add Event!
-          </Button>
-          </Link>
+         { userType === "host" && user_id === id && <Link to={`/create/event`} style={{ textDecoration: 'none', color:"black" }}>
+         <Button className={classes.addButton} variant="contained" >
+           Add Event!
+         </Button>
+         </Link>}
           </div>
         </div>
       </div>

@@ -41,7 +41,7 @@ const ProfilePage = ({setEvent}) => {
   const useStyles = makeStyles({
     mainPic: {
       backgroundImage:  `url(${user.info.profile_pic})`,
-      height: "100%",
+      height: "80%",
       marginTop: "12px",
       backgroundPosition: "center",
       backgroundSize: "cover"
@@ -59,21 +59,6 @@ const ProfilePage = ({setEvent}) => {
       alignItems: "center",
       font: "initial"
     },
-    // bgText: {
-    //   backgroundColor: "rgb(0,0,0)",
-    //   backgroundColor: "rgba(0,0,0, 0.4)", 
-    //   color: "white",
-    //   fontWeight: "bold",
-    //   border: "3px solid #f1f1f1",
-    //   position:" absolute",
-    //   top: " 20%",
-    //   left: "50%",
-    //   transform: "translate(-50%, -50%)",
-    //   zIndex: "2",
-    //   width: "30%",
-    //   padding:" 20px",
-    //   textAlign: "center",
-    // },
     videoHolder: {
     margin: "10px",
     overflow: "auto",
