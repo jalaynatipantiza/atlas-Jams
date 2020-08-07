@@ -8,7 +8,7 @@ import { useEffect } from 'react';
 import axios from 'axios'
 import { useState } from 'react';
 
-const ProfilePage = (props) => {
+const ProfilePage = ({setEvent}) => {
   
   const [user, setUser] = useState({
     info: {},
@@ -104,7 +104,7 @@ const ProfilePage = (props) => {
         <Box className={classes.eventPro}>
           <Typography>
           <h1 style={{display: "flex", justifyContent: "center"}}>Upcoming Events</h1>
-          <EventsCardList events={user.events}/>
+          <EventsCardList events={user.events} setEvent={setEvent}/>
           </Typography>
         </Box>
         

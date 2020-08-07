@@ -63,8 +63,8 @@ function App() {
           <Route exact={true} path='/login' component={LoginForm} />
           {/* {page === LOGIN && <LoginForm />} */}
           {/* <EventsPage /> */}
-          <Route exactl={true} path='/performer/profile' component={ProfilePage}/>
-          <Route exactl={true} path='/host/profile' component={HostProfile}/>
+          <Route exactl={true} path='/performer/profile' render={() => <ProfilePage setEvent={setEvent}/>}/>
+          <Route exactl={true} path='/host/profile' render={() => <HostProfile setEvent={setEvent}/>}/>
         </section>
       </main>
     </Router>

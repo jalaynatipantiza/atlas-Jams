@@ -9,7 +9,7 @@ import Link from '@material-ui/core/Link';
 
 const Profile = (props) => {
   const classes = useStyles();
-  const {name, email, number, description, location, size} = props.user
+  const {name, email, number, description, location, size, setEvent} = props.user
 
 
   const preventDefault = (event) => event.preventDefault();

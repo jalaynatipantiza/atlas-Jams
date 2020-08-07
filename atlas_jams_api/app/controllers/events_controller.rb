@@ -27,4 +27,9 @@ class EventsController < ApplicationController
 
     render json: @events
   end
+
+  def userEvents
+    @events = EventsPerformer.joins(:event).where(user_id: params[:id]).select('*')
+    render json: @events
+  end
 end
