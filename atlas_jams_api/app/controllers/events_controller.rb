@@ -28,8 +28,17 @@ class EventsController < ApplicationController
     # render json: @events
   end
 
-  def userEvents
+  def userEventsPerformer
     @events = EventsPerformer.joins(:event).where(user_id: params[:id]).select('*')
+    render json: @events
+  end
+
+  def userEventsHost
+    @spaces = Space.where(user_id: params[:id])
+    @events = []
+    @arrays = @spaces.map{|space| Event.where(space_id: space.id)}
+    @arrays.each{|array| array.each{|event| @events.push(event)}}
+    
     render json: @events
   end
 end
