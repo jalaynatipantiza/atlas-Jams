@@ -2,6 +2,11 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
+import GridListTileBar from '@material-ui/core/GridListTileBar';
+import IconButton from '@material-ui/core/IconButton';
+import StarBorderIcon from '@material-ui/icons/StarBorder';
+
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
   icon: {
     color: 'white',
   },
+  
 }));
 
 export default function Spaces (props) {
@@ -38,8 +44,23 @@ export default function Spaces (props) {
         {spaces.map((tile) => (
           <GridListTile key={tile.url} >
             <img src={tile.url} />
+
+            <GridListTileBar
+              title={tile.address}
+              titlePosition="top"
+              actionIcon={
+                <IconButton aria-label={`star ${tile.address}`} className={classes.icon}>
+                  <StarBorderIcon />
+                </IconButton>
+              }
+              actionPosition="left"
+              className={classes.titleBar}
+            />
+
           </GridListTile>
         ))}
+
+
         
       </GridList>
     </div>

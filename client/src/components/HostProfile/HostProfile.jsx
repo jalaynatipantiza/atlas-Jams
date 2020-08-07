@@ -19,7 +19,7 @@ const HostProfile = (props) => {
     hostSpaces: [],
     events:[]
   });
-  // const userID = window.localStorage.id
+  
   let { id } = useParams();
 
   useEffect(() => {
@@ -115,7 +115,7 @@ const useStyles = makeStyles({
       </div>
       
         <div>
-          <Spaces spaces={hostProfile.hostSpaces}/>
+          <Spaces spaces={hostProfile.hostSpaces} />
         </div>
 
     </div>
