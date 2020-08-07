@@ -10,7 +10,7 @@ import useStyles from './styles/styles';
 import { Link } from 'react-router-dom';
 
 
-export default function EventsCard({ description, name, date, event_picture, time, am, id, key }) {
+export default function EventsCard({ description, name, date, event_picture, time, am, id, key, capacity, num_of_attendees }) {
 
 
   const classes = useStyles();
