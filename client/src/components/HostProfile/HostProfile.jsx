@@ -93,7 +93,11 @@ const useStyles = makeStyles({
 
   const classes = useStyles();
 
-  const loggedIn = localStorage.id
+
+  const userType = localStorage.user_type
+  const user_id = localStorage.id
+ 
+
   
   return(
     <div >
@@ -110,7 +114,7 @@ const useStyles = makeStyles({
             </Typography>
           </Box>
           <div  className={classes.buttonEvent}>
-         { loggedIn && <Button className={classes.addButton} variant="contained" >
+         { userType === "host" && user_id === id && <Button className={classes.addButton} variant="contained" >
             Add Event!
           </Button>}
           </div>
