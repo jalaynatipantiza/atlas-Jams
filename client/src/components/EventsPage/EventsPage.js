@@ -92,12 +92,11 @@ export default function EventsPage() {
     const classes = useStyles();
   return (
     <React.Fragment>
-      {eventInfo &&
+      {performers.length > 0 &&
       <Grid 
         container
         className={classes.banner}
       >
-
       </Grid>
       }
       <Grid

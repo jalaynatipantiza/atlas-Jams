@@ -53,7 +53,8 @@ const useStyles = makeStyles(theme => ({
   },
   banner: {
     // opacity: 0.4,
-    backgroundImage: "url('https://images.unsplash.com/photo-1549834125-82d3c48159a3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60')",
+    // backgroundImage: "url('https://images.unsplash.com/photo-1549834125-82d3c48159a3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60')",
+    backgroundPosition: '50% 25%',
     filter: 'blur(2px)',
     minHeight: "350px",
     backgroundSize: 'cover',
