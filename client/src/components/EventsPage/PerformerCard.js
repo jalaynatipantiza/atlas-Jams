@@ -7,7 +7,6 @@ import MusicNoteIcon from '@material-ui/icons/MusicNote';
 export default function PerformerCard({ profile_pic, name, description, id, my_genres }) {
   const classes = useStyles();
 
-  // {my_genres.map((genre, index) => <span key={index}>/{genre}</span> )}
 
   return (
     <Grid item className={classes.main}>

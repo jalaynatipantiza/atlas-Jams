@@ -34,13 +34,12 @@ export default function EventsPage() {
       
   return (
     <React.Fragment>
-      {eventInfo &&
+      {performers.length > 0 &&
       <Grid 
         container
         className={classes.banner}
-        // style={backgroundImage={`url('${performers[0].profile_pic}')`}}
+        style={{backgroundImage: `url(${performers[0].profile_pic})`}}
       >
-
       </Grid>
       }
       <Grid
