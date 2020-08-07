@@ -1,16 +1,28 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Grid, Box, Paper, Typography, ButtonBase, Button } from '@material-ui/core';
 import TodayIcon from '@material-ui/icons/Today';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import useStyles from './styles/styles';
+import axios from 'axios';
 
-export default function EventsPage() {
+export default function EventsPage({ event }) {
   const classes = useStyles();
+
+  // event, performers, space, host
+  const [eventInfo, setEventInfo ] = useState(null)
+  
   useEffect(()=> {
     window.scrollTo(0, 0)
+    axios.get(`/event/${event}`)
+      .then(res => {
+        console.log(res.data)
+        setEventInfo({...res.data})
+      })
   }, [])
   window.localStorage.navTheme = 'LIGHT'
+  
+  console.log('event info:', eventInfo);
 
   return (
     <React.Fragment>
@@ -26,7 +38,9 @@ export default function EventsPage() {
       >
         <Grid item xs={6}>
           <Grid item className={classes.headerLeft}>
-            <TodayIcon />Date/<AccessTimeIcon />Time/<LocationOnIcon />Location
+  {/* {eventInfo &&  */}
+            <TodayIcon />Date/<AccessTimeIcon />Time/<LocationOnIcon />Location 
+  // }
           </Grid>
         </Grid>
         <Grid item xs={6} className={classes.headerRight}>

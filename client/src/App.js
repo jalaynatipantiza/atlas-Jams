@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import SearchBox from './components/Navbar/searchBox';
@@ -17,51 +17,33 @@ import { light } from '@material-ui/core/styles/createPalette';
 import ProfilePage from './components/PerformerProfile/performerProfilePage'
 import HostProfile from './components/HostProfile/HostProfile';
 
-
-const HOMEPAGE = "HOMEPAGE";
-const PROFILE = "PROFILE";
-const SIGNUP = "SIGNUP";
-const PERFORMERFORM = "PERFORMERFORM";
-const HOSTFORM = "HOSTFORM";
-const LOGIN = "LOGIN";
-
-//nav state
-const LIGHT = 'LIGHT'
-const DARK = 'DARK'
-const BLACK = 'BLACK'
+// const [state, setState] = useState({
+//   events: [],
+//   performers: [],
+//   host: {},
+// });
 
 function App() {
 
-  const [page, setPage] = useState(HOMEPAGE)
-  const [navTheme, setNavTheme] = useState(LIGHT)
+  // const [events, setEvents] = useState([]);
+  const [event, setEvent] = useState({});
 
-  const goToHome = () => {  
-    setPage(HOMEPAGE);
-    setNavTheme(LIGHT);
-  }
-  const goToProfile = () => {
-    setPage(PROFILE)
-    setNavTheme(LIGHT);
-  }
+  // https://blogreact.com/share-data-between-routes-in-react/
+  // https://reactjs.org/docs/hooks-reference.html#functional-updates
+  // https://www.pluralsight.com/guides/how-to-use-react-context-to-share-data-between-components
+ 
+  // useEffect(()=>{
+  //   window.scrollTo(0, 0)
+  //   axios.get("/all/events")
+  //   .then(res => {
+  //     console.log('res.data', res.data)
+  //     setEvents(res.data)
+  //   })
+  // }, [])
 
-  const goToSignUpPage = () => {
-    setPage(SIGNUP);
-    setNavTheme(BLACK);
-  }
-  const goToPerformerForm = () => {
-    setPage(PERFORMERFORM);
-    setNavTheme(BLACK);
-  };
+  // console.log('events:', events);
 
-  const goToHostForm = () => {
-    setPage(HOSTFORM);
-    setNavTheme(BLACK)
-  };
-
-  const goToLogIn = () => {
-    setPage(LOGIN);
-    setNavTheme(BLACK);
-  }
+  console.log('event', event);
   
   return (
     <Router>
@@ -69,22 +51,14 @@ function App() {
         <section>
           <Route path={['/', '/events']} render={() => <Navbar navTheme={'LIGHT'} />} />
           <Route path={['/signup', '/signup/performer', '/signup/host', '/login']} render={() => <Navbar navTheme={'BLACK'} />} />
-          {/* <Navbar 
-            navTheme={navTheme}
-          /> */}
         </section>
         <section>
-          <Route exact={true} path='/' component={HomePage} />
-            {/* <HomePage/> */}
-          {/* </Route> */}
-          <Route path='/events' component={EventsPage} />
-          {/* {page === PROFILE && <EventsPage/>} */}
+          <Route exact={true} path='/' render={() => <HomePage setEvent={setEvent} />} />
+          <Route path={
+            `/events/${event}`} render={() => <EventsPage event={event} />}/>
           <Route exact={true} path='/signup' component={SignupForm} />
-          {/* {page === SIGNUP && <SignupForm/>} */}
           <Route path='/signup/performer' component={PerformerForm} />
-          {/* {page === PERFORMERFORM && <PerformerForm />} */}
           <Route path='/signup/host' component={HostForm} />
-          {/* {page === HOSTFORM && <HostForm />} */}
           {/* <EventsForm /> */}
           <Route exact={true} path='/login' component={LoginForm} />
           {/* {page === LOGIN && <LoginForm />} */}

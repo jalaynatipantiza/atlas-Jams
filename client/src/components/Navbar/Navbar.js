@@ -28,8 +28,8 @@ const Navbar = (props) => {
     setAnchorEl(null);
   };
 
-  // const navTheme = window.localStorage.navTheme
   const classes = useStyles();
+
   const pickStyle = () => {
     if (navTheme === "DARK"){
       return {
@@ -54,6 +54,7 @@ const Navbar = (props) => {
       toolBarTwo: classes.toolbar
     }
   }
+
   const signOut = () => {
     Axios.get("/logout")
     .then(() => {
@@ -62,6 +63,7 @@ const Navbar = (props) => {
       history.push("/")
     })
   }
+  
   const localStorage = window.localStorage
   const userType = localStorage.user_type
   const loggedIn = localStorage.id
