@@ -1,6 +1,14 @@
 class EventsController < ApplicationController
   def index
-    @events = Event.all 
+
+    @events = Event.includes(:space).includes(:event_attendees).map do |event|
+      {
+        capacity: event.space.capacity,
+        event: event,
+        num_of_attendees: event.event_attendees.size
+      }
+    end
+
     render json: @events
   end
 
@@ -15,7 +23,7 @@ class EventsController < ApplicationController
 
     @performers = EventsPerformer.joins(:user).where(event_id: @event.id).select('*').as_json(methods: [:my_genres])
 
-    render json: { 'event' => @event, 'performers' => @performers, 'space' => @space, 'host' => @host }
+    render json: { 'event' => @event, 'performers' => @performers, 'space' => @space, 'host' => @host, 'capacity' => @event.space.capacity, 'num_of_attendees' => @event.event_attendees.size }
   end
 
   def create
