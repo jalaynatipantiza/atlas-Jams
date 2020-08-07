@@ -18,22 +18,11 @@ import ProfilePage from './components/PerformerProfile/performerProfilePage'
 import HostProfile from './components/HostProfile/HostProfile';
 import EventForm from './components/Forms/EventsForm/EventsForm';
 
-// const [state, setState] = useState({
-//   events: [],
-//   performers: [],
-//   host: {},
-// });
+// https://blogreact.com/share-data-between-routes-in-react/
+// https://reactjs.org/docs/hooks-reference.html#functional-updates
+// https://www.pluralsight.com/guides/how-to-use-react-context-to-share-data-between-components
 
 function App() {
-
-  // const [events, setEvents] = useState([]);
-
-  // https://blogreact.com/share-data-between-routes-in-react/
-  // https://reactjs.org/docs/hooks-reference.html#functional-updates
-  // https://www.pluralsight.com/guides/how-to-use-react-context-to-share-data-between-components
- 
-
-  // console.log('events:', events);
 
   
   return (
@@ -52,10 +41,7 @@ function App() {
           <Route path='/signup/host' component={HostForm} />
           {/* <EventsForm /> */}
           <Route exact={true} path='/login' component={LoginForm} />
-          {/* {page === LOGIN && <LoginForm />} */}
-          {/* <EventsPage /> */}
           <Route exactl={true} path='/create/event' render={() => <EventForm />}/>
-
           <Route exactl={true} path='/performer/:id' render={() => <ProfilePage />}/>
           <Route exactl={true} path='/host/:id' render={() => <HostProfile />}/>
         </section>
