@@ -3,7 +3,7 @@ import useStyles from '../styles/styles';
 import { TextField, Button, Grid } from '@material-ui/core';
 
 
-export default function SignupForm() {
+export default function EventForm() {
   const classes = useStyles();
 
   return (

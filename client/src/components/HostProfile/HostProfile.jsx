@@ -9,6 +9,7 @@ import Button from '@material-ui/core/Button';
 import axios from "axios";
 import { useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
+import {Link} from 'react-router-dom'
 
 
 
@@ -107,9 +108,11 @@ const useStyles = makeStyles({
 
           </Box>
           <div  className={classes.buttonEvent}>
+          <Link to={`/create/event`} style={{ textDecoration: 'none', color:"black" }}>
           <Button className={classes.addButton} variant="contained" >
             Add Event!
           </Button>
+          </Link>
           </div>
         </div>
       </div>
