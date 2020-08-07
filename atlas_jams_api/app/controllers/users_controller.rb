@@ -16,6 +16,11 @@ class UsersController < ApplicationController
   def new
   end
 
+  def performers
+    @performers = User.all.where(is_performer: true)
+    render json: @performers
+  end
+
   def create
     user = User.new(user_params)
     if user.save
