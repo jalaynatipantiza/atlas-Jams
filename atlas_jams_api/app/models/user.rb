@@ -10,4 +10,5 @@ class User < ApplicationRecord
   has_many :events_performers
   has_many :genres
   has_many :recordings
+  has_many :event_attendees
 end
