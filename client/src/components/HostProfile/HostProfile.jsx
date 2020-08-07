@@ -104,7 +104,6 @@ const useStyles = makeStyles({
             <Typography className={classes.events}>
               <EventsCardList events={hostProfile.events}  sideScroll={true}/>
             </Typography>
-
           </Box>
           <div  className={classes.buttonEvent}>
           <Button className={classes.addButton} variant="contained" >
