@@ -113,6 +113,7 @@ const useStyles = makeStyles({
             <Typography className={classes.events}>
               <EventsCardList events={hostProfile.events}  sideScroll={true}/>
             </Typography>
+
           </Box>
           <div  className={classes.buttonEvent}>
          { userType === "host" && user_id === id && <Link to={`/create/event`} style={{ textDecoration: 'none', color:"black" }}>
