@@ -67,6 +67,8 @@ const useStyles = makeStyles({
   events: {
     justifyContent: "center",
     flexFlow: "row wrap",
+    display: "flex",
+    justifyContent: "center"
     
   },
   eventBox:{
