@@ -21,6 +21,13 @@ class EventsController < ApplicationController
   def create
     @event  = Event.new(eventparams)
     if @event.save!
+      performers = params[:performers]
+      performers_official = performers.uniq
+
+      performers_official.each{|performer| EventsPerformer.create({
+        user_id: performer,
+        event_id: @event.id
+      })}
       render json: @event.id
     else
       render json:"didnt work"
