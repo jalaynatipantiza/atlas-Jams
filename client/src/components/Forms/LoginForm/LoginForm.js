@@ -38,13 +38,13 @@ export default function SignupForm() {
         window.localStorage.setItem("id", res.data.id);
 
         if(res.data.is_host){
-          history.push("/host/profile")
+          history.push(`/host/${res.data.id}`);
         }
         else if (res.data.is_performer){
-          history.push("/performer/profile")
+          history.push(`/performer/${res.data.id}`);
         }
         else {
-          history.push('/')
+          history.push('/');
         }
       });
   };

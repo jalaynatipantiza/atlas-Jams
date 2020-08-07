@@ -26,10 +26,7 @@ function HomePage({ setEvent }) {
       <SearchBox />
       <p style={{display:"flex", justifyContent:"center"}}>ALL UPCOMING EVENTS</p>
       <div style={{height: "100vh", width: "100vw", display:"flex", justifyContent:"center"}}>
-       <EventsCardList 
-        events={events} 
-        setEvent={setEvent}
-       />
+       <EventsCardList events={events} />
       </div>
     </React.Fragment>
       

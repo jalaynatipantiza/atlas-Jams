@@ -42,7 +42,7 @@ export default function SignupForm(props) {
         window.localStorage.setItem("user_type", userType);
         window.localStorage.setItem("id", res.data.id);
 
-        history.push("/host/profile")
+        history.push(`/host/${res.data.id}`)
 
       });
   };

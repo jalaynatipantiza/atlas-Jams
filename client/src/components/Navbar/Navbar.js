@@ -88,7 +88,7 @@ const Navbar = (props) => {
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
-      { loggedIn && <Link to={`${userType}/profile`} style={{ textDecoration: 'none', color:"black" }}>
+      { loggedIn && <Link to={`${userType}/${loggedIn}`} style={{ textDecoration: 'none', color:"black" }}>
             <MenuItem onClick={handleClose}>Profile</MenuItem>
           </Link>}
            { !loggedIn && <Link to={`/login`} style={{ textDecoration: 'none', color:"black" }}>

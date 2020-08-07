@@ -4,9 +4,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Box, Typography } from '@material-ui/core';
 import RecordingList from './recordingList';
 import EventsCardList from '../EventsCards/EventCardList';
-import { useEffect } from 'react';
-import axios from 'axios'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 const ProfilePage = ({setEvent}) => {
   
@@ -16,18 +16,20 @@ const ProfilePage = ({setEvent}) => {
     events: [],
   })
   
-  const userID = window.localStorage.id
+  // const userID = window.localStorage.id
+
+  const { id } = useParams();
   
   useEffect(()=>{
-    axios.get(`/users/${userID}`)
+    axios.get(`/users/${id}`)
       .then(res=>{
         setUser((prev)=>{ return {...prev, info: {...res.data}}})
 
-        axios.get(`/user/${userID}/recordings/`)
+        axios.get(`/user/${id}/recordings/`)
           .then(res =>{
             setUser((prev)=>{ return {...prev, recordings: [...res.data]}})
 
-            axios.get(`/user/${userID}/events`)
+            axios.get(`/user/${id}/events`)
               .then(res => {
                  setUser((prev)=>{ return {...prev, events: [...res.data]}})
     

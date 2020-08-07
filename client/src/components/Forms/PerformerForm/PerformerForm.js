@@ -40,7 +40,7 @@ export default function SignupForm(props) {
         window.localStorage.setItem("user_type", userType);
         window.localStorage.setItem("id", res.data.id);
 
-        history.push("/performer/profile")
+        history.push(`/performer/${res.data.id}`);
       });
 
 

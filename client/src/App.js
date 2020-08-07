@@ -26,24 +26,14 @@ import HostProfile from './components/HostProfile/HostProfile';
 function App() {
 
   // const [events, setEvents] = useState([]);
-  const [event, setEvent] = useState({});
 
   // https://blogreact.com/share-data-between-routes-in-react/
   // https://reactjs.org/docs/hooks-reference.html#functional-updates
   // https://www.pluralsight.com/guides/how-to-use-react-context-to-share-data-between-components
  
-  // useEffect(()=>{
-  //   window.scrollTo(0, 0)
-  //   axios.get("/all/events")
-  //   .then(res => {
-  //     console.log('res.data', res.data)
-  //     setEvents(res.data)
-  //   })
-  // }, [])
 
   // console.log('events:', events);
 
-  console.log('event', event);
   
   return (
     <Router>
@@ -53,9 +43,9 @@ function App() {
           <Route path={['/signup', '/signup/performer', '/signup/host', '/login']} render={() => <Navbar navTheme={'BLACK'} />} />
         </section>
         <section>
-          <Route exact={true} path='/' render={() => <HomePage setEvent={setEvent} />} />
+          <Route exact={true} path='/' render={() => <HomePage />} />
           <Route path={
-            `/events/${event}`} render={() => <EventsPage event={event} />}/>
+            `/events/:event_id`} render={() => <EventsPage />}/>
           <Route exact={true} path='/signup' component={SignupForm} />
           <Route path='/signup/performer' component={PerformerForm} />
           <Route path='/signup/host' component={HostForm} />
@@ -63,8 +53,8 @@ function App() {
           <Route exact={true} path='/login' component={LoginForm} />
           {/* {page === LOGIN && <LoginForm />} */}
           {/* <EventsPage /> */}
-          <Route exactl={true} path='/performer/profile' render={() => <ProfilePage setEvent={setEvent}/>}/>
-          <Route exactl={true} path='/host/profile' render={() => <HostProfile setEvent={setEvent}/>}/>
+          <Route exactl={true} path='/performer/:id' render={() => <ProfilePage />}/>
+          <Route exactl={true} path='/host/profile' render={() => <HostProfile />}/>
         </section>
       </main>
     </Router>
