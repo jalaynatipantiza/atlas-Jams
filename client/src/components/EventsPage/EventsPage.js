@@ -19,29 +19,18 @@ export default function EventsPage() {
 
   const [performers, setPerformers] = useState([]);
 
+
   useEffect(()=> {
     window.scrollTo(0, 0)
     axios.get(`/event/${event_id}`)
       .then(res => {
-        setEventInfo({...res.data})
-
-        console.log(res.data.performers)
-
-        const array = [];
-
-        res.data.performers.forEach(performer => {
-          array.push(<PerformerCard profile_pic={performer.profile_pic} name={performer.name} description={performer.description} id={performer.id} />)
-        });
-
-        setPerformers(array);
-        
+        setEventInfo({...res.data});
+        setPerformers(res.data.performers)
       })
-    }, []);
-    
+  }, []);
 
     window.localStorage.navTheme = 'LIGHT'
     
-    // console.log(eventInfo);
       
   return (
     <React.Fragment>
@@ -118,7 +107,7 @@ export default function EventsPage() {
         </Typography>
         <Grid item className={classes.main}>
         {
-          performers
+          performers.length > 0 && performers.map((performer)=><PerformerCard profile_pic={performer.profile_pic} name={performer.name} description={performer.description} id={performer.id} my_genres={performer.my_genres} key={performer.id}/>)
         }
         </Grid>
       </Grid>
