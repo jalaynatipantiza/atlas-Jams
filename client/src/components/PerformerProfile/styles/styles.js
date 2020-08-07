@@ -4,16 +4,12 @@ const useStyles = makeStyles({
 
 
   box: {
-    height: "40vh",
-    width: "45vw",
+    // height: "20vh",
+    // width: "45vw",
     // overflow: "auto"
   },
-  profileCard: {
-    padding: "50px",
-    height: "70vh",
-  },
   singleVid:{
-  display: "flex"
+  display: "flex",
   }
 });
 

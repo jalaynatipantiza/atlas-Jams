@@ -33,7 +33,7 @@ const Profile = (props) => {
           {`Size: ${size}`}
           </Typography>
 
-        <Box className={classes.box}>
+        <Box >
           <Typography paragraph>
           {description}
           </Typography>
