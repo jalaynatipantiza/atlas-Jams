@@ -14,7 +14,7 @@ function HomePage({ setEvent }) {
     axios.get("/all/events")
     .then(res => {
       console.log('res.data', res.data)
-      setEvents(res.data)
+      setEvents(res.data);
     })
   }, [])
 
