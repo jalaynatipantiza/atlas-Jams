@@ -3,23 +3,24 @@ import { Grid, Box, Paper, Typography, ButtonBase, Button } from '@material-ui/c
 import TodayIcon from '@material-ui/icons/Today';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
-import useStyles from './styles/styles';
 import axios from 'axios';
 import { useParams, Link } from 'react-router-dom';
 import HostInfoBox from '../HostProfile/hostInfoBox';
 import PerformerCard from './PerformerCard';
+import { makeStyles } from '@material-ui/core/styles';
+
 
 export default function EventsPage() {
-  const classes = useStyles();
 
   const { event_id } = useParams();
 
   // event, performers, space, host
   const [eventInfo, setEventInfo ] = useState(null);
-
+  
   const [performers, setPerformers] = useState([]);
+  console.log("right here", eventInfo);
 
-
+  
   useEffect(()=> {
     window.scrollTo(0, 0)
     axios.get(`/event/${event_id}`)
@@ -29,17 +30,74 @@ export default function EventsPage() {
         setPerformers(res.data.performers)
       })
   }, []);
-
-    window.localStorage.navTheme = 'LIGHT'
+  
+  const backgroundImage = eventInfo ? eventInfo.event.event_picture : "https://static.dribbble.com/users/5661/screenshots/2491233/loading-gif-800x600.gif"
+  window.localStorage.navTheme = 'LIGHT'
+  const useStyles = makeStyles(theme => ({
+    banner: {
+        backgroundImage: `url("${backgroundImage}")`,
+        minHeight: "350px",
+        backgroundSize: 'cover',
+        backgroundPosition: "center",
+        
+      },
+      main: {
+        padding: 20,
+        height: 300,
+      }
+      ,
+      header: {
+        padding: 20,
+        marginTop: 90,
+        height: 100,
+        display: 'flex',
+      },
+      root: {
+        flexGrow: 1,
+      },
+      image: {
+        height: 126,
+        marginBottom: 20,
+      },
+      img: {
+        margin: 'auto',
+        display: 'flex',
+        maxWidth: '100%',
+        maxHeight: '100%',
+        borderRadius: 7,
+      },
+      paper: {
+        padding: theme.spacing(2),
+        margin: 'auto',
+        width: 900,
+      },
+      headerRight: {
+        display: 'flex',
+        justifyContent: 'flex-end',
+        paddingRight: 40,
+      },
+      headerLeft: {
+        display: 'flex',
+        paddingLeft: 40,
+      },
+      name: {
+        paddingLeft: 20,
+        paddingBottom: 15,
+      },
+      title: {
+        margin: 20,
+        justify: 'center',
+      }
+    }));
     
-      
+    const classes = useStyles();
   return (
     <React.Fragment>
+       <Link to={`/host/${eventInfo.host.id}`} style={{ textDecoration: 'none', color:"black" }}></Link>
       {performers.length > 0 &&
       <Grid 
         container
         className={classes.banner}
-        style={{backgroundImage: `url(${performers[0].profile_pic})`}}
       >
       </Grid>
       }
@@ -50,7 +108,7 @@ export default function EventsPage() {
         <Grid item xs={6}>
           <Grid item className={classes.headerLeft}>
             {eventInfo && <div>
-            <TodayIcon />{eventInfo.event.date}/<AccessTimeIcon />{eventInfo.event.time}/<LocationOnIcon />{eventInfo.space.address} 
+            <TodayIcon />{eventInfo.event.date}/<AccessTimeIcon />{eventInfo.event.time} {eventInfo.event.am? 'am': 'pm'}/<LocationOnIcon />{eventInfo.space.address} 
             </div>
             }
           </Grid>
