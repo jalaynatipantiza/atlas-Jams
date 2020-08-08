@@ -6,9 +6,9 @@ import useStyles from './styles/styles';
 export default function EventsCardList({ events, sideScroll }) {
   const classes = useStyles();
 
-
-  const list = events.map(({event, capacity, num_of_attendees})=>{
-    return <EventsCards id={event.id} key={event.id} description={event.description} name={event.name} time={event.time} date={event.date} event_picture={event.event_picture} am={event.am} capacity={capacity} num_of_attendees={num_of_attendees} />
+  console.log(events);
+  const list = events.map((event)=>{
+    return <EventsCards id={event.id} key={event.id} description={event.description} name={event.name} time={event.time} date={event.date} event_picture={event.event_picture} am={event.am}  />
   })
   return (
     <div className={classes.card} style={sideScroll? {flexWrap:"nowrap"}: null}>
