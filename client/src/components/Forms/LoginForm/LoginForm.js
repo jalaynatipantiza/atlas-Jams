@@ -28,13 +28,15 @@ export default function SignupForm() {
       }
     })
       .then(res => {
-        let userType = "none"
+        let userType = "attendee"
         if(res.data.is_performer){
           userType = "performer"
         } else if(res.data.is_host){
           userType = "host"
         }
         window.localStorage.setItem("user_type", userType);
+
+
         window.localStorage.setItem("id", res.data.id);
 
         if(res.data.is_host){

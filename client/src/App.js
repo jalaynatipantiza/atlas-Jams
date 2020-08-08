@@ -17,6 +17,7 @@ import { light } from '@material-ui/core/styles/createPalette';
 import ProfilePage from './components/PerformerProfile/performerProfilePage'
 import HostProfile from './components/HostProfile/HostProfile';
 import EventForm from './components/Forms/EventsForm/EventsForm';
+import AttendeeProfile from './components/attendeeProfile/attendeeProfile'
 
 // https://blogreact.com/share-data-between-routes-in-react/
 // https://reactjs.org/docs/hooks-reference.html#functional-updates
@@ -44,6 +45,7 @@ function App() {
           <Route exactl={true} path='/create/event' render={() => <EventForm />}/>
           <Route exactl={true} path='/performer/:id' render={() => <ProfilePage />}/>
           <Route exactl={true} path='/host/:id' render={() => <HostProfile />}/>
+          <Route exactl={true} path='/attendee/:id' render={() => <AttendeeProfile />}/>
         </section>
       </main>
     </Router>
