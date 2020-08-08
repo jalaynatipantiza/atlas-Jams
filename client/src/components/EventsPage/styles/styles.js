@@ -2,26 +2,35 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
   main: {
+    fontFamily: "initial",
     padding: 20,
     margin: 40,
     height: 300,
   }
   ,
   header: {
+    fontFamily: "initial",
+
     padding: 20,
     marginTop: 90,
     height: 100,
     display: 'flex',
   },
   root: {
+    fontFamily: "initial",
+
     flexGrow: 1,
   },
   image: {
+    fontFamily: "initial",
+
     // width: 126,
     height: 126,
     marginBottom: 20,
   },
   img: {
+    fontFamily: "initial",
+
     margin: 'auto',
     display: 'flex',
     maxWidth: '100%',
@@ -29,33 +38,45 @@ const useStyles = makeStyles(theme => ({
     borderRadius: 7,
   },
   paper: {
+    fontFamily: "initial",
+
     padding: theme.spacing(2),
     margin: 'auto',
     width: 900,
   },
   headerRight: {
+    fontFamily: "initial",
+
     display: 'flex',
     justifyContent: 'flex-end',
     paddingRight: 40,
   },
   headerLeft: {
+    fontFamily: "initial",
+
     display: 'flex',
     paddingLeft: 40,
   },
   name: {
+    fontFamily: "initial",
+
     paddingLeft: 20,
     paddingBottom: 15,
   },
   title: {
+    fontFamily: "initial",
+
     margin: 20,
     // paddingTop: 20,
     justify: 'center',
   },
   banner: {
+    fontFamily: "initial",
+
     // opacity: 0.4,
     // backgroundImage: "url('https://images.unsplash.com/photo-1549834125-82d3c48159a3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60')",
     backgroundPosition: 'center',
-    filter: 'blur(2px)',
+    // filter: 'blur(2px)',
     minHeight: "350px",
     backgroundSize: 'cover',
   }

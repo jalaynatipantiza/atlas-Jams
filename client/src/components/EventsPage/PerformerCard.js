@@ -17,8 +17,8 @@ export default function PerformerCard({ profile_pic, name, description, id, my_g
   }, [])
 
   return (
-    <Link to={`/performer/${id}`} style={{ textDecoration: 'none', color:"black" }}>
-      <Grid item className={classes.main}>
+    <Link to={`/performer/${id}`} style={{ textDecoration: 'none', color:"black", margin:"10px", fontFamily:"initial" }}>
+      {/* <Grid item className={classes.main}> */}
         <Paper className={classes.paper}>
           <Grid item>
             <Grid item>
@@ -48,7 +48,7 @@ export default function PerformerCard({ profile_pic, name, description, id, my_g
             </Grid>
           </Grid>
         </Paper>
-      </Grid>
+      {/* </Grid> */}
     </Link>
   )
 };
