@@ -8,97 +8,105 @@ import { useParams, Link } from 'react-router-dom';
 import HostInfoBox from '../HostProfile/hostInfoBox';
 import PerformerCard from './PerformerCard';
 import { makeStyles } from '@material-ui/core/styles';
-import { useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom';
+import useStyles from './styles/styles';
 
 
 export default function EventsPage() {
-  const history = useHistory()
+
+  // VARIABLES
+  const userType = window.localStorage.user_type;
+
+  const user_id = window.localStorage.id;
+
+  const history = useHistory();
+
   const { event_id } = useParams();
 
-  // event, performers, space, host
+  // STATE HOOKS
   const [eventInfo, setEventInfo ] = useState(null);
-  
+
   const [performers, setPerformers] = useState([]);
-  console.log("right here", eventInfo);
+
+  const [isAttending, setIsAttending] = useState(false);
+
+  // console.log("right here", eventInfo);
+
+  // GRABS STATE FROM BACKEND
+  useEffect(()=> {
+    window.scrollTo(0, 0);
+    axios.get(`/event/${event_id}`)
+    .then(res => {
+      console.log(res.data);
+      setEventInfo({...res.data});
+      setPerformers(res.data.performers);
+
+      axios.get(`/attending/${user_id}/${event_id}`)
+      .then(res => {
+        console.log('attending:', res.data);
+
+        if (res.data.length > 0) {
+          setIsAttending(true);
+        } else {
+
+          console.log('attending:', res.data);
+          setIsAttending(false);
+        };
+      });
+    });
+  }, []);
+  
 
   const deleteEvent = () => {
     axios.delete(`/event/${event_id}`)
     .then(()=> {
-      history.push(`/`)
-    })
-  }
-  useEffect(()=> {
-    window.scrollTo(0, 0)
-    axios.get(`/event/${event_id}`)
-      .then(res => {
-        console.log(res.data);
-        setEventInfo({...res.data});
-        setPerformers(res.data.performers)
-      })
-  }, []);
+      history.push(`/`);
+    });
+  };
   
-  const backgroundImage = eventInfo ? eventInfo.event.event_picture : "https://static.dribbble.com/users/5661/screenshots/2491233/loading-gif-800x600.gif"
-  window.localStorage.navTheme = 'LIGHT'
-  const useStyles = makeStyles(theme => ({
-    banner: {
-        backgroundImage: `url("${backgroundImage}")`,
-        minHeight: "350px",
-        backgroundSize: 'cover',
-        backgroundPosition: "center",
-        
-      },
-      main: {
-        padding: 20,
-        height: 300,
+  const unattend = () => {
+    axios({
+      method: 'delete',
+      url: '/attending',
+      data: {
+        event_attendee: {
+          user_id: user_id,
+          event_id: eventInfo.event.id
+        }
       }
-      ,
-      header: {
-        padding: 20,
-        marginTop: 90,
-        height: 100,
-        display: 'flex',
+    })
+    .then(()=>{
+      setEventInfo(prev => {
+        return {...prev, num_of_attendees: prev.num_of_attendees - 1};
+      });
+      setIsAttending(false);
+    });
+  };
+
+  const attend = () => {
+    axios({
+      method: 'post',
+      url: '/attending',
+      data: {
+        event_attendee: {
+          user_id: user_id,
+          event_id: eventInfo.event.id
+        }
       },
-      root: {
-        flexGrow: 1,
-      },
-      image: {
-        height: 126,
-        marginBottom: 20,
-      },
-      img: {
-        margin: 'auto',
-        display: 'flex',
-        maxWidth: '100%',
-        maxHeight: '100%',
-        borderRadius: 7,
-      },
-      paper: {
-        padding: theme.spacing(2),
-        margin: 'auto',
-        width: 900,
-      },
-      headerRight: {
-        display: 'flex',
-        justifyContent: 'flex-end',
-        paddingRight: 40,
-      },
-      headerLeft: {
-        display: 'flex',
-        paddingLeft: 40,
-      },
-      name: {
-        paddingLeft: 20,
-        paddingBottom: 15,
-      },
-      title: {
-        margin: 20,
-        justify: 'center',
-      },
-    
-    }));
-    const userType = window.localStorage.user_type
-    const user_id = window.localStorage.id
-    const classes = useStyles();
+    })
+      .then((res) => {
+        setEventInfo(prev => {
+          return {...prev, num_of_attendees: prev.num_of_attendees + 1};
+        });
+        setIsAttending(true);
+      });
+  };
+  
+  // const backgroundImage = eventInfo ? eventInfo.event.event_picture : "https://static.dribbble.com/users/5661/screenshots/2491233/loading-gif-800x600.gif"
+ 
+  window.localStorage.navTheme = 'LIGHT';
+  
+  const classes = useStyles();
     
   return (
     <React.Fragment>
@@ -106,6 +114,7 @@ export default function EventsPage() {
       <Grid 
       container
       className={classes.banner}
+      style={{backgroundImage: `url(${eventInfo.performers[0].profile_pic})`}}
       >
       </Grid>
       }
@@ -116,7 +125,7 @@ export default function EventsPage() {
         <Grid item xs={6}>
           <Grid item className={classes.headerLeft}>
             {eventInfo && <div>
-      <Link to={`/host/${eventInfo.host.id}`} style={{ textDecoration: 'none', color:"black" }}></Link>
+            <Link to={`/host/${eventInfo.host.id}`} style={{ textDecoration: 'none', color:"black" }}></Link>
             <TodayIcon />{eventInfo.event.date}/<AccessTimeIcon />{eventInfo.event.time} {eventInfo.event.am? 'am': 'pm'}/<LocationOnIcon />{eventInfo.space.address} 
             </div>
             }
@@ -126,15 +135,15 @@ export default function EventsPage() {
           {eventInfo &&
           <Grid item >
             Spots remaining: {eventInfo.capacity - eventInfo.num_of_attendees}
-            <Button variant="contained" color="primary">
-              Attend 
-            </Button>
+            {isAttending 
+            ? <Button variant="contained" color="primary" onClick={() => unattend()}>Unattend</Button> 
+            : <Button variant="contained" color="primary" onClick={() => attend()}>Attend </Button>
+            }
             { userType === "host" && ( user_id == eventInfo.host.id &&
               <Button  onClick={deleteEvent} color="secondary" variant="contained" >
                 Delete Event
               </Button>)
              }
-
           </Grid>
           }
         </Grid>
@@ -189,4 +198,4 @@ export default function EventsPage() {
       </Grid>
     </React.Fragment>
   );
-}
+};
