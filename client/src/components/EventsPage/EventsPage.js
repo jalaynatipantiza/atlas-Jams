@@ -89,22 +89,27 @@ export default function EventsPage() {
   };
 
   const attend = () => {
-    axios({
-      method: 'post',
-      url: '/attending',
-      data: {
-        event_attendee: {
-          user_id: user_id,
-          event_id: eventInfo.event.id
-        }
-      },
-    })
-      .then((res) => {
-        setEventInfo(prev => {
-          return {...prev, num_of_attendees: prev.num_of_attendees + 1};
+    if(user_id){
+      axios({
+        method: 'post',
+        url: '/attending',
+        data: {
+          event_attendee: {
+            user_id: user_id,
+            event_id: eventInfo.event.id
+          }
+        },
+      })
+        .then((res) => {
+          setEventInfo(prev => {
+            return {...prev, num_of_attendees: prev.num_of_attendees + 1};
+          });
+          setIsAttending(true);
         });
-        setIsAttending(true);
-      });
+    }
+    else {
+      history.push('/signup')
+    }
   };
   
   // const backgroundImage = eventInfo ? eventInfo.event.event_picture : "https://static.dribbble.com/users/5661/screenshots/2491233/loading-gif-800x600.gif"
@@ -122,7 +127,15 @@ export default function EventsPage() {
   const handleClose = () => {
     setOpen(false);
   };
+  const isAPerformer = ()=>{
+    const performersId = performers.map(performer => {
+      return performer.id
+    })
 
+    return performersId.includes(parseInt(user_id))
+
+
+  }
     
   return (
     <React.Fragment>
@@ -151,7 +164,7 @@ export default function EventsPage() {
           {eventInfo &&
           <Grid item >
             Spots remaining: {eventInfo.capacity - eventInfo.num_of_attendees}
-            {isAttending 
+            { userType === "host" &&  user_id == eventInfo.host.id || isAPerformer()? null :isAttending 
             ? <Button variant="contained" color="primary" onClick={() => unattend()}>Unattend</Button> 
             : <Button variant="contained" color="primary" onClick={() => attend()}>Attend </Button>
             }
