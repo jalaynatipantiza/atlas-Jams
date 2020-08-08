@@ -55,6 +55,7 @@ export default function EventsCard({ description, name, date, event_picture, tim
   const partialDescription = description.slice(0, 100);
   const [displayRequest, setDiplayRequest]= useState(false)
   const user = window.localStorage.id
+
   useEffect(()=> {
     
     if(user == user_id){
@@ -70,7 +71,7 @@ export default function EventsCard({ description, name, date, event_picture, tim
             image={event_picture}
 
           >
-           {displayRequest && !confirmed && <Button onClick={handleClickOpen} size="small" color="secondary" variant="outlined" style={{alignSelf:"center" , backgroundColor:"rgb(255, 208, 211)"}}>
+           {displayRequest && !confirmed  && user && <Button onClick={handleClickOpen} size="small" color="secondary" variant="outlined" style={{alignSelf:"center" , backgroundColor:"rgb(255, 208, 211)"}}>
               pending request
             </Button>}
         </CardMedia>
