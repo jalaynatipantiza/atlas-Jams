@@ -18,14 +18,14 @@ export default function EventsPage() {
   const [eventInfo, setEventInfo ] = useState(null);
   
   const [performers, setPerformers] = useState([]);
-  console.log("right here", eventInfo);
+  // console.log("right here", eventInfo);
 
   
   useEffect(()=> {
     window.scrollTo(0, 0)
     axios.get(`/event/${event_id}`)
       .then(res => {
-        console.log(res.data);
+        // console.log(res.data);
         setEventInfo({...res.data});
         setPerformers(res.data.performers)
       })
