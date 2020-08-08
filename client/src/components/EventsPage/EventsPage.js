@@ -9,6 +9,11 @@ import HostInfoBox from '../HostProfile/hostInfoBox';
 import PerformerCard from './PerformerCard';
 import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from 'react-router-dom'
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 
 
 export default function EventsPage() {
@@ -19,7 +24,11 @@ export default function EventsPage() {
   const [eventInfo, setEventInfo ] = useState(null);
   
   const [performers, setPerformers] = useState([]);
-  // console.log("right here", eventInfo);
+
+
+
+  window.localStorage.navTheme = 'LIGHT'
+
 
   const deleteEvent = () => {
     axios.delete(`/event/${event_id}`)
@@ -31,14 +40,13 @@ export default function EventsPage() {
     window.scrollTo(0, 0)
     axios.get(`/event/${event_id}`)
       .then(res => {
-        // console.log(res.data);
         setEventInfo({...res.data});
         setPerformers(res.data.performers)
       })
   }, []);
   
   const backgroundImage = eventInfo ? eventInfo.event.event_picture : "https://static.dribbble.com/users/5661/screenshots/2491233/loading-gif-800x600.gif"
-  window.localStorage.navTheme = 'LIGHT'
+  
   const useStyles = makeStyles(theme => ({
     banner: {
         backgroundImage: `url("${backgroundImage}")`,
@@ -96,9 +104,21 @@ export default function EventsPage() {
       },
     
     }));
+
     const userType = window.localStorage.user_type
     const user_id = window.localStorage.id
     const classes = useStyles();
+
+    const [open, setOpen] = React.useState(false);
+
+    const handleClickOpen = () => {
+      setOpen(true);
+    };
+
+    const handleClose = () => {
+      setOpen(false);
+    };
+
     
   return (
     <React.Fragment>
@@ -124,19 +144,40 @@ export default function EventsPage() {
         </Grid>
         <Grid item xs={6} className={classes.headerRight}>
           {eventInfo &&
-          <Grid item >
-            Spots remaining: {eventInfo.capacity - eventInfo.num_of_attendees}
-            <Button variant="contained" color="primary">
-              Attend 
-            </Button>
-            { userType === "host" && ( user_id == eventInfo.host.id &&
-              <Button  onClick={deleteEvent} color="secondary" variant="contained" >
-                Delete Event
-              </Button>)
-             }
-
-          </Grid>
+            <Grid item >
+              Spots remaining: {eventInfo.capacity - eventInfo.num_of_attendees}
+              <Button variant="contained" color="primary">
+                Attend 
+              </Button>
+                
+              { userType === "host" && ( user_id == eventInfo.host.id &&
+                <Button  onClick={handleClickOpen} onClick={handleClickOpen} color="secondary" variant="outlined" >
+                  Delete Event
+                </Button> 
+              )}
+            </Grid>
           }
+          <Dialog
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+          >
+            <DialogTitle id="alert-dialog-title">{"Are you sure you want to delete this event?"}</DialogTitle>
+            <DialogContent>
+              <DialogContentText id="alert-dialog-description">
+                Deleting this event means deleting entire event.
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleClose} color="secondary">
+                Cancel
+              </Button>
+              <Button onClick={deleteEvent} color="secondary" autoFocus>
+                Confirm
+              </Button>
+            </DialogActions>
+          </Dialog>
         </Grid>
       </Grid>
 
