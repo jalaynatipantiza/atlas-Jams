@@ -16,10 +16,12 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import axios from 'axios'
 
 
-export default function EventsCard({ description, name, date, event_picture, time, am, id, key, capacity, num_of_attendees, accepted, user_id, location }) {
+export default function EventsCard({ description, name, date, event_picture, time, am, id, key, capacity, num_of_attendees, accepted, user_id }) {
+  const [confirmed, setConfirmed] = useState(accepted)
   const [open, setOpen] = React.useState(false);
   const [hostInfo, setHostInfo] = useState({name:'null', number: []});
   const [spaceInfo, setSpaceInfo] = useState({address: 'null'});
+
   const handleClickOpen = () => {
     setOpen(true);
     axios.get(`/event/${id}`)
@@ -33,15 +35,21 @@ export default function EventsCard({ description, name, date, event_picture, tim
   const handleClose = () => {
     setOpen(false);
   };
+
   const accept = () => {
     axios.put(`/event/${id}/performers/${user_id}`)
     .then(res => {
-      console.log(res);
       accepted = true
+      handleClose()
+      setConfirmed(true)
+    })
+  }
+  const decline = () => {
+    axios.delete(`/event/${id}/performers/${user_id}`)
+    .then(res => {
       handleClose()
     })
   }
-
   
   const classes = useStyles();
   const partialDescription = description.slice(0, 100);
@@ -62,7 +70,7 @@ export default function EventsCard({ description, name, date, event_picture, tim
             image={event_picture}
 
           >
-           {displayRequest && !accepted && <Button onClick={handleClickOpen} size="small" color="secondary" variant="outlined" style={{alignSelf:"center" , backgroundColor:"rgb(255, 208, 211)"}}>
+           {displayRequest && !confirmed && <Button onClick={handleClickOpen} size="small" color="secondary" variant="outlined" style={{alignSelf:"center" , backgroundColor:"rgb(255, 208, 211)"}}>
               pending request
             </Button>}
         </CardMedia>
@@ -107,7 +115,7 @@ export default function EventsCard({ description, name, date, event_picture, tim
               <Button onClick={accept} color="secondary">
                 Accept
               </Button>
-              <Button onClick={()=>{console.log("lol")}} color="secondary" autoFocus>
+              <Button onClick={decline} color="secondary" autoFocus>
                 Decline
               </Button>
             </DialogActions>

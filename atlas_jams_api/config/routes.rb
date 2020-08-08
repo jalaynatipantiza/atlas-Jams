@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new'
 
   put '/event/:event_id/performers/:user_id' => "events_performers#update"
+  delete '/event/:event_id/performers/:user_id' => "events_performers#destroy"
   
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
