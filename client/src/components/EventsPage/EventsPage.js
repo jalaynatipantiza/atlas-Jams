@@ -8,10 +8,11 @@ import { useParams, Link } from 'react-router-dom';
 import HostInfoBox from '../HostProfile/hostInfoBox';
 import PerformerCard from './PerformerCard';
 import { makeStyles } from '@material-ui/core/styles';
+import { useHistory } from 'react-router-dom'
 
 
 export default function EventsPage() {
-
+  const history = useHistory()
   const { event_id } = useParams();
 
   // event, performers, space, host
@@ -20,7 +21,12 @@ export default function EventsPage() {
   const [performers, setPerformers] = useState([]);
   // console.log("right here", eventInfo);
 
-  
+  const deleteEvent = () => {
+    axios.delete(`/event/${event_id}`)
+    .then(()=> {
+      history.push(`/`)
+    })
+  }
   useEffect(()=> {
     window.scrollTo(0, 0)
     axios.get(`/event/${event_id}`)
@@ -87,10 +93,13 @@ export default function EventsPage() {
       title: {
         margin: 20,
         justify: 'center',
-      }
-    }));
+      },
     
+    }));
+    const userType = window.localStorage.user_type
+    const user_id = window.localStorage.id
     const classes = useStyles();
+    
   return (
     <React.Fragment>
       {performers.length > 0 &&
@@ -115,11 +124,17 @@ export default function EventsPage() {
         </Grid>
         <Grid item xs={6} className={classes.headerRight}>
           {eventInfo &&
-          <Grid item>
+          <Grid item >
             Spots remaining: {eventInfo.capacity - eventInfo.num_of_attendees}
             <Button variant="contained" color="primary">
-              Attend
+              Attend 
             </Button>
+            { userType === "host" && ( user_id == eventInfo.host.id &&
+              <Button  onClick={deleteEvent} color="secondary" variant="contained" >
+                Delete Event
+              </Button>)
+             }
+
           </Grid>
           }
         </Grid>
