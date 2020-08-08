@@ -25,6 +25,11 @@ class EventsController < ApplicationController
 
     render json: { 'event' => @event, 'performers' => @performers, 'space' => @space, 'host' => @host, 'capacity' => @event.space.capacity, 'num_of_attendees' => @event.event_attendees.size }
   end
+  def delete
+    @event = Event.find_by id: params[:id]
+    @event.destroy
+    render json: 'Event deleted!'
+  end
 
   def create
     @event  = Event.new(eventparams)
