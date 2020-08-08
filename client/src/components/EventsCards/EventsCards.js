@@ -16,15 +16,17 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import axios from 'axios'
 
 
-export default function EventsCard({ description, name, date, event_picture, time, am, id, key, capacity, num_of_attendees, accepted, user_id }) {
+export default function EventsCard({ description, name, date, event_picture, time, am, id, key, capacity, num_of_attendees, accepted, user_id, location }) {
   const [open, setOpen] = React.useState(false);
   const [hostInfo, setHostInfo] = useState({name:'null', number: []});
+  const [spaceInfo, setSpaceInfo] = useState({address: 'null'});
   const handleClickOpen = () => {
     setOpen(true);
     axios.get(`/event/${id}`)
       .then(res=>{
-        console.log(res.data.host);
+        console.log(res.data);
         setHostInfo(res.data.host)
+        setSpaceInfo(res.data.space)
       })
   };
 
@@ -85,8 +87,10 @@ export default function EventsCard({ description, name, date, event_picture, tim
             <DialogTitle id="alert-dialog-title">{"You have been  invite to perform!"}</DialogTitle>
             <DialogContent>
               <DialogContentText id="alert-dialog-description">
-                <p>{hostInfo.name} is inviting you play perform. </p>
-                <p>If you would like more details please contact host at ({hostInfo.number[0]}{hostInfo.number[1]}{hostInfo.number[2]}){hostInfo.number[3]}{hostInfo.number[4]}{hostInfo.number[5]}-{hostInfo.number[6]}{hostInfo.number[7]}{hostInfo.number[8]}{hostInfo.number[9]}</p>
+                <p>{hostInfo.name} is inviting you play perform at the "{name}" event! </p>
+                <p>Location: {spaceInfo.address} </p>
+                <p>Time: {time}{ am ? "am" : "pm"} </p>
+                <p>Contact: ({hostInfo.number[0]}{hostInfo.number[1]}{hostInfo.number[2]}){hostInfo.number[3]}{hostInfo.number[4]}{hostInfo.number[5]}-{hostInfo.number[6]}{hostInfo.number[7]}{hostInfo.number[8]}{hostInfo.number[9]}</p>
 
               </DialogContentText>
             </DialogContent>
