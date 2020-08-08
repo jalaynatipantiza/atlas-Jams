@@ -1,24 +1,21 @@
-import  React, { useState} from "react";
-import { render } from "react-dom";
-import Calendar from 'react-calendar';
+import React from 'react'
+import FullCalendar from '@fullcalendar/react'
+import dayGridPlugin from '@fullcalendar/daygrid'
+import interactionPlugin from "@fullcalendar/interaction";
 
-
-export default function ReactCalendar () {
-
-  const [ date, setDate] = useState(new Date())
-
-  const onChange = date => {
-    setDate(date);
+export default function EventCalendar (){
+  
+  const handleDateClick = (arg) => { 
+    alert(arg.dateStr)
   }
-  return (
-    <div style={{width: "40vw", fontFamily: "initial", lineHeight: "2em"}} >
-      <Calendar 
-      onChange={onChange} 
-      value={date}/>
-      {date.toISOString().slice(0,10)}
-      
-    </div>
-  )
-};
+    return (
+     <FullCalendar 
+     defaultView="dayGridMonth"
+     plugins={[ dayGridPlugin]}
+     events={[{title: "Upcoming Event", date: "2020-08-22"}, {title: " Upcoming Event", date: "2020-08-23"}]}
 
-render(<ReactCalendar />, document.querySelector("#root"));
+     />
+    )
+  
+  
+};
