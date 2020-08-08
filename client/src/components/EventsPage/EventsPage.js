@@ -195,20 +195,17 @@ export default function EventsPage() {
         <Typography variant="h4" className={classes.title}>
           Host
         </Typography>
+    {eventInfo && <Link to={`/host/${eventInfo.host.id}`} style={{ textDecoration: 'none', color:"black" }}>
         <Grid item className={classes.main}>
           <Paper className={classes.paper}>
             <Grid item>
-              <Grid item>
-                  {eventInfo && 
-                <Link to={`/host/${eventInfo.host.id}`} style={{ textDecoration: 'none', color:"black" }}>
+              <Grid item> 
                 <ButtonBase className={classes.image}>
                   <img className={classes.img} alt="complex" src={`${eventInfo.host.profile_pic}`} />
                   <Typography gutterBottom variant="subtitle1" className={classes.name}>
                       {eventInfo.host.name}
                     </Typography>
                 </ButtonBase>
-                </Link>
-                  }
               </Grid>
               <Grid item xs={12} sm container>
                 <Grid item xs container direction="column" spacing={2}>
@@ -224,6 +221,8 @@ export default function EventsPage() {
             </Grid>
           </Paper>
         </Grid>
+      </Link>   
+    }
         <Typography variant="h4" className={classes.title}>
           Performer(s)
         </Typography>
