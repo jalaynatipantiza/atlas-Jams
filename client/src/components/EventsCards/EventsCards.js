@@ -29,10 +29,19 @@ export default function EventsCard({ description, name, date, event_picture, tim
         setSpaceInfo(res.data.space)
       })
   };
-
+  
   const handleClose = () => {
     setOpen(false);
   };
+  const accept = () => {
+    axios.put(`/event/${id}/performers/${user_id}`)
+    .then(res => {
+      console.log(res);
+      accepted = true
+      handleClose()
+    })
+  }
+
   
   const classes = useStyles();
   const partialDescription = description.slice(0, 100);
@@ -95,11 +104,11 @@ export default function EventsCard({ description, name, date, event_picture, tim
               </DialogContentText>
             </DialogContent>
             <DialogActions>
-              <Button onClick={handleClose} color="secondary">
-                accept
+              <Button onClick={accept} color="secondary">
+                Accept
               </Button>
               <Button onClick={()=>{console.log("lol")}} color="secondary" autoFocus>
-                decline
+                Decline
               </Button>
             </DialogActions>
           </Dialog>
