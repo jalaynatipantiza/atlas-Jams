@@ -24,13 +24,15 @@ const HostProfile = (props) => {
   let { id } = useParams();
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     axios.get(`/users/${id}`)
       .then(res => {
         setHostProfile(prev => {return {...prev, hostInfo: {...res.data}}})
        
         axios.get(`/host/${id}/events`)
         .then(res => {
-          setHostProfile(prev=> { return {...prev, events: [...res.data]}})
+          const reverse = res.data.reverse()
+          setHostProfile(prev=> { return {...prev, events: [...reverse]}})
 
           axios.get(`/spaces/user/${id}`)
           .then(res => {

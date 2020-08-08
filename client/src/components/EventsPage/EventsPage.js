@@ -8,8 +8,13 @@ import { useParams, Link } from 'react-router-dom';
 import HostInfoBox from '../HostProfile/hostInfoBox';
 import PerformerCard from './PerformerCard';
 import { makeStyles } from '@material-ui/core/styles';
-import { useHistory } from 'react-router-dom';
 import useStyles from './styles/styles';
+import { useHistory } from 'react-router-dom'
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 
 
 export default function EventsPage() {
@@ -107,6 +112,17 @@ export default function EventsPage() {
   window.localStorage.navTheme = 'LIGHT';
   
   const classes = useStyles();
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
     
   return (
     <React.Fragment>
@@ -140,12 +156,33 @@ export default function EventsPage() {
             : <Button variant="contained" color="primary" onClick={() => attend()}>Attend </Button>
             }
             { userType === "host" && ( user_id == eventInfo.host.id &&
-              <Button  onClick={deleteEvent} color="secondary" variant="contained" >
+              <Button  onClick={handleClickOpen} onClick={handleClickOpen} color="secondary" variant="outlined" >
                 Delete Event
               </Button>)
              }
           </Grid>
           }
+          <Dialog
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+          >
+            <DialogTitle id="alert-dialog-title">{"Are you sure you want to delete this event?"}</DialogTitle>
+            <DialogContent>
+              <DialogContentText id="alert-dialog-description">
+                Deleting this event means deleting entire event.
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleClose} color="secondary">
+                Cancel
+              </Button>
+              <Button onClick={deleteEvent} color="secondary" autoFocus>
+                Confirm
+              </Button>
+            </DialogActions>
+          </Dialog>
         </Grid>
       </Grid>
 

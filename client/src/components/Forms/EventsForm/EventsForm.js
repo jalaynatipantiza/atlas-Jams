@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import useStyles from '../styles/styles';
-import { TextField, Button, Grid, FormControl, NativeSelect, FormHelperText } from '@material-ui/core';
+import { TextField, Button, Grid, Select,MenuItem, FormControl, NativeSelect, FormHelperText } from '@material-ui/core';
 import Checkbox from '@material-ui/core/Checkbox';
 import axios from 'axios';
 import {useHistory} from 'react-router-dom'
@@ -28,7 +28,7 @@ export default function EventForm() {
     axios.get(`/spaces/user/${window.localStorage.id}`)
       .then((res)=>{
         const array = res.data.map(space => {
-          return <option value={space.id}>{space.address}</option>
+          return <MenuItem value={space.id}>{space.address}</MenuItem>
         })
         setSpaces(array)
       })
@@ -36,7 +36,9 @@ export default function EventForm() {
         axios.get('/performers')
           .then(res => {
             const array = res.data.map(performer => {
-              return <option value={performer.id}>{performer.name}</option>
+              return <MenuItem value={performer.id} >
+              {performer.name}
+            </MenuItem>
             })
             setPerformers(array)
           })
@@ -60,25 +62,32 @@ export default function EventForm() {
 
 
     setPerformersOption(prev => {
-      return [...prev, <div key={key} style={{display:'flex', width:"100%", justifyContent:"space-between"}}>
-      <div style={{width:"80%"}}>
-      <NativeSelect
-        style={{width:"100%", marginTop:"10px"}}
-        className={classes.selectEmpty}
-        // value={state.age}
-        // name="age"
-        onChange={event => {setEvent((prev)=> {return {...prev, performers: [...prev.performers, parseInt(event.target.value)]}})}}
-        inputProps={{ 'aria-label': 'age' }}
-      >
-        <option value="" disabled>
-          Performers
-        </option>
-        {
+      return [...prev,   <div style={{display:'flex', width:"100%", justifyContent:"space-between"}}>
+      <div /*style={{width:"80%"}}*/>
+            
+          <FormControl /*className={classes.formControl}*/  style={{width:"100%", marginTop:"10px"}}>
+            
+          <Select
+            // value={age}
+            // onChange={handleChange}
+            onChange={event => {setEvent((prev)=> {
+              console.log(event.target.value);
+              return {...prev, performers: [...prev.performers, parseInt(event.target.value)]}})}}
+            displayEmpty
+            // className={classes.selectEmpty}
+            inputProps={{ 'aria-label': 'Without label' }}
+          >
+            <MenuItem value="lol" disabled>
+              Placeholder
+            </MenuItem>
+            {
           performers
         }
-      </NativeSelect>
-      <FormHelperText>Invite a performer to perform at your event!</FormHelperText>
-  
+          </Select>
+
+           <FormHelperText>Invite a performer to perform at your event!</FormHelperText>
+        </FormControl>
+
       </div>
      </div> ]
     } )
@@ -87,7 +96,7 @@ export default function EventForm() {
   }
 
   const submit = () => {
-    // console.log(event);
+
     axios({
       method: 'post',
       url: '/event',
@@ -151,40 +160,52 @@ export default function EventForm() {
         onChange={event => dateTime(event.target.value)}
       />
       {/* <FormControl className={classes.formControl}> */}
-        <NativeSelect
-          style={{width:"100%", marginTop:"10px"}}
-          className={classes.selectEmpty}
-          // value={}
-          name="age"
-          onChange={text => setEvent({...event, space_id: parseInt(text.target.value) })}
-          inputProps={{ 'aria-label': 'age' }}
-        >
-          <option value="My Locations" disabled>
-            My Locations
-          </option>
-          {
-            spaces
-          }
-        </NativeSelect>
+        <FormControl /*className={classes.formControl}*/   style={{width:"100%", marginTop:"10px"}}>
+                
+              <Select
+                // value={age}
+                // onChange={handleChange}
+                displayEmpty
+                onChange={text => setEvent({...event, space_id: parseInt(text.target.value) })}
+                // className={classes.selectEmpty}
+                inputProps={{ 'aria-label': 'Without label' }}
+              >
+                <MenuItem value="" disabled>
+                  Placeholder
+                </MenuItem>
+                {
+              spaces
+            }
+              </Select>
+
+
         <FormHelperText>Pick one of your locations to host your event</FormHelperText>
+            </FormControl>
         <div style={{display:'flex', width:"100%", justifyContent:"space-between"}}>
-          <div style={{width:"80%"}}>
-          <NativeSelect
-            style={{width:"100%", marginTop:"10px"}}
-            className={classes.selectEmpty}
-            // value={state.age}
-            // name="age"
-            onChange={event => {setEvent((prev)=> {return {...prev, performers: [...prev.performers, parseInt(event.target.value)]}})}}
-            inputProps={{ 'aria-label': 'age' }}
-          >
-            <option value="" disabled>
-              Performers
-            </option>
-            {
+          <div /*style={{width:"80%"}}*/>
+                
+              <FormControl /*className={classes.formControl}*/  style={{width:"100%", marginTop:"10px"}}>
+                
+              <Select
+                // value={age}
+                // onChange={handleChange}
+                onChange={event => {setEvent((prev)=> {
+                  console.log(event.target.value);
+                  return {...prev, performers: [...prev.performers, parseInt(event.target.value)]}})}}
+                displayEmpty
+                // className={classes.selectEmpty}
+                inputProps={{ 'aria-label': 'Without label' }}
+              >
+                <MenuItem value="lol" disabled>
+                  Placeholder
+                </MenuItem>
+                {
               performers
             }
-          </NativeSelect>
-          <FormHelperText>Invite a performer to perform at your event!</FormHelperText>
+              </Select>
+
+               <FormHelperText>Invite a performer to perform at your event!</FormHelperText>
+            </FormControl>
 
           </div>
           <Button variant="contained" color="primary" onClick={()=>createAnotherPerformer(key)} href="#" style={{font:"90%", height: "30%", width:"5%"}}>+</Button>

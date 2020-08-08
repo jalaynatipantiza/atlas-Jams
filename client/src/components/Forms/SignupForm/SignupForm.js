@@ -35,7 +35,7 @@ export default function SignupForm(props) {
       }
     })
       .then((res) => {
-        let userType = "none"
+        let userType = "attendee"
         if(res.data.is_performer){
           userType = "performer"
         } else if(res.data.is_host){

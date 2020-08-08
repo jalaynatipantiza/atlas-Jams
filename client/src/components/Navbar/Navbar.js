@@ -60,6 +60,7 @@ const Navbar = (props) => {
     .then(() => {
       window.localStorage.removeItem("user_type");
       window.localStorage.removeItem("id");
+      window.scrollTo(0, 0)
       history.push("/")
     })
   }
