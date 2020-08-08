@@ -326,6 +326,7 @@ sunset_performer1 = EventsPerformer.create!({
   event_id: sunset.id
 })
 sunset_performer2 = EventsPerformer.create!({
+  accepted: true,
   user_id: performer2.id,
   event_id: sunset.id
 })
@@ -342,10 +343,12 @@ wine_and_cheese_night_performer1 = EventsPerformer.create!({
   event_id: wine_and_cheese.id
 })
 dinner_party_performer1 = EventsPerformer.create!({
+  accepted: true,
   user_id: performer1.id,
   event_id: dinner_party.id
 })
 dinner_party_performer2 = EventsPerformer.create!({
+  accepted: true,
   user_id: performer2.id,
   event_id: dinner_party.id
 })
@@ -354,10 +357,12 @@ garden_tea_performer2 = EventsPerformer.create!({
   event_id: garden_tea.id
 })
 jazz_fest_performer1 = EventsPerformer.create!({
+  accepted: true,
   user_id: performer1.id,
   event_id: jazz_fest.id
 })
 jazz_fest_performer2 = EventsPerformer.create!({
+  accepted: true,
   user_id: performer2.id,
   event_id: jazz_fest.id
 })

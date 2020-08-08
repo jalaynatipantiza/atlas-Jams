@@ -17,8 +17,14 @@ Rails.application.routes.draw do
   post '/event' => "events#create"
   
   get '/spaces/user/:id' => "users#spacesByUser"
+  
+  get '/attending/:user_id/:event_id' => "event_attendees#show"
+  post '/attending' => "event_attendees#create"
+  delete '/attending' => "event_attendees#destroy"
 
   get '/signup' => 'users#new'
+
+  put '/event/:event_id/performers/:user_id' => "events_performers#update"
   
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
