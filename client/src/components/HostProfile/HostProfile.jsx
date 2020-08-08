@@ -31,7 +31,8 @@ const HostProfile = (props) => {
        
         axios.get(`/host/${id}/events`)
         .then(res => {
-          setHostProfile(prev=> { return {...prev, events: [...res.data]}})
+          const reverse = res.data.reverse()
+          setHostProfile(prev=> { return {...prev, events: [...reverse]}})
 
           axios.get(`/spaces/user/${id}`)
           .then(res => {

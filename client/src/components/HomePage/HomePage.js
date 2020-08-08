@@ -17,7 +17,7 @@ function HomePage({ setEvent }) {
       const arr = res.data.map(event => {
         return event.event
       })
-      setEvents(arr)
+      setEvents(arr.reverse())
     })
   }, [])
 
