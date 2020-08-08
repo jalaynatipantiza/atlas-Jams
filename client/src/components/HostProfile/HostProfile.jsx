@@ -24,6 +24,7 @@ const HostProfile = (props) => {
   let { id } = useParams();
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     axios.get(`/users/${id}`)
       .then(res => {
         setHostProfile(prev => {return {...prev, hostInfo: {...res.data}}})
