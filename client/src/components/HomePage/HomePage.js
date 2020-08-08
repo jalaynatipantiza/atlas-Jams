@@ -14,7 +14,10 @@ function HomePage({ setEvent }) {
     axios.get("/all/events")
     .then(res => {
       console.log('res.data', res.data)
-      setEvents(res.data);
+      const arr = res.data.map(event => {
+        return event.event
+      })
+      setEvents(arr)
     })
   }, [])
 

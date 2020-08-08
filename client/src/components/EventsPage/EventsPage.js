@@ -93,13 +93,10 @@ export default function EventsPage() {
     const classes = useStyles();
   return (
     <React.Fragment>
-      {eventInfo &&
-       <Link to={`/host/${eventInfo.host.id}`} style={{ textDecoration: 'none', color:"black" }}></Link>
-      }
       {performers.length > 0 &&
       <Grid 
-        container
-        className={classes.banner}
+      container
+      className={classes.banner}
       >
       </Grid>
       }
@@ -110,6 +107,7 @@ export default function EventsPage() {
         <Grid item xs={6}>
           <Grid item className={classes.headerLeft}>
             {eventInfo && <div>
+      <Link to={`/host/${eventInfo.host.id}`} style={{ textDecoration: 'none', color:"black" }}></Link>
             <TodayIcon />{eventInfo.event.date}/<AccessTimeIcon />{eventInfo.event.time} {eventInfo.event.am? 'am': 'pm'}/<LocationOnIcon />{eventInfo.space.address} 
             </div>
             }
