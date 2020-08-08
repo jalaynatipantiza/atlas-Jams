@@ -13,22 +13,28 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import axios from 'axios'
 
 
 export default function EventsCard({ description, name, date, event_picture, time, am, id, key, capacity, num_of_attendees, accepted, user_id }) {
   const [open, setOpen] = React.useState(false);
-
+  const [hostInfo, setHostInfo] = useState({name:'null', number: []});
   const handleClickOpen = () => {
     setOpen(true);
+    axios.get(`/event/${id}`)
+      .then(res=>{
+        console.log(res.data.host);
+        setHostInfo(res.data.host)
+      })
   };
 
   const handleClose = () => {
     setOpen(false);
   };
-
+  
   const classes = useStyles();
   const partialDescription = description.slice(0, 100);
-   const [displayRequest, setDiplayRequest]= useState(false)
+  const [displayRequest, setDiplayRequest]= useState(false)
   const user = window.localStorage.id
   useEffect(()=> {
     
@@ -79,7 +85,9 @@ export default function EventsCard({ description, name, date, event_picture, tim
             <DialogTitle id="alert-dialog-title">{"You have been  invite to perform!"}</DialogTitle>
             <DialogContent>
               <DialogContentText id="alert-dialog-description">
-                desc info
+                <p>{hostInfo.name} is inviting you play perform. </p>
+                <p>If you would like more details please contact host at ({hostInfo.number[0]}{hostInfo.number[1]}{hostInfo.number[2]}){hostInfo.number[3]}{hostInfo.number[4]}{hostInfo.number[5]}-{hostInfo.number[6]}{hostInfo.number[7]}{hostInfo.number[8]}{hostInfo.number[9]}</p>
+
               </DialogContentText>
             </DialogContent>
             <DialogActions>
