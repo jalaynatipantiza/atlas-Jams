@@ -89,7 +89,8 @@ export default function EventsPage() {
         justify: 'center',
       }
     }));
-    
+    const userType = localStorage.user_type
+    const user_id = localStorage.id
     const classes = useStyles();
   return (
     <React.Fragment>
@@ -120,6 +121,13 @@ export default function EventsPage() {
             <Button variant="contained" color="primary">
               Attend
             </Button>
+
+            { userType === "host" &&  <Link to={`/create/event`} style={{ textDecoration: 'none', color:"black" }}>
+              <Button className={classes.addButton} variant="contained" >
+                Delete Event
+              </Button>
+              </Link>}
+
           </Grid>
           }
         </Grid>
