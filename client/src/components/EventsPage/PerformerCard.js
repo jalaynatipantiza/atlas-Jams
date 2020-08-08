@@ -1,12 +1,20 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import useStyles from './styles/styles';
 import { Grid, Box, Paper, Typography, ButtonBase, Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import MusicNoteIcon from '@material-ui/icons/MusicNote';
 
-export default function PerformerCard({ profile_pic, name, description, id, my_genres }) {
+export default function PerformerCard({ profile_pic, name, description, id, my_genres, confirmed, host_id }) {
   const classes = useStyles();
+  const [displayRequest, setDiplayRequest]= useState(false)
+  const user = window.localStorage.id
 
+  useEffect(()=> {
+    
+    if(user == host_id){
+      setDiplayRequest(true)
+    }
+  }, [])
 
   return (
     <Link to={`/performer/${id}`} style={{ textDecoration: 'none', color:"black" }}>
@@ -21,6 +29,11 @@ export default function PerformerCard({ profile_pic, name, description, id, my_g
                 </Typography>
               </ButtonBase>
             </Grid>
+                  {displayRequest && !confirmed  && user && <Button size="small" color="secondary" variant="outlined" style={{alignSelf:"center" , backgroundColor:"rgb(255, 208, 211)"}}>
+                          Pending Request
+                        </Button> || displayRequest && confirmed  && user && <Button size="small" color="primary" variant="outlined" style={{alignSelf:"center" , backgroundColor:"rgb(208, 229, 255)"}}>
+                          Invitation Accepted
+                        </Button>}
             <Grid item xs={12} sm container>
               <Grid item xs container direction="column" spacing={2}>
                 <Grid item xs>

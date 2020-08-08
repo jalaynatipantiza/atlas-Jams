@@ -42,7 +42,7 @@ export default function EventsPage() {
     window.scrollTo(0, 0);
     axios.get(`/event/${event_id}`)
     .then(res => {
-      console.log(res.data);
+      console.log('this is event info',res.data);
       setEventInfo({...res.data});
       setPerformers(res.data.performers);
 
@@ -228,7 +228,7 @@ export default function EventsPage() {
         </Typography>
         <Grid item className={classes.main}>
         {
-          performers.length > 0 && performers.map((performer)=><PerformerCard profile_pic={performer.profile_pic} name={performer.name} description={performer.description} id={performer.id} my_genres={performer.my_genres} key={performer.id}/>)
+          performers.length > 0 && performers.map((performer)=><PerformerCard profile_pic={performer.profile_pic} name={performer.name} description={performer.description} id={performer.id} my_genres={performer.my_genres} key={performer.id} confirmed={performer.accepted} host_id={eventInfo.host.id}/>)
         }
         </Grid>
       </Grid>
