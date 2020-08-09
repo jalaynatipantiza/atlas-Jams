@@ -1,9 +1,13 @@
 class EventAttendeesController < ApplicationController
 
   def create
-    attendee = EventAttendee.new(attendee_params)
+    if session[:user_id]
+      attendee = EventAttendee.new(attendee_params)
+      attendee.save!
+    else
+      redirect '/login'
+    end
 
-    attendee.save!
   end
 
   def show
