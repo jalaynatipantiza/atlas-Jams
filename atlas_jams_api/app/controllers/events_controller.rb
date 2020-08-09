@@ -1,6 +1,5 @@
 class EventsController < ApplicationController
   def index
-
     @events = Event.includes(:space).includes(:event_attendees).map do |event|
       {
         capacity: event.space.capacity,
@@ -25,6 +24,7 @@ class EventsController < ApplicationController
 
     render json: { 'event' => @event, 'performers' => @performers, 'space' => @space, 'host' => @host, 'capacity' => @event.space.capacity, 'num_of_attendees' => @event.event_attendees.size }
   end
+
   def delete
     @event = Event.find_by id: params[:id]
     @event.destroy
@@ -45,7 +45,24 @@ class EventsController < ApplicationController
     else
       render json:"didnt work"
     end
+  end
 
+  def search
+    # puts event_params
+    @locations = User.joins(:spaces).where('location LIKE ?', '%' + params[:location] + '%').select('*')
+    # @spaces = @locations.joins(:spaces).select('*')
+    # raise @locations.inspect
+
+    # raise @locations.inspect
+    @events = Event.includes(:space).includes(:event_attendees).includes(:users).where(params[:location]).map do |event|
+      {
+        # location: event.space.user.location,
+        capacity: event.space.capacity,
+        event: event,
+        num_of_attendees: event.event_attendees.size
+      }
+    end
+    puts @events.inspect
   end
 
   def userEventsPerformer
@@ -63,7 +80,9 @@ class EventsController < ApplicationController
   end
 
   private
+
   def eventparams
     params.require(:event).permit(:space_id, :date, :duration, :name, :price, :description,:time, :am, :attendants, :event_picture)
   end
+
 end
