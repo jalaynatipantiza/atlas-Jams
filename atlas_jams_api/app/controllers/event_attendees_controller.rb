@@ -14,8 +14,8 @@ class EventAttendeesController < ApplicationController
 
   def destroy
     @attendee = EventAttendee.where(attendee_params)
-    raise params[:user_id].inspect
-    @attendee.delete
+
+    @attendee.destroy_all
   end
 
   private
