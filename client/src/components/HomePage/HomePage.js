@@ -7,33 +7,56 @@ function HomePage({ setEvent }) {
 
   // console.log('HomePage', events)
 
-  const [events, setEvents] = useState([])
+  const [events, setEvents] = useState([]);
+
+  const [searchEvents, setSearchEvents] = useState([]);
+
+  console.log('searchEvents:', searchEvents);
 
   useEffect(()=>{
-    window.scrollTo(0, 0)
-    axios.get("/all/events")
-    .then(res => {
-      console.log('res.data', res.data)
-      const arr = res.data.map(event => {
-        return event.event
+    window.scrollTo(0, 0);
+
+    if (searchEvents.length > 0) {
+
+      axios({
+        method: 'get',
+        url: '/search',
+        params: {
+          location: searchEvents,
+        },
       })
-      setEvents(arr.reverse())
-    })
-  }, [])
+        .then(res => {
+          console.log('res.data:', res.data);
+          // const arr = res.data.map(event => event.event);
+          // setEvents(arr.reverse());
+      });
+
+    } else {
+
+      axios.get("/all/events")
+        .then(res => {
+          console.log('res.data', res.data);
+          const arr = res.data.map(event => {
+            return event.event;
+          });
+          setEvents(arr.reverse());
+        });
+    };
+  }, [searchEvents]);
 
   // console.log('events:', events);
 
-  window.localStorage.navTheme = 'LIGHT'
+  window.localStorage.navTheme = 'LIGHT';
+
   return (
     <React.Fragment>
-      <SearchBox />
+      <SearchBox events={events} setSearchEvents={setSearchEvents} />
       <p style={{display:"flex", justifyContent:"center"}}>ALL UPCOMING EVENTS</p>
       <div style={{height: "100vh", width: "100vw", display:"flex", justifyContent:"center"}}>
        <EventsCardList events={events} />
       </div>
-    </React.Fragment>
-      
-  )
-}
+    </React.Fragment> 
+  );
+};
 
 export default HomePage;
