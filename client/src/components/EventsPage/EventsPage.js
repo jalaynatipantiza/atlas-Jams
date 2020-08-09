@@ -45,19 +45,19 @@ export default function EventsPage() {
       console.log('this is event info',res.data);
       setEventInfo({...res.data});
       setPerformers(res.data.performers);
+    });
+    
+    axios.get(`/attending/${user_id}/${event_id}`)
+    .then(res => {
+      console.log('attending:', res.data);
 
-      axios.get(`/attending/${user_id}/${event_id}`)
-      .then(res => {
+      if (res.data.length > 0) {
+        setIsAttending(true);
+      } else {
+
         console.log('attending:', res.data);
-
-        if (res.data.length > 0) {
-          setIsAttending(true);
-        } else {
-
-          console.log('attending:', res.data);
-          setIsAttending(false);
-        };
-      });
+        setIsAttending(false);
+      };
     });
   }, []);
   
