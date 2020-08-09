@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   get '/host/:id/events' => "events#userEventsHost"
   get '/event/:id' => "events#show"
   post '/event' => "events#create"
+
+  get  '/attendee/:user_id/events' => "event_attendees#attendee_events"
   
   get '/spaces/user/:id' => "users#spacesByUser"
   
