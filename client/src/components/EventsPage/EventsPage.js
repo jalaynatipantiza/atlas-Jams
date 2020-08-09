@@ -42,7 +42,7 @@ export default function EventsPage() {
     window.scrollTo(0, 0);
     axios.get(`/event/${event_id}`)
     .then(res => {
-      console.log(res.data);
+      console.log('this is event info',res.data);
       setEventInfo({...res.data});
       setPerformers(res.data.performers);
 
@@ -89,25 +89,29 @@ export default function EventsPage() {
   };
 
   const attend = () => {
-    axios({
-      method: 'post',
-      url: '/attending',
-      data: {
-        event_attendee: {
-          user_id: user_id,
-          event_id: eventInfo.event.id
-        }
-      },
-    })
-      .then((res) => {
-        setEventInfo(prev => {
-          return {...prev, num_of_attendees: prev.num_of_attendees + 1};
+    if(user_id){
+      axios({
+        method: 'post',
+        url: '/attending',
+        data: {
+          event_attendee: {
+            user_id: user_id,
+            event_id: eventInfo.event.id
+          }
+        },
+      })
+        .then((res) => {
+          setEventInfo(prev => {
+            return {...prev, num_of_attendees: prev.num_of_attendees + 1};
+          });
+          setIsAttending(true);
         });
-        setIsAttending(true);
-      });
+    }
+    else {
+      history.push('/signup')
+    }
   };
   
-  // const backgroundImage = eventInfo ? eventInfo.event.event_picture : "https://static.dribbble.com/users/5661/screenshots/2491233/loading-gif-800x600.gif"
  
   window.localStorage.navTheme = 'LIGHT';
   
@@ -122,7 +126,15 @@ export default function EventsPage() {
   const handleClose = () => {
     setOpen(false);
   };
+  const isAPerformer = ()=>{
+    const performersId = performers.map(performer => {
+      return performer.id
+    })
 
+    return performersId.includes(parseInt(user_id))
+
+
+  }
     
   return (
     <React.Fragment>
@@ -130,7 +142,7 @@ export default function EventsPage() {
       <Grid 
       container
       className={classes.banner}
-      style={{backgroundImage: `url(${eventInfo.performers[0].profile_pic})`}}
+      style={{backgroundImage: `url(${eventInfo.event.event_picture})`}}
       >
       </Grid>
       }
@@ -149,9 +161,11 @@ export default function EventsPage() {
         </Grid>
         <Grid item xs={6} className={classes.headerRight}>
           {eventInfo &&
-          <Grid item >
-            Spots remaining: {eventInfo.capacity - eventInfo.num_of_attendees}
-            {isAttending 
+          <Grid item style={{display:'flex'}}>
+            <p>Spots remaining:</p>
+             <p style={{marginLeft:"5px", marginRight:"20px"}}>{eventInfo.capacity - eventInfo.num_of_attendees}</p>
+            
+            { userType === "host" &&  user_id == eventInfo.host.id || isAPerformer()? null :isAttending 
             ? <Button variant="contained" color="primary" onClick={() => unattend()}>Unattend</Button> 
             : <Button variant="contained" color="primary" onClick={() => attend()}>Attend </Button>
             }
@@ -192,23 +206,28 @@ export default function EventsPage() {
         justify="center"
         alignItems="center"
       >
+        {eventInfo && <Typography variant="h4" className={classes.title}>
+          {eventInfo.event.name}
+        </Typography> }
+        {eventInfo && 
+              <Paper className={classes.paper}>
+                {eventInfo.event.description}
+              </Paper>
+        }
         <Typography variant="h4" className={classes.title}>
           Host
         </Typography>
-        <Grid item className={classes.main}>
+    {eventInfo && <Link to={`/host/${eventInfo.host.id}`} style={{ textDecoration: 'none', color:"black" }}>
+        {/* <Grid item className={classes.main}> */}
           <Paper className={classes.paper}>
             <Grid item>
-              <Grid item>
-                  {eventInfo && 
-                <Link to={`/host/${eventInfo.host.id}`} style={{ textDecoration: 'none', color:"black" }}>
+              <Grid item> 
                 <ButtonBase className={classes.image}>
                   <img className={classes.img} alt="complex" src={`${eventInfo.host.profile_pic}`} />
                   <Typography gutterBottom variant="subtitle1" className={classes.name}>
                       {eventInfo.host.name}
                     </Typography>
                 </ButtonBase>
-                </Link>
-                  }
               </Grid>
               <Grid item xs={12} sm container>
                 <Grid item xs container direction="column" spacing={2}>
@@ -223,15 +242,17 @@ export default function EventsPage() {
               </Grid>
             </Grid>
           </Paper>
-        </Grid>
+        {/* </Grid> */}
+      </Link>   
+    }
         <Typography variant="h4" className={classes.title}>
           Performer(s)
         </Typography>
-        <Grid item className={classes.main}>
+        {/* <Grid item className={classes.main}> */}
         {
-          performers.length > 0 && performers.map((performer)=><PerformerCard profile_pic={performer.profile_pic} name={performer.name} description={performer.description} id={performer.id} my_genres={performer.my_genres} key={performer.id}/>)
+          performers.length > 0 && performers.map((performer)=><PerformerCard profile_pic={performer.profile_pic} name={performer.name} description={performer.description} id={performer.id} my_genres={performer.my_genres} key={performer.id} confirmed={performer.accepted} host_id={eventInfo.host.id}/>)
         }
-        </Grid>
+        {/* </Grid> */}
       </Grid>
     </React.Fragment>
   );

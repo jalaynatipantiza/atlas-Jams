@@ -31,6 +31,7 @@ const ProfilePage = ({setEvent}) => {
 
             axios.get(`/user/${id}/events`)
               .then(res => {
+                console.log(res.data);
                 const reverse = res.data.reverse()
                  setUser((prev)=>{ return {...prev, events: [...reverse]}})
                   

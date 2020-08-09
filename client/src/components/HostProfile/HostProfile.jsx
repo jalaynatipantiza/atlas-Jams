@@ -109,7 +109,7 @@ const useStyles = makeStyles({
         <div className={classes.mainPic}></div>
         <HostInfoBox hostInfo={hostProfile.hostInfo}/>
       </div>
-        <div className={classes.buttonEvent}>
+        <div className={classes.buttonEvent} style={{marginLeft:"20px"}}>
         <p style={{font:"initial", fontSize: "xx-large", margin: "2px"}}>Events</p>
           <Box className={classes.eventBox}>
             <Typography className={classes.events}>

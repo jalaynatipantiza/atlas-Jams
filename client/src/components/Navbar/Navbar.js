@@ -41,9 +41,9 @@ const Navbar = (props) => {
     }
     if (navTheme === "BLACK"){
       return {
-        appOne: classes.appBar, 
-        appTwo: classes.appBar2, 
-        toolbarOne: classes.toolbar, 
+        appOne: classes.appBar2, 
+        appTwo: classes.appBar, 
+        toolBarOne: classes.toolbar2, 
         toolBarTwo: classes.toolbarColor
       }
     }

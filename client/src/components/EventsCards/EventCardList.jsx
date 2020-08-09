@@ -1,18 +1,20 @@
 import React from 'react';
 import EventsCards from './EventsCards';
 import useStyles from './styles/styles';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 
-export default function EventsCardList({ events, sideScroll }) {
+export default function EventsCardList({ events, sideScroll, cardDeleted }) {
   const classes = useStyles();
 
-  console.log(events);
   const list = events.map((event)=>{
-    return <EventsCards id={event.id} key={event.id} description={event.description} name={event.name} time={event.time} date={event.date} event_picture={event.event_picture} am={event.am}  />
+    return <EventsCards id={event.id} key={event.id} description={event.description} name={event.name} time={event.time} date={event.date} event_picture={event.event_picture} am={event.am} accepted={event.accepted} user_id={event.user_id} location={event.location} cardDeleted={cardDeleted} />
   })
   return (
     <div className={classes.card} style={sideScroll? {flexWrap:"nowrap"}: null}>
       {list}
+
     </div>
   
   );

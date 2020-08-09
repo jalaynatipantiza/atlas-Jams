@@ -18,6 +18,12 @@ class EventAttendeesController < ApplicationController
     @attendee.destroy_all
   end
 
+  def attendee_events 
+    @attendees = EventAttendee.where(user_id: params[:user_id])
+
+    @events = @attendees.map{|attendee| Event.where(id: attendee.event_id)[0]}
+    render json: @events
+  end
   private
 
   def attendee_params
