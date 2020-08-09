@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { AppBar, Toolbar, Typography, IconButton, Button, Menu, MenuItem } from '@material-ui/core';
+import { AppBar, Toolbar, Typography, IconButton, Button, Menu, MenuItem, InputBase } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import zIndex from '@material-ui/core/styles/zIndex';
@@ -79,6 +79,21 @@ const Navbar = (props) => {
               <p>Atlas Jams</p>
             </IconButton>
           </Link>
+
+          {/* <div className={classes.search}>
+            <span className={classes.icon}>
+              <SearchIcon />
+            </span>
+            <InputBase
+              placeholder="Search…"
+              classes={{
+                root: classes.inputRoot,
+                input: classes.inputInput,
+              }}
+              inputProps={{ 'aria-label': 'search' }}
+            />
+          </div> */}
+
           <IconButton color="inherit" onClick={handleClick}>
             <AccountCircleIcon />
           </IconButton>
