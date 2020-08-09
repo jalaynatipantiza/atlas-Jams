@@ -48,21 +48,17 @@ class EventsController < ApplicationController
   end
 
   def search
-    # puts event_params
-    @locations = User.joins(:spaces).where('location LIKE ?', '%' + params[:location] + '%').select('*')
-    # @spaces = @locations.joins(:spaces).select('*')
-    # raise @locations.inspect
+    @events_for_search = User.where('location ILIKE ?', '%' + params[:location] + '%').map(&:spaces).flatten.map(&:events).flatten
 
-    # raise @locations.inspect
-    @events = Event.includes(:space).includes(:event_attendees).includes(:users).where(params[:location]).map do |event|
+    @events = @events_for_search.map do |event|
       {
-        # location: event.space.user.location,
         capacity: event.space.capacity,
         event: event,
         num_of_attendees: event.event_attendees.size
       }
     end
-    puts @events.inspect
+
+    render json: @events
   end
 
   def userEventsPerformer
