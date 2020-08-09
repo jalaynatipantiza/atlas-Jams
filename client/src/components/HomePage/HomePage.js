@@ -11,13 +11,12 @@ function HomePage({ setEvent }) {
 
   const [searchEvents, setSearchEvents] = useState([]);
 
-  console.log('searchEvents:', searchEvents);
+  // console.log('searchEvents:', searchEvents);
 
   useEffect(()=>{
-    window.scrollTo(0, 0);
-
+    
     if (searchEvents.length > 0) {
-
+      
       axios({
         method: 'get',
         url: '/search',
@@ -25,14 +24,16 @@ function HomePage({ setEvent }) {
           location: searchEvents,
         },
       })
-        .then(res => {
-          console.log('res.data:', res.data);
-          // const arr = res.data.map(event => event.event);
-          // setEvents(arr.reverse());
+      .then(res => {
+        console.log('res.data:', res.data);
+        const arr = res.data.map(event => event.event);
+        setEvents(arr.reverse());
       });
-
+      
     } else {
-
+      
+      window.scrollTo(0, 0);
+      
       axios.get("/all/events")
         .then(res => {
           console.log('res.data', res.data);
