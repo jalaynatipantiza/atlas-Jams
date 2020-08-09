@@ -8,7 +8,7 @@ const useStyles = makeStyles({
     fontFamily: "initial"
   },
   calendar: {
-    width: "60vw"
+    width: "58vw"
   }
 
 });

@@ -8,15 +8,10 @@ export default function AttendeeProfile(props){
   const classes = useStyles();
   const [events, setEvents] = useState([])
   useEffect(()=>{
-    window.scrollTo(0, 0)
-    axios.get("/all/events")
-    .then(res => {
-      
-      const arr = res.data.map(event => {
-        return event.event
-      })
-      setEvents(arr.reverse())
-    })
+   axios.get(`/attendee/${window.localStorage.id}/events`)
+       .then(res => {  
+           setEvents(res.data)
+       })
   }, [])
 
 
