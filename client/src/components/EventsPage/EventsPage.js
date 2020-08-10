@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Grid, Box, Paper, Typography, ButtonBase, Button } from '@material-ui/core';
+import { Grid, Box, Paper, Typography, ButtonBase, Button, Divider } from '@material-ui/core';
 import TodayIcon from '@material-ui/icons/Today';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
@@ -146,6 +146,7 @@ export default function EventsPage() {
       >
       </Grid>
       }
+
       <Grid
         container
         className={classes.header}
@@ -154,26 +155,29 @@ export default function EventsPage() {
           <Grid item className={classes.headerLeft}>
             {eventInfo && <div>
             <Link to={`/host/${eventInfo.host.id}`} style={{ textDecoration: 'none', color:"black" }}></Link>
-            <TodayIcon />{eventInfo.event.date}/<AccessTimeIcon />{eventInfo.event.time} {eventInfo.event.am? 'am': 'pm'}/<LocationOnIcon />{eventInfo.space.address} 
+            <TodayIcon /> {eventInfo.event.date} <AccessTimeIcon /> {eventInfo.event.time} {eventInfo.event.am? 'am': 'pm'}<LocationOnIcon />{eventInfo.space.address} 
             </div>
             }
           </Grid>
         </Grid>
+
         <Grid item xs={6} className={classes.headerRight}>
           {eventInfo &&
-          <Grid item style={{display:'flex'}}>
+          <Grid item style={{display:'flex', alignItems: 'center'}}>
             <p>Spots remaining:</p>
-             <p style={{marginLeft:"5px", marginRight:"20px"}}>{eventInfo.capacity - eventInfo.num_of_attendees}</p>
+            <p style={{marginLeft:"5px", marginRight:"20px"}}>
+              {eventInfo.capacity - eventInfo.num_of_attendees}
+            </p>
             
             { userType === "host" &&  user_id == eventInfo.host.id || isAPerformer()? null :isAttending 
-            ? <Button variant="contained" color="primary" onClick={() => unattend()}>Unattend</Button> 
+            ? <Button variant="contained" color="secondary" onClick={() => unattend()}>Unattend</Button> 
             : <Button variant="contained" color="primary" onClick={() => attend()}>Attend </Button>
             }
             { userType === "host" && ( user_id == eventInfo.host.id &&
               <Button  onClick={handleClickOpen} onClick={handleClickOpen} color="secondary" variant="outlined" >
                 Delete Event
               </Button>)
-             }
+            }
           </Grid>
           }
           <Dialog
@@ -206,20 +210,26 @@ export default function EventsPage() {
         justify="center"
         alignItems="center"
       >
-        {eventInfo && <Typography variant="h4" className={classes.title}>
-          {eventInfo.event.name}
-        </Typography> }
         {eventInfo && 
-              <Paper className={classes.paper}>
-                {eventInfo.event.description}
-              </Paper>
+        <Typography variant="h4" className={classes.title}>
+          {eventInfo.event.name}
+        </Typography> 
         }
+        {eventInfo && 
+          <Paper className={classes.paper} elevation={4}>
+            <Typography variant="body2" gutterBottom className={classes.description}>
+              {eventInfo.event.description}
+            </Typography>
+          </Paper>
+        }
+        <Divider variant="middle" style={{marginTop: '18px', marginBottom: '18px', width: '100%', marginLeft: 0, marginRight: 0}} />
         <Typography variant="h4" className={classes.title}>
           Host
         </Typography>
-    {eventInfo && <Link to={`/host/${eventInfo.host.id}`} style={{ textDecoration: 'none', color:"black" }}>
-        {/* <Grid item className={classes.main}> */}
-          <Paper className={classes.paper}>
+        {eventInfo && 
+        <Link to={`/host/${eventInfo.host.id}`} style={{ textDecoration: 'none', color:"black" }}>
+          {/* <Grid item className={classes.main}> */}
+          <Paper className={classes.paper} elevation={4}>
             <Grid item>
               <Grid item> 
                 <ButtonBase className={classes.image}>
@@ -233,7 +243,7 @@ export default function EventsPage() {
                 <Grid item xs container direction="column" spacing={2}>
                   <Grid item xs>
                     {eventInfo &&
-                    <Typography variant="body2" gutterBottom>
+                    <Typography variant="body2" gutterBottom className={classes.description}>
                     {eventInfo.host.description}
                     </Typography>
                     }
@@ -242,9 +252,10 @@ export default function EventsPage() {
               </Grid>
             </Grid>
           </Paper>
-        {/* </Grid> */}
-      </Link>   
-    }
+          {/* </Grid> */}
+        </Link>   
+        }
+        <Divider variant="middle" style={{marginTop: '18px', marginBottom: '18px', width: '100%', marginLeft: 0, marginRight: 0}} />
         <Typography variant="h4" className={classes.title}>
           Performer(s)
         </Typography>

@@ -10,7 +10,7 @@ const useStyles = makeStyles(theme => ({
   ,
   header: {
     fontFamily: "initial",
-
+    alignItems: 'center',
     padding: 20,
     marginTop: 90,
     height: 100,
@@ -38,10 +38,16 @@ const useStyles = makeStyles(theme => ({
     borderRadius: 7,
   },
   paper: {
+    '&:hover': {
+      background: 'rgb(249,241,241)',
+   },
+    // backgroundColor: 'rgb(249,241,241)',
     fontFamily: "initial",
-
     padding: theme.spacing(2),
-    margin: 'auto',
+    marginTop: 'auto',
+    marginBottom: 40,
+    marginLeft: 'auto',
+    marginRight: 'auto',
     width: 900,
   },
   headerRight: {
@@ -59,14 +65,15 @@ const useStyles = makeStyles(theme => ({
   },
   name: {
     fontFamily: "initial",
-
+    fontSize: '25px',
     paddingLeft: 20,
     paddingBottom: 15,
   },
   title: {
     fontFamily: "initial",
-
     margin: 20,
+    marginTop: 40,
+
     // paddingTop: 20,
     justify: 'center',
   },
@@ -79,7 +86,10 @@ const useStyles = makeStyles(theme => ({
     // filter: 'blur(2px)',
     minHeight: "350px",
     backgroundSize: 'cover',
-  }
+  },
+  description: {
+    fontSize: '16px',
+  },  
 }));
 
 export default useStyles;

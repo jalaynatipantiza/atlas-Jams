@@ -19,7 +19,7 @@ export default function PerformerCard({ profile_pic, name, description, id, my_g
   return (
     <Link to={`/performer/${id}`} style={{ textDecoration: 'none', color:"black", margin:"10px", fontFamily:"initial" }}>
       {/* <Grid item className={classes.main}> */}
-        <Paper className={classes.paper}>
+        <Paper className={classes.paper} elevation={4}>
           <Grid item>
             <Grid item>
               <ButtonBase className={classes.image}>
@@ -37,7 +37,7 @@ export default function PerformerCard({ profile_pic, name, description, id, my_g
             <Grid item xs={12} sm container>
               <Grid item xs container direction="column" spacing={2}>
                 <Grid item xs>
-                  <Typography variant="body2" gutterBottom>
+                  <Typography variant="body2" gutterBottom className={classes.description}>
                   {description}
                   </Typography>
                   <Typography variant="body2" color="textSecondary">
