@@ -18,13 +18,14 @@ const useStyles = makeStyles(theme => ({
     display: "flex", 
     justifyContent: "space-between", 
     color: "black", 
-    backgroundColor: "white"
+    backgroundColor: "white",
+    // backgroundColor: theme.primary
   },
   toolbarColor: {
     display: "flex", 
     justifyContent: "space-between", 
-    color: "black", 
-    backgroundColor: "#c5bdae"
+    color: "white", 
+    backgroundColor: "#77828D"
   },
   appBar: {
     position: "fixed",

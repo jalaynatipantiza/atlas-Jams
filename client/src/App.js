@@ -32,9 +32,9 @@ function App() {
   
   return (
     <Router>
-      {/* <ThemeProvider theme={theme}> */}
-      { window.sessionStorage.user_type? <Helmet>
-        <title>Atlas Jams || {window.sessionStorage.user_type}</title>
+      <ThemeProvider theme={theme}>
+      { window.localStorage.user_type? <Helmet>
+        <title>Atlas Jams || {window.localStorage.user_type}</title>
     </Helmet>: null}
       <main>
         <section>
@@ -60,7 +60,7 @@ function App() {
 
       </div>
       <div style={{marginTop:"100px"}}>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
-      {/* </ThemeProvider> */}
+      </ThemeProvider>
     </Router>
   );
 }
