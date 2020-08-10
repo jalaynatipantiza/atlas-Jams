@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   post '/attending' => "event_attendees#create"
   delete '/attending' => "event_attendees#destroy"
 
+  get '/search' => "events#search"
+
   get '/signup' => 'users#new'
 
   put '/event/:event_id/performers/:user_id' => "events_performers#update"

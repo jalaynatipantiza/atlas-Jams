@@ -213,10 +213,6 @@ export default function EventForm() {
          {performersOption}
          <Button variant="contained" color="red" onClick={() => removePerformer()} href="#" style={{font:"90%", height: "30%", width:"5%"}}>-</Button>
       {/* </FormControl> */}
-
-        <TextField id="standard-basic" label="Ticket Count" onChange={text => {
-          const int = parseInt(text.target.value) 
-          setEvent({...event, attendants: int })}} className={classes.field} />
         <TextField id="standard-basic" onChange={text => {
           const int = parseInt(text.target.value) 
           setEvent({...event, duration: int })}}  label="Duration in minutes" className={classes.field} />
