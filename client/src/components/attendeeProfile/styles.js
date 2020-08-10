@@ -9,7 +9,8 @@ const useStyles = makeStyles({
     fontFamily: "initial"
   },
   calendar: {
-    width: "58vw"
+    width: "58vw",
+    zIndex:"-2"
   }
 
 });
