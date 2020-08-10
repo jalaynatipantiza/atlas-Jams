@@ -19,6 +19,8 @@ import HostProfile from './components/HostProfile/HostProfile';
 import EventForm from './components/Forms/EventsForm/EventsForm';
 import AttendeeProfile from './components/attendeeProfile/attendeeProfile'
 
+
+
 // https://blogreact.com/share-data-between-routes-in-react/
 // https://reactjs.org/docs/hooks-reference.html#functional-updates
 // https://www.pluralsight.com/guides/how-to-use-react-context-to-share-data-between-components
@@ -29,6 +31,7 @@ function App() {
   return (
     <Router>
       <main>
+      <title>sdfs</title>
         <section>
           <Route path={['/', '/events']} render={() => <Navbar navTheme={'LIGHT'} />} />
           <Route path={['/signup', '/signup/performer', '/signup/host', '/login', '/performer/:id', '/host/:id', '/create/event', "/attendee/:id" ]} render={() => <Navbar navTheme={'BLACK'} />} />
@@ -48,6 +51,7 @@ function App() {
           <Route exactl={true} path='/attendee/:id' render={() => <AttendeeProfile />}/>
         </section>
       </main>
+      <div style={{marginTop:"100px"}}>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
     </Router>
   );
 }
