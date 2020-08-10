@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Grid, Box, Paper, Typography, ButtonBase, Button, Divider } from '@material-ui/core';
+import { Grid, Box, Paper, Typography, ButtonBase, Button, Divider, Card } from '@material-ui/core';
 import TodayIcon from '@material-ui/icons/Today';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
@@ -141,13 +141,15 @@ export default function EventsPage() {
   return (
     <React.Fragment>
       {performers.length > 0 &&
-      <Grid 
+      <div className={classes.mainContainer} style={{backgroundImage: `url(${eventInfo.event.event_picture})`}}>
+      <Card classNames={classes.card} style={{opacity: 0.96, width: '75%'}}>
+      {/* <Grid 
       container
       className={classes.banner}
-      style={{backgroundImage: `url(${eventInfo.event.event_picture})`}}
+      // style={{backgroundImage: `url(${eventInfo.event.event_picture})`}}
       >
-      </Grid>
-      }
+      </Grid> */}
+      
 
       <Grid
         container
@@ -218,11 +220,11 @@ export default function EventsPage() {
         </Typography> 
         }
         {eventInfo && 
-          <Paper className={classes.paper} elevation={4}>
-            <Typography variant="body2" gutterBottom className={classes.description}>
+          // <Paper className={classes.paper} elevation={4}>
+            <Typography variant="body2" gutterBottom className={classes.eventDescription}>
               {eventInfo.event.description}
             </Typography>
-          </Paper>
+          // </Paper>
         }
         <Divider variant="middle" style={{marginTop: '18px', marginBottom: '18px', width: '100%', marginLeft: 0, marginRight: 0}} />
         <Typography variant="h4" className={classes.title}>
@@ -267,6 +269,9 @@ export default function EventsPage() {
         }
         {/* </Grid> */}
       </Grid>
+      </Card>
+      </div>
+      }
     </React.Fragment>
   );
 };

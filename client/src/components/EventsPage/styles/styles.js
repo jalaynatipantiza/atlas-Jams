@@ -13,6 +13,7 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
     padding: 20,
     marginTop: 90,
+    marginBottom: 40,
     height: 100,
     display: 'flex',
   },
@@ -50,6 +51,24 @@ const useStyles = makeStyles(theme => ({
     marginRight: 'auto',
     width: 900,
   },
+  card: {
+    width: '70%',
+    position: 'absolute',
+    // filter: 'blur(2px)',
+    opacity: 0.96,
+  },
+  mainContainer: {
+    // width: '100%',
+    height: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    backgroundAttachment: 'fixed',
+    // position: 'fixed',
+    overflow: 'hidden',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  },
   headerRight: {
     fontFamily: "initial",
 
@@ -72,7 +91,7 @@ const useStyles = makeStyles(theme => ({
   title: {
     fontFamily: "initial",
     margin: 20,
-    marginTop: 40,
+    // marginTop: 40,
 
     // paddingTop: 20,
     justify: 'center',
@@ -89,7 +108,14 @@ const useStyles = makeStyles(theme => ({
   },
   description: {
     fontSize: '16px',
+    // width: '75%',
   },  
+  eventDescription: {
+    fontSize: '16px',
+    width: '75%',
+    textAlign: 'center',
+    marginBottom: 30,
+  }
 }));
 
 export default useStyles;
