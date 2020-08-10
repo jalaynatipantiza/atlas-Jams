@@ -17,7 +17,13 @@ const SearchBox = ({ events, setSearchEvents }) => {
   const handleChange = (event) => {
     setSearchEvents(event);
   };
-
+  const scrollDown = ()=> {
+    window.scroll({
+      top: 757,
+      left: 0,
+      behavior: 'smooth'
+    });
+  }
 
   return(
     <section>
@@ -43,7 +49,7 @@ const SearchBox = ({ events, setSearchEvents }) => {
         onChange={(event) => handleChange(event.target.value)}
       />
       </div>
-        <div style={{position: "absolute",bottom: '0',right:'0', margin:"20px", height:"100px"}} >
+        <div onClick={scrollDown} style={{position: "absolute",bottom: '0',right:'0', margin:"20px", height:"100px"}} >
          <Icon name='angle double down' className="fas" size="huge" inverted={true} />
         </div>
 
