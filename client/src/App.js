@@ -18,6 +18,7 @@ import ProfilePage from './components/PerformerProfile/performerProfilePage'
 import HostProfile from './components/HostProfile/HostProfile';
 import EventForm from './components/Forms/EventsForm/EventsForm';
 import AttendeeProfile from './components/attendeeProfile/attendeeProfile'
+import { Helmet } from 'react-helmet'
 
 
 
@@ -30,8 +31,10 @@ function App() {
   
   return (
     <Router>
+       <Helmet>
+        <title>Atlas Jams || {window.localStorage.user_type}</title>
+    </Helmet>
       <main>
-      <title>sdfs</title>
         <section>
           <Route path={['/', '/events']} render={() => <Navbar navTheme={'LIGHT'} />} />
           <Route path={['/signup', '/signup/performer', '/signup/host', '/login', '/performer/:id', '/host/:id', '/create/event', "/attendee/:id" ]} render={() => <Navbar navTheme={'BLACK'} />} />
