@@ -428,7 +428,7 @@ host2_space2 = host2.spaces.create!({
 
 host2_space3 = host2.spaces.create!({
   capacity: 50,
-  address: "22 Spadina Cres"
+  address: "22 Spadina Crescent"
 })
 
 #host 3
