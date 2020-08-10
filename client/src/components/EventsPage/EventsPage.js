@@ -35,30 +35,31 @@ export default function EventsPage() {
 
   const [isAttending, setIsAttending] = useState(false);
 
-  // console.log("right here", eventInfo);
-
   // GRABS STATE FROM BACKEND
   useEffect(()=> {
     window.scrollTo(0, 0);
     axios.get(`/event/${event_id}`)
     .then(res => {
-      console.log('this is event info',res.data);
       setEventInfo({...res.data});
       setPerformers(res.data.performers);
     });
     
     axios.get(`/attending/${user_id}/${event_id}`)
     .then(res => {
-      console.log('attending:', res.data);
-
       if (res.data.length > 0) {
         setIsAttending(true);
       } else {
-
-        console.log('attending:', res.data);
         setIsAttending(false);
       };
     });
+
+    setInterval(function(){
+      axios.get(`/event/${event_id}`)
+      .then(res => {
+        setEventInfo({...res.data});
+        setPerformers(res.data.performers);
+      });
+    },3000)
   }, []);
   
 

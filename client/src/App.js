@@ -18,6 +18,9 @@ import ProfilePage from './components/PerformerProfile/performerProfilePage'
 import HostProfile from './components/HostProfile/HostProfile';
 import EventForm from './components/Forms/EventsForm/EventsForm';
 import AttendeeProfile from './components/attendeeProfile/attendeeProfile'
+import { Helmet } from 'react-helmet'
+
+
 
 // https://blogreact.com/share-data-between-routes-in-react/
 // https://reactjs.org/docs/hooks-reference.html#functional-updates
@@ -28,6 +31,9 @@ function App() {
   
   return (
     <Router>
+      { window.localStorage.user_type? <Helmet>
+        <title>Atlas Jams || {window.localStorage.user_type}</title>
+    </Helmet>: null}
       <main>
         <section>
           <Route path={['/', '/events']} render={() => <Navbar navTheme={'LIGHT'} />} />
@@ -48,6 +54,7 @@ function App() {
           <Route exactl={true} path='/attendee/:id' render={() => <AttendeeProfile />}/>
         </section>
       </main>
+      <div style={{marginTop:"100px"}}>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
     </Router>
   );
 }
