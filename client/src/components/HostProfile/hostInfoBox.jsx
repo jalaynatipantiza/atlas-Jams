@@ -6,6 +6,8 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import useStyles from './styles/styles';
+import '../../App.css'
+
 
 const HostInfoBox = (props) => {
   const classes = useStyles();
@@ -21,11 +23,11 @@ const HostInfoBox = (props) => {
             {name}
           </Typography>
           <Typography className={classes.contactInfo} variant="body2" color="textSecondary" component="p">
-          {`${email} | ${number} | ${location}`}
+          {`${email} | ${location}`}
           </Typography>
 
           <Typography className={classes.descriptionBox} paragraph>
-            {description}
+           <p>{description}</p>
           </Typography>
         
       </CardContent>

@@ -3,6 +3,8 @@ import useStyles from './styles/styles';
 import { Grid, Box, Paper, Typography, ButtonBase, Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import MusicNoteIcon from '@material-ui/icons/MusicNote';
+import '../../App.css'
+
 
 export default function PerformerCard({ profile_pic, name, description, id, my_genres, confirmed, host_id }) {
   const classes = useStyles();

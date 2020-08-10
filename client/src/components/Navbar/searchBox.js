@@ -39,7 +39,7 @@ const SearchBox = ({ events, setSearchEvents }) => {
         <SearchIcon className={classes.iconSearch} />
       </span>
       <InputBase
-        placeholder="Search your location…"
+        placeholder="Search By City"
         classes={{
         root: classes.inputRoot,
         input: classes.inputInput,

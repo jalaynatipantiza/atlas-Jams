@@ -14,6 +14,8 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import axios from 'axios'
+import '../../App.css'
+
 
 
 export default function EventsCard({ description, name, date, event_picture, time, am, id, key, capacity, num_of_attendees, accepted, user_id }) {
@@ -72,7 +74,7 @@ export default function EventsCard({ description, name, date, event_picture, tim
 
           >
            {displayRequest && !confirmed  && user && <Button onClick={handleClickOpen} size="small" color="secondary" variant="outlined" style={{alignSelf:"center" , backgroundColor:"rgb(255, 208, 211)"}}>
-              pending request
+              <p>pending request</p>
             </Button>}
         </CardMedia>
           <CardContent style={{height: '19vh'}} >
@@ -80,19 +82,19 @@ export default function EventsCard({ description, name, date, event_picture, tim
               {name}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
-            {`${date} ${time}`}
-            { am ? "am" : "pm"}
+            <p>{`${date} ${time}`}
+            { am ? "am" : "pm"}</p>
 
             </Typography>
             <Typography variant="body2" component="p">
-              {partialDescription}...
+              <p style={{fontSize:"medium"}}>{partialDescription}...</p>
             </Typography>
           </CardContent>
         </CardActionArea>
         <CardActions className={classes.cardAction} >
         <Link to={`/events/${id}`} style={{ textDecoration: 'none', color: "inherit" }}>
           <Button size="small" color="primary" style={{alignSelf:"center"}}>
-            Learn More
+           <p>Learn More</p> 
           </Button>
         </Link>
         </CardActions>
