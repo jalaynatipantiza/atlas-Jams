@@ -10,7 +10,7 @@ const useStyles = makeStyles({
   },
   calendar: {
     width: "58vw",
-    zIndex: -2,
+
   }
 
 });
