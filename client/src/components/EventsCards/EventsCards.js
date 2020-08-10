@@ -75,11 +75,7 @@ export default function EventsCard({ description, name, date, event_picture, tim
               pending request
             </Button>}
         </CardMedia>
-<<<<<<< HEAD
           <CardContent style={{height: '19vh'}} >
-=======
-          <CardContent style={{height: '19vh'}}>
->>>>>>> c2e8820c37df38243cfc17adbd4be4b00fa740ba
             <Typography gutterBottom variant="h5" component="h1">
               {name}
             </Typography>
