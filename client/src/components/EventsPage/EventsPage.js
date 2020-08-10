@@ -166,13 +166,13 @@ export default function EventsPage() {
         <Grid item xs={6} className={classes.headerRight}>
           {eventInfo &&
           <Grid item style={{display:'flex', alignItems: 'center'}}>
-            <p>Spots remaining:</p>
-            <p style={{marginLeft:"5px", marginRight:"20px"}}>
+            <p style={{marginTop: "18px"}}>Spots remaining:</p>
+            <p style={{marginLeft:"5px", marginRight:"20px", marginTop: "18px"}}>
               {eventInfo.capacity - eventInfo.num_of_attendees}
             </p>
             
             { userType === "host" &&  user_id == eventInfo.host.id || isAPerformer()? null :isAttending 
-            ? <Button variant="contained" color="secondary" onClick={() => unattend()}>Unattend</Button> 
+            ? <Button variant="contained" color="grey" onClick={() => unattend()}>Unattend</Button> 
             : <Button variant="contained" color="primary" onClick={() => attend()}>Attend </Button>
             }
             { userType === "host" && ( user_id == eventInfo.host.id &&

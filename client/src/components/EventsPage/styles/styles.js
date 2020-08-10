@@ -39,7 +39,7 @@ const useStyles = makeStyles(theme => ({
   },
   paper: {
     '&:hover': {
-      background: 'rgb(249,241,241)',
+      background: '#E5EEFC',
    },
     // backgroundColor: 'rgb(249,241,241)',
     fontFamily: "initial",
