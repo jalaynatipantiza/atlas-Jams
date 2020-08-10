@@ -211,8 +211,9 @@ export default function EventsPage() {
       <Grid
         container
         direction="column"
-        justify="center"
+        justifyContent="center"
         alignItems="center"
+        className={classes.gridContainer}
       >
         {eventInfo && 
         <Typography variant="h4" className={classes.title}>

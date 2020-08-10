@@ -49,7 +49,7 @@ const useStyles = makeStyles(theme => ({
     marginBottom: 40,
     marginLeft: 'auto',
     marginRight: 'auto',
-    width: 900,
+    width: '65vw',
   },
   card: {
     width: '70%',
@@ -68,6 +68,10 @@ const useStyles = makeStyles(theme => ({
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
+  },
+  gridContainer: {
+    width:'70vw',
+    margin: 'auto',
   },
   headerRight: {
     fontFamily: "initial",
