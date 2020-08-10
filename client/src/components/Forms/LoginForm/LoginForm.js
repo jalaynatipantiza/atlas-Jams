@@ -9,14 +9,14 @@ export default function SignupForm() {
   const classes = useStyles();
   const history = useHistory();
 
-  window.localStorage.navTheme = 'BLACK'
+  window.sessionStorage.navTheme = 'BLACK'
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  window.localStorage.setItem('navTheme', 'BLACK');
-  window.localStorage.removeItem('user_type')
-  window.localStorage.removeItem('id')
+  window.sessionStorage.setItem('navTheme', 'BLACK');
+  window.sessionStorage.removeItem('user_type')
+  window.sessionStorage.removeItem('id')
   const logIn = () => {
     // axios request to authenticate user
     axios({
@@ -34,10 +34,10 @@ export default function SignupForm() {
         } else if(res.data.is_host){
           userType = "host"
         }
-        window.localStorage.setItem("user_type", userType);
+        window.sessionStorage.setItem("user_type", userType);
 
 
-        window.localStorage.setItem("id", res.data.id);
+        window.sessionStorage.setItem("id", res.data.id);
 
         if(res.data.is_host){
           history.push(`/host/${res.data.id}`);

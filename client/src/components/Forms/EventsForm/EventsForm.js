@@ -25,7 +25,7 @@ export default function EventForm() {
   })
 
   useEffect(()=>{
-    axios.get(`/spaces/user/${window.localStorage.id}`)
+    axios.get(`/spaces/user/${window.sessionStorage.id}`)
       .then((res)=>{
         const array = res.data.map(space => {
           return <MenuItem value={space.id}>{space.address}</MenuItem>

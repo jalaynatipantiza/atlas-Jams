@@ -9,7 +9,7 @@ import '../../App.css'
 export default function PerformerCard({ profile_pic, name, description, id, my_genres, confirmed, host_id }) {
   const classes = useStyles();
   const [displayRequest, setDiplayRequest]= useState(false)
-  const user = window.localStorage.id
+  const user = window.sessionStorage.id
 
   useEffect(()=> {
     

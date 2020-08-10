@@ -49,7 +49,7 @@ function HomePage({ setEvent }) {
 
   // console.log('events:', events);
 
-  window.localStorage.navTheme = 'LIGHT';
+  window.sessionStorage.navTheme = 'LIGHT';
 
   return (
     <React.Fragment>

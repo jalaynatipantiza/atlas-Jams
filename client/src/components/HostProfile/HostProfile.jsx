@@ -16,7 +16,7 @@ import '../../App.css'
 
 
 const HostProfile = (props) => {
-  window.localStorage.navTheme = 'BLACK'
+  window.sessionStorage.navTheme = 'BLACK'
   const [hostProfile, setHostProfile] = useState({
     hostInfo: {},
     hostSpaces: [],
@@ -99,8 +99,8 @@ const useStyles = makeStyles({
   const classes = useStyles();
 
 
-  const userType = localStorage.user_type
-  const user_id = localStorage.id
+  const userType = sessionStorage.user_type
+  const user_id = sessionStorage.id
  
 
   

@@ -58,16 +58,16 @@ const Navbar = (props) => {
   const signOut = () => {
     Axios.get("/logout")
     .then(() => {
-      window.localStorage.removeItem("user_type");
-      window.localStorage.removeItem("id");
+      window.sessionStorage.removeItem("user_type");
+      window.sessionStorage.removeItem("id");
       window.scrollTo(0, 0)
       history.push("/")
     })
   }
   
-  const localStorage = window.localStorage
-  const userType = localStorage.user_type
-  const loggedIn = localStorage.id
+  const sessionStorage = window.sessionStorage
+  const userType = sessionStorage.user_type
+  const loggedIn = sessionStorage.id
  
   return(
     <React.Fragment>
