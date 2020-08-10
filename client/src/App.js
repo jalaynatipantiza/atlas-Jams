@@ -54,6 +54,9 @@ function App() {
           <Route exactl={true} path='/attendee/:id' render={() => <AttendeeProfile />}/>
         </section>
       </main>
+      <div>
+
+      </div>
       <div style={{marginTop:"100px"}}>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
     </Router>
   );

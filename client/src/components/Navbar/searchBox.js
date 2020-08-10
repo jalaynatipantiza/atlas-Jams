@@ -3,6 +3,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 import useStyles from './styles/styles';
+import { Icon } from 'semantic-ui-react'
+import 'semantic-ui-css/semantic.min.css'
+import "./styles.scss"
 
 
 const SearchBox = ({ events, setSearchEvents }) => {
@@ -15,7 +18,7 @@ const SearchBox = ({ events, setSearchEvents }) => {
     setSearchEvents(event);
   };
 
-  
+
   return(
     <section>
     <div className={classes.mainPic}>
@@ -25,7 +28,7 @@ const SearchBox = ({ events, setSearchEvents }) => {
     <div className={classes.searchbar}>
       {/* <div className={classes.searchIcon}>
       
-      </div> */}
+    </div> */}
       <span className={classes.icon}>
         <SearchIcon className={classes.iconSearch} />
       </span>
@@ -40,6 +43,12 @@ const SearchBox = ({ events, setSearchEvents }) => {
         onChange={(event) => handleChange(event.target.value)}
       />
       </div>
+        <div style={{position: "absolute",bottom: '0',right:'0', margin:"20px", height:"100px"}} >
+         <Icon name='angle double down' className="fas" size="huge" inverted={true} />
+        </div>
+
+
+
     </div>
     {/*this will be removed, just for visual purposes right now*/}
     </section>
