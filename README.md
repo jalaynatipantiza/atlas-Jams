@@ -1,10 +1,10 @@
 # Atlas Jams
  
 ## Project Description
-Allows performers , hosts and spectators to connect. Performers  will have the ability to advertise live music, and hosts that are looking for a particular genre, to offer location for shows. Spectators will be able to see upcoming events! Allows people to stay up-to-date with latest shows and also supports local performers !
+Atlas Jams is a platform for hosts, performers, and ones who are looking for events to attend. On this platform performers and create a profile that will advertise their talent. Hosts can create and invite performers to perform at their event. Ones who are looking for an event to attend can browse through all the events and add it to their calender.
 
 ## The Team!
-- Landon Tipantiza
+[Landon Tipantiza](https://github.com/tipantiza)
 - Joshua Gomberoff
 - Jalayna Tipantiza
 
