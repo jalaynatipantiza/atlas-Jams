@@ -10,7 +10,6 @@ import LoginForm from './components/Forms/LoginForm/LoginForm';
 import EventsPage from './components/EventsPage/EventsPage';
 import './App.css';
 import axios from 'axios';
-import { makeStyles } from '@material-ui/core/styles';
 import EventsCardList from './components/EventsCards/EventCardList'
 import HomePage from './components/HomePage/HomePage';
 import { light } from '@material-ui/core/styles/createPalette';
@@ -19,6 +18,8 @@ import HostProfile from './components/HostProfile/HostProfile';
 import EventForm from './components/Forms/EventsForm/EventsForm';
 import AttendeeProfile from './components/attendeeProfile/attendeeProfile'
 import { Helmet } from 'react-helmet'
+import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
+import theme from './themes/themes';
 
 
 
@@ -31,30 +32,32 @@ function App() {
   
   return (
     <Router>
-      { window.localStorage.user_type? <Helmet>
-        <title>Atlas Jams || {window.localStorage.user_type}</title>
-    </Helmet>: null}
-      <main>
-        <section>
-          <Route path={['/', '/events']} render={() => <Navbar navTheme={'LIGHT'} />} />
-          <Route path={['/signup', '/signup/performer', '/signup/host', '/login', '/performer/:id', '/host/:id', '/create/event', "/attendee/:id" ]} render={() => <Navbar navTheme={'BLACK'} />} />
-        </section>
-        <section>
-          <Route exact={true} path='/' render={() => <HomePage />} />
-          <Route path={
-            `/events/:event_id`} render={() => <EventsPage />}/>
-          <Route exact={true} path='/signup' component={SignupForm} />
-          <Route path='/signup/performer' component={PerformerForm} />
-          <Route path='/signup/host' component={HostForm} />
-          {/* <EventsForm /> */}
-          <Route exact={true} path='/login' component={LoginForm} />
-          <Route exactl={true} path='/create/event' render={() => <EventForm />}/>
-          <Route exactl={true} path='/performer/:id' render={() => <ProfilePage />}/>
-          <Route exactl={true} path='/host/:id' render={() => <HostProfile />}/>
-          <Route exactl={true} path='/attendee/:id' render={() => <AttendeeProfile />}/>
-        </section>
-      </main>
-      <div style={{marginTop:"100px"}}>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+      {/* <ThemeProvider theme={theme}> */}
+        { window.localStorage.user_type? <Helmet>
+          <title>Atlas Jams || {window.localStorage.user_type}</title>
+      </Helmet>: null}
+        <main>
+          <section>
+            <Route path={['/', '/events']} render={() => <Navbar navTheme={'LIGHT'} />} />
+            <Route path={['/signup', '/signup/performer', '/signup/host', '/login', '/performer/:id', '/host/:id', '/create/event', "/attendee/:id" ]} render={() => <Navbar navTheme={'BLACK'} />} />
+          </section>
+          <section>
+            <Route exact={true} path='/' render={() => <HomePage />} />
+            <Route path={
+              `/events/:event_id`} render={() => <EventsPage />}/>
+            <Route exact={true} path='/signup' component={SignupForm} />
+            <Route path='/signup/performer' component={PerformerForm} />
+            <Route path='/signup/host' component={HostForm} />
+            {/* <EventsForm /> */}
+            <Route exact={true} path='/login' component={LoginForm} />
+            <Route exactl={true} path='/create/event' render={() => <EventForm />}/>
+            <Route exactl={true} path='/performer/:id' render={() => <ProfilePage />}/>
+            <Route exactl={true} path='/host/:id' render={() => <HostProfile />}/>
+            <Route exactl={true} path='/attendee/:id' render={() => <AttendeeProfile />}/>
+          </section>
+        </main>
+        <div style={{marginTop:"100px"}}>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+      {/* </ThemeProvider> */}
     </Router>
   );
 }
