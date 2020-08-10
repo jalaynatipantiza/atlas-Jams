@@ -20,24 +20,34 @@ const ProfilePage = ({setEvent}) => {
 
   const { id } = useParams();
   
-  useEffect(()=>{
+  useEffect(()=>{ 
+    
     axios.get(`/users/${id}`)
-      .then(res=>{
-        setUser((prev)=>{ return {...prev, info: {...res.data}}})
+  .then(res=>{
+    setUser((prev)=>{ return {...prev, info: {...res.data}}})
 
-        axios.get(`/user/${id}/recordings/`)
-          .then(res =>{
-            setUser((prev)=>{ return {...prev, recordings: [...res.data]}})
+    axios.get(`/user/${id}/recordings/`)
+      .then(res =>{
+        setUser((prev)=>{ return {...prev, recordings: [...res.data]}})
 
-            axios.get(`/user/${id}/events`)
-              .then(res => {
-                console.log(res.data);
-                const reverse = res.data.reverse()
-                 setUser((prev)=>{ return {...prev, events: [...reverse]}})
-                  
-              })
+        axios.get(`/user/${id}/events`)
+          .then(res => {
+            console.log(res.data);
+            const reverse = res.data.reverse()
+             setUser((prev)=>{ return {...prev, events: [...reverse]}})
+              
           })
       })
+  })
+
+    setInterval(function(){ 
+      axios.get(`/user/${id}/events`)
+      .then(res => {
+        console.log(res.data);
+        const reverse = res.data.reverse()
+         setUser((prev)=>{ return {...prev, events: [...reverse]}}) 
+      })
+    }, 3000);
   },[])
 
   const useStyles = makeStyles({
