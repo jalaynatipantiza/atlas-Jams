@@ -33,30 +33,33 @@ function App() {
   return (
     <Router>
       {/* <ThemeProvider theme={theme}> */}
-        { window.localStorage.user_type? <Helmet>
-          <title>Atlas Jams || {window.localStorage.user_type}</title>
-      </Helmet>: null}
-        <main>
-          <section>
-            <Route path={['/', '/events']} render={() => <Navbar navTheme={'LIGHT'} />} />
-            <Route path={['/signup', '/signup/performer', '/signup/host', '/login', '/performer/:id', '/host/:id', '/create/event', "/attendee/:id" ]} render={() => <Navbar navTheme={'BLACK'} />} />
-          </section>
-          <section>
-            <Route exact={true} path='/' render={() => <HomePage />} />
-            <Route path={
-              `/events/:event_id`} render={() => <EventsPage />}/>
-            <Route exact={true} path='/signup' component={SignupForm} />
-            <Route path='/signup/performer' component={PerformerForm} />
-            <Route path='/signup/host' component={HostForm} />
-            {/* <EventsForm /> */}
-            <Route exact={true} path='/login' component={LoginForm} />
-            <Route exactl={true} path='/create/event' render={() => <EventForm />}/>
-            <Route exactl={true} path='/performer/:id' render={() => <ProfilePage />}/>
-            <Route exactl={true} path='/host/:id' render={() => <HostProfile />}/>
-            <Route exactl={true} path='/attendee/:id' render={() => <AttendeeProfile />}/>
-          </section>
-        </main>
-        <div style={{marginTop:"100px"}}>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+      { window.localStorage.user_type? <Helmet>
+        <title>Atlas Jams || {window.localStorage.user_type}</title>
+    </Helmet>: null}
+      <main>
+        <section>
+          <Route path={['/', '/events']} render={() => <Navbar navTheme={'LIGHT'} />} />
+          <Route path={['/signup', '/signup/performer', '/signup/host', '/login', '/performer/:id', '/host/:id', '/create/event', "/attendee/:id" ]} render={() => <Navbar navTheme={'BLACK'} />} />
+        </section>
+        <section>
+          <Route exact={true} path='/' render={() => <HomePage />} />
+          <Route path={
+            `/events/:event_id`} render={() => <EventsPage />}/>
+          <Route exact={true} path='/signup' component={SignupForm} />
+          <Route path='/signup/performer' component={PerformerForm} />
+          <Route path='/signup/host' component={HostForm} />
+          {/* <EventsForm /> */}
+          <Route exact={true} path='/login' component={LoginForm} />
+          <Route exactl={true} path='/create/event' render={() => <EventForm />}/>
+          <Route exactl={true} path='/performer/:id' render={() => <ProfilePage />}/>
+          <Route exactl={true} path='/host/:id' render={() => <HostProfile />}/>
+          <Route exactl={true} path='/attendee/:id' render={() => <AttendeeProfile />}/>
+        </section>
+      </main>
+      <div>
+
+      </div>
+      <div style={{marginTop:"100px"}}>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
       {/* </ThemeProvider> */}
     </Router>
   );

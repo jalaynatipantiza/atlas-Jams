@@ -76,7 +76,7 @@ const Navbar = (props) => {
         <Toolbar className={trigger ? pickStyle().toolBarOne : pickStyle().toolBarTwo}>
           <Link to={'/'} style={{ textDecoration: 'none', color: "inherit" }}>
             <IconButton style={{font: "initial"}} color="inherit">
-              <p>Atlas Jams</p>
+              <p style={{fontSize:"150%"}}>Atlas Jams</p>
             </IconButton>
           </Link>
 
@@ -95,7 +95,7 @@ const Navbar = (props) => {
           </div> */}
 
           <IconButton color="inherit" onClick={handleClick}>
-            <AccountCircleIcon />
+            <AccountCircleIcon fontSize="large"/>
           </IconButton>
           <Menu
             id="simple-menu"

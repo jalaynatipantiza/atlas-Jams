@@ -3,6 +3,8 @@ import axios from "axios";
 import useStyles from './styles'
 import EventsCardList from '../EventsCards/EventCardList';
 import EventCalendar from './calendar';
+import '../../App.css'
+
 
 export default function AttendeeProfile(props){
   const classes = useStyles();

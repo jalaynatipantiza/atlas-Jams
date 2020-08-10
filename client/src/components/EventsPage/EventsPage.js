@@ -15,6 +15,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import '../../App.css'
 
 
 export default function EventsPage() {
@@ -154,7 +155,7 @@ export default function EventsPage() {
       >
         <Grid item xs={6}>
           <Grid item className={classes.headerLeft}>
-            {eventInfo && <div>
+            {eventInfo && <div style={{fontSize:"large"}}>
             <Link to={`/host/${eventInfo.host.id}`} style={{ textDecoration: 'none', color:"black" }}></Link>
             <TodayIcon /> {eventInfo.event.date} <AccessTimeIcon /> {eventInfo.event.time} {eventInfo.event.am? 'am': 'pm'}<LocationOnIcon />{eventInfo.space.address} 
             </div>

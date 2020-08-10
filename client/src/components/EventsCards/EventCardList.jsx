@@ -3,6 +3,8 @@ import EventsCards from './EventsCards';
 import useStyles from './styles/styles';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import '../../App.css'
+
 
 
 export default function EventsCardList({ events, sideScroll, cardDeleted }) {

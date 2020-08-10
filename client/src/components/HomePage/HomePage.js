@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import SearchBox from '../Navbar/searchBox';
 import EventsCardList from '../EventsCards/EventCardList';
+import '../../App.css'
+
 
 function HomePage({ setEvent }) {
 
@@ -52,7 +54,7 @@ function HomePage({ setEvent }) {
   return (
     <React.Fragment>
       <SearchBox events={events} setSearchEvents={setSearchEvents} />
-      <p style={{display:"flex", justifyContent:"center"}}>ALL UPCOMING EVENTS</p>
+      <p style={{display:"flex", justifyContent:"center", marginTop:"3%"}}>ALL UPCOMING EVENTS</p>
       <div style={{ width: "100vw", display:"flex", justifyContent:"center"}}>
        <EventsCardList events={events} />
       </div>
