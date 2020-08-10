@@ -31,9 +31,9 @@ function App() {
   
   return (
     <Router>
-       <Helmet>
+      { window.localStorage.user_type? <Helmet>
         <title>Atlas Jams || {window.localStorage.user_type}</title>
-    </Helmet>
+    </Helmet>: null}
       <main>
         <section>
           <Route path={['/', '/events']} render={() => <Navbar navTheme={'LIGHT'} />} />
