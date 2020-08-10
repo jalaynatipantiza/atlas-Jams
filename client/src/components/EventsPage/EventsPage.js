@@ -21,9 +21,9 @@ import '../../App.css'
 export default function EventsPage() {
 
   // VARIABLES
-  const userType = window.localStorage.user_type;
+  const userType = window.sessionStorage.user_type;
 
-  const user_id = window.localStorage.id;
+  const user_id = window.sessionStorage.id;
 
   const history = useHistory();
 
@@ -115,7 +115,7 @@ export default function EventsPage() {
   };
   
  
-  window.localStorage.navTheme = 'LIGHT';
+  window.sessionStorage.navTheme = 'LIGHT';
   
   const classes = useStyles();
 

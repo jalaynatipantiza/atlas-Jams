@@ -15,7 +15,7 @@ const ProfilePage = ({setEvent}) => {
     recordings: [],
     events: [],
   })
-  window.localStorage.navTheme = 'BLACK'
+  window.sessionStorage.navTheme = 'BLACK'
   
 
   const { id } = useParams();

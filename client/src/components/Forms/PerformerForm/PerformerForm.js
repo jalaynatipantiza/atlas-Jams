@@ -9,7 +9,7 @@ export default function SignupForm(props) {
   const {goToSignUpPage} = props
   let history = useHistory();
 
-  window.localStorage.navTheme = 'BLACK'
+  window.sessionStorage.navTheme = 'BLACK'
 
   const [user, setUser] = useState({
     name: null,
@@ -37,8 +37,8 @@ export default function SignupForm(props) {
         } else if(res.data.is_host){
           userType = "host"
         }
-        window.localStorage.setItem("user_type", userType);
-        window.localStorage.setItem("id", res.data.id);
+        window.sessionStorage.setItem("user_type", userType);
+        window.sessionStorage.setItem("id", res.data.id);
 
         history.push(`/performer/${res.data.id}`);
       });

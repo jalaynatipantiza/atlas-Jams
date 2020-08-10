@@ -9,7 +9,7 @@ import {Link, useHistory} from "react-router-dom"
 export default function SignupForm(props) {
   const classes = useStyles();
 
-  window.localStorage.navTheme = 'BLACK'
+  window.sessionStorage.navTheme = 'BLACK'
   let history = useHistory();
 
 
@@ -39,8 +39,8 @@ export default function SignupForm(props) {
         } else if(res.data.is_host){
           userType = "host"
         }
-        window.localStorage.setItem("user_type", userType);
-        window.localStorage.setItem("id", res.data.id);
+        window.sessionStorage.setItem("user_type", userType);
+        window.sessionStorage.setItem("id", res.data.id);
 
         history.push(`/host/${res.data.id}`)
 

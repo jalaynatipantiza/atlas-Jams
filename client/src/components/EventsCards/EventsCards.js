@@ -56,7 +56,7 @@ export default function EventsCard({ description, name, date, event_picture, tim
   const classes = useStyles();
   const partialDescription = description.slice(0, 100);
   const [displayRequest, setDiplayRequest]= useState(false)
-  const user = window.localStorage.id
+  const user = window.sessionStorage.id
 
   useEffect(()=> {
     

@@ -17,7 +17,7 @@ import '../../App.css'
 export default function EventCalendar (){
     const [events, setEvents] = useState([])
    useEffect(()=>{
-    axios.get(`/attendee/${window.localStorage.id}/events`)
+    axios.get(`/attendee/${window.sessionStorage.id}/events`)
         .then(res => {  
             setEvents(res.data)
         })

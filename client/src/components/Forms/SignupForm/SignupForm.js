@@ -16,7 +16,7 @@ export default function SignupForm(props) {
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
 
-  window.localStorage.navTheme = 'BLACK'
+  window.sessionStorage.navTheme = 'BLACK'
 
   const signUp = () => {
     // make the post request here with name, email, password, passwordConfirmation
@@ -41,8 +41,8 @@ export default function SignupForm(props) {
         } else if(res.data.is_host){
           userType = "host"
         }
-        window.localStorage.setItem("user_type", userType);
-        window.localStorage.setItem("id", res.data.id);
+        window.sessionStorage.setItem("user_type", userType);
+        window.sessionStorage.setItem("id", res.data.id);
         history.push('/')
 
       });
