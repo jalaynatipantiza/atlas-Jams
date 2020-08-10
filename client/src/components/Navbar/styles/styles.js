@@ -3,7 +3,7 @@ import { TextareaAutosize } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
   nav: {
-    zIndex: "1",
+    zIndex: 2,
     position: "fixed",
     width: "100vw",
 
