@@ -74,11 +74,16 @@ const Navbar = (props) => {
       <nav className={classes.nav}>
       <AppBar className={trigger ? pickStyle().appOne : pickStyle().appTwo}>
         <Toolbar className={trigger ? pickStyle().toolBarOne : pickStyle().toolBarTwo}>
-          <Link to={'/'} style={{ textDecoration: 'none', color: "inherit" }}>
-            <IconButton style={{font: "initial"}} color="inherit">
-              <p style={{fontSize:"150%"}}>Atlas Jams</p>
-            </IconButton>
-          </Link>
+          <div style={{ display: 'flex', alignItems: 'center'}}>
+            <Link to={'/'} style={{ textDecoration: 'none', color: "inherit" }}>
+              <IconButton style={{font: "initial"}} color="inherit">
+                <p style={{fontSize:"150%"}}>Atlas Jams</p>
+              </IconButton>
+            </Link>
+            <Link to={'/all/performers'} style={{ textDecoration: 'none', color: "inherit", paddingLeft: '20px' }}>
+            Performers
+            </Link>
+          </div>
 
           {/* <div className={classes.search}>
             <span className={classes.icon}>
