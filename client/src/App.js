@@ -10,16 +10,17 @@ import LoginForm from './components/Forms/LoginForm/LoginForm';
 import EventsPage from './components/EventsPage/EventsPage';
 import './App.css';
 import axios from 'axios';
-import EventsCardList from './components/EventsCards/EventCardList'
+import EventsCardList from './components/EventsCards/EventCardList';
 import HomePage from './components/HomePage/HomePage';
 import { light } from '@material-ui/core/styles/createPalette';
-import ProfilePage from './components/PerformerProfile/performerProfilePage'
+import ProfilePage from './components/PerformerProfile/performerProfilePage';
 import HostProfile from './components/HostProfile/HostProfile';
 import EventForm from './components/Forms/EventsForm/EventsForm';
-import AttendeeProfile from './components/attendeeProfile/attendeeProfile'
-import { Helmet } from 'react-helmet'
+import AttendeeProfile from './components/attendeeProfile/attendeeProfile';
+import { Helmet } from 'react-helmet';
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import theme from './themes/themes';
+import PerformerPage from './components/PerformerPage/PerformerPage';
 
 
 
@@ -38,8 +39,8 @@ function App() {
     </Helmet>: null}
       <main>
         <section>
-          <Route path={['/', '/events']} render={() => <Navbar navTheme={'LIGHT'} />} />
-          <Route path={['/signup', '/signup/performer', '/signup/host', '/login', '/performer/:id', '/host/:id', '/create/event', "/attendee/:id" ]} render={() => <Navbar navTheme={'BLACK'} />} />
+          <Route path={['/']} render={() => <Navbar navTheme={'LIGHT'} />} />
+          <Route path={['/signup', '/signup/performer', '/signup/host', '/login', '/performer/:id', '/host/:id', '/create/event', "/attendee/:id", '/events' ]} render={() => <Navbar navTheme={'BLACK'} />} />
         </section>
         <section>
           <Route exact={true} path='/' render={() => <HomePage />} />
@@ -54,6 +55,7 @@ function App() {
           <Route exactl={true} path='/performer/:id' render={() => <ProfilePage />}/>
           <Route exactl={true} path='/host/:id' render={() => <HostProfile />}/>
           <Route exactl={true} path='/attendee/:id' render={() => <AttendeeProfile />}/>
+          <Route exact={true} path='/all/performers' component={PerformerPage} />
         </section>
       </main>
       <div>
