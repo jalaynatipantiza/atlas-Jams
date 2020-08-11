@@ -32,6 +32,28 @@ class UsersController < ApplicationController
     end
   end
 
+  def performer_search
+    @performers = User.includes([:genre_categories]).joins('JOIN genres ON users.id = user_id').joins('JOIN genre_categories ON genre_category_id = genre_categories.id').where('genre_categories.name ILIKE ?', '%' + params[:genre] + '%').distinct.map do |performer| 
+      {
+        performer: performer,
+        genre: performer.genre_categories.map{|x| x.name}
+      }
+    end
+
+    render json: @performers
+  end
+
+  def all_performer_search
+    @performers = User.includes([:genre_categories]).joins('JOIN genres ON users.id = user_id').joins('JOIN genre_categories ON genre_category_id = genre_categories.id').distinct.map do |performer| 
+      {
+        performer: performer,
+        genre: performer.genre_categories.map{|x| x.name}
+      }
+    end
+
+    render json: @performers
+  end
+
   def update
   end
 
@@ -40,5 +62,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :number, :location, :genre, :is_performer, :is_host)
   end
-
 end
