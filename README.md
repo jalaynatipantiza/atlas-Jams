@@ -6,6 +6,7 @@ Atlas Jams is a platform for hosts, performers, and ones who are looking for eve
 !["homepage"](https://github.com/jalaynatipantiza/atlas-Jams/blob/master/docs/homePage.gif?raw=true)
 !["Attendee Profil"](https://github.com/jalaynatipantiza/atlas-Jams/blob/master/Docs/attendee_profile.gif?raw=true)
 !["Host event creation"](https://github.com/jalaynatipantiza/atlas-Jams/blob/master/docs/host_event.mp4.gif?raw=true)
+!["performer profile'](https://github.com/jalaynatipantiza/atlas-Jams/blob/master/Docs/performer_profile.mp4.gif?raw=true)
 
 ## The Team!
 - [Landon Tipantiza](https://github.com/tipantiza)
