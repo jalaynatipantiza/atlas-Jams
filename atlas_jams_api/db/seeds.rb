@@ -83,6 +83,18 @@ performer7 = User.create!({
   is_performer: true, 
   size: 2
 })
+performer8 = User.create!({
+  name: "Josh G's Quartet",
+  email: "joshuagomberoff@gmail.com",
+  number: 9293020833,
+  profile_pic: "https://i1.wp.com/valleyofthemoonmusicfestival.org/wp-content/uploads/2019/09/IMG_0708.jpg?fit=600%2C400&ssl=1",
+  description: "We are a classical string quartet. We play all the big time pop radio bangers from the 1600s, 1700s, 1800s, and 1900s, from Mozart to Beethoven to Brahms. NY Times Magazine has described our performances as 'it wasn't horrible', and The Strad Magazine has described our sound as 'ok'. If you like anything that you enjoy, then you will surely find our music...palatable",
+  password: "password",
+  password_confirmation: "password",
+  location: "Vancouver",
+  is_performer: true,
+  size: 4
+})
 
 
 #hosts
@@ -209,6 +221,10 @@ genre2_performer7 = Genre.create!({
 genre5_performer7 = Genre.create!({
   user_id: performer7.id,
   genre_category_id: pop.id
+})
+genre3_performer8 = Genre.create!({
+  user_id: performer8.id,
+  genre_category_id: classical.id
 })
 
 
@@ -394,6 +410,21 @@ performer7.recordings.create!({
   name: "SunShy",
   url: "https://www.youtube.com/watch?v=ta9C7O5ULxU",
   description: "Feel good indie-pop tunes!"
+})
+performer8.recordings.create!({
+  name: "As Time Goes By",
+  url: "https://www.youtube.com/watch?v=_bWtmFhOekM&feature=youtu.be&fbclid=IwAR3VbDu4U1AI0AYNObbHMxQsiStvrTWyHNWbzRSGZU5GEBg1e_miqYeWoc0",
+  description: "String pop"
+})
+performer8.recordings.create!({
+  name: "Fanny Mendelssohn Quartet",
+  url: "https://www.youtube.com/watch?v=eT8RADoQj88",
+  description: "Rarely played quartet by Fanny Mendelssohn!"
+})
+performer8.recordings.create!({
+  name: "Felix Mendelssohn Piano Quartet",
+  url: "https://www.youtube.com/watch?v=K6HCdc8qcbg",
+  description: "Mendelssohn was a teenager when he wrote this....no fair"
 })
 
 
