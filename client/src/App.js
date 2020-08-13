@@ -34,8 +34,8 @@ function App() {
   return (
     <Router>
       <ThemeProvider theme={theme}>
-      { window.localStorage.user_type? <Helmet>
-        <title>Atlas Jams || {window.localStorage.user_type}</title>
+      { window.sessionStorage.user_type? <Helmet>
+        <title>Atlas Jams || {window.sessionStorage.user_type}</title>
     </Helmet>: null}
       <main>
         <section>
